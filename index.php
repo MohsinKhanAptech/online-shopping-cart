@@ -23,11 +23,25 @@ include "include/head.php";
     ?>
             <div class="card">
                 <div class="productImgContainer">
-                    <img src="<?php echo "uploads/products/" . $row["product_image1"] ?>" class="productImg" alt="">
-                    <img src="<?php echo "uploads/products/" . $row["product_image2"] ?>" class="productImg" alt="">
-                    <img src="<?php echo "uploads/products/" . $row["product_image3"] ?>" class="productImg" alt="">
-                    <img src="<?php echo "uploads/products/" . $row["product_image4"] ?>" class="productImg" alt="">
-                    <img src="<?php echo "uploads/products/" . $row["product_image5"] ?>" class="productImg" alt="">
+                    <?php
+                    if ($row["product_image_1"] != "") {
+                        echo "<img src='uploads/products/" . $row["product_image_1"] . "' class='productImg' alt=''>";
+                        if ($row["product_image_2"] != "") {
+                            echo "<img src='uploads/products/" . $row["product_image_2"] . "' class='productImg' alt=''>";
+                            if ($row["product_image_3"] != "") {
+                                echo "<img src='uploads/products/" . $row["product_image_3"] . "' class='productImg' alt=''>";
+                                if ($row["product_image_4"] != "") {
+                                    echo "<img src='uploads/products/" . $row["product_image_4"] . "' class='productImg' alt=''>";
+                                    if ($row["product_image_5"] != "") {
+                                        echo "<img src='uploads/products/" . $row["product_image_5"] . "' class='productImg' alt=''>";
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        echo "<h3>products image not avaliable</h3>";
+                    }
+                    ?>
                 </div>
                 <div class="productName">
                     productName:

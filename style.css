@@ -35,6 +35,7 @@ div {
 }
 
 h1,
+a,
 label {
 	text-transform: capitalize;
 }
