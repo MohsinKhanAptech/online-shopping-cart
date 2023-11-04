@@ -23,11 +23,11 @@ include "include/head.php";
     ?>
             <div class="card">
                 <div class="productImgContainer">
-                    <img src="<?php echo "upload/products/" . $row["product_image1"] ?>" class="productImg" alt="">
-                    <img src="<?php echo "upload/products/" . $row["product_image2"] ?>" class="productImg" alt="">
-                    <img src="<?php echo "upload/products/" . $row["product_image3"] ?>" class="productImg" alt="">
-                    <img src="<?php echo "upload/products/" . $row["product_image4"] ?>" class="productImg" alt="">
-                    <img src="<?php echo "upload/products/" . $row["product_image5"] ?>" class="productImg" alt="">
+                    <img src="<?php echo "uploads/products/" . $row["product_image1"] ?>" class="productImg" alt="">
+                    <img src="<?php echo "uploads/products/" . $row["product_image2"] ?>" class="productImg" alt="">
+                    <img src="<?php echo "uploads/products/" . $row["product_image3"] ?>" class="productImg" alt="">
+                    <img src="<?php echo "uploads/products/" . $row["product_image4"] ?>" class="productImg" alt="">
+                    <img src="<?php echo "uploads/products/" . $row["product_image5"] ?>" class="productImg" alt="">
                 </div>
                 <div class="productName">
                     productName:
