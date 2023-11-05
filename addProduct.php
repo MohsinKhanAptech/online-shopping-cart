@@ -29,7 +29,7 @@ include "include/head.php";
                 <option value="5">toy</option>
             </select></div>
         <div><label for="product_price">Product Price</label></div>
-        <div><input type="number" name="product_price" id="product_price" required></div>
+        <div><input type="number" name="product_price" id="product_price" step=".01" required></div>
         <div><label for="product_stock">Product Stock</label></div>
         <div><input type="number" name="product_stock" id="product_stock" required></div>
         <div><label for="product_video">Product Video</label></div>

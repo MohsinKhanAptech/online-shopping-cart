@@ -15,6 +15,7 @@ include "include/head.php";
     <?php include "include/navbar.php" ?>
     <h1>admin panel</h1>
     <div><a href="addProduct.php">Add Product</a></div>
+    <div><a href="editProduct.php">Edit Product</a></div>
 </body>
 
 </html>

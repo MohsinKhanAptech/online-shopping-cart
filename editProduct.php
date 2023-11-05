@@ -7,20 +7,20 @@ include "include/functions.php";
 <html lang="en">
 
 <?php
-$page_title = "Home";
+$page_title = "edit product panel";
 include "include/head.php";
 ?>
 
 <body>
     <?php include "include/navbar.php" ?>
-    <h1>home</h1>
+    <h1>edit product panel</h1>
+
     <?php
     $product_querry = "SELECT * FROM `products`";
     $product_querry_run = mysqli_query($connect, $product_querry);
 
     if (mysqli_num_rows($product_querry_run) > 0) {
-        while ($row = mysqli_fetch_assoc($product_querry_run)) {
-    ?>
+        while ($row = mysqli_fetch_assoc($product_querry_run)) { ?>
             <div class="card">
                 <div class="productImgContainer">
                     <?php
@@ -55,17 +55,14 @@ include "include/head.php";
                     productStock:
                     <?php echo $row["product_stock"] ?>
                 </div>
-                <form action="addToCart.php" method="post">
+                <form action="editProductForm.php" method="post">
                     <div><input type="hidden" name="product_id" value="<?php echo $row["product_id"] ?>"></div>
-                    <div><input type="hidden" name="product_price" value="<?php echo $row["product_price"] ?>"></div>
-                    <div><label for="cart_quantity">quantity</label></div>
-                    <div><input type="number" name="cart_quantity" id="cart_quantity" value="1" min="1" max="10"> * <sup>for orders above 10 please contact us through email</sup></div>
-                    <div><button type="submit" name="submit">add to cart</button></div>
+                    <div><button type="submit" name="submit">edit product</button></div>
                 </form>
             </div>
             <hr width="80%">
     <?php
-        };
+        }
     } ?>
 </body>
 
