@@ -65,9 +65,17 @@ include "include/head.php";
                                         echo "<img src='uploads/products/" . $row["product_image_4"] . "' class='productImg' alt=''>";
                                         if ($row["product_image_5"] != "") {
                                             echo "<img src='uploads/products/" . $row["product_image_5"] . "' class='productImg' alt=''>";
+                                        } else {
+                                            echo '<img src="" alt="">';
                                         }
+                                    } else {
+                                        echo '<img src="" alt=""><img src="" alt="">';
                                     }
+                                } else {
+                                    echo '<img src="" alt=""><img src="" alt=""><img src="" alt="">';
                                 }
+                            } else {
+                                echo '<img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt="">';
                             }
                         } else {
                             echo "<h3>products image not avaliable</h3>";
