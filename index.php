@@ -19,8 +19,7 @@ include "include/head.php";
     $product_querry_run = mysqli_query($connect, $product_querry);
 
     if (mysqli_num_rows($product_querry_run) > 0) {
-        while ($row = mysqli_fetch_assoc($product_querry_run)) {
-    ?>
+        while ($row = mysqli_fetch_assoc($product_querry_run)) { ?>
             <div class="card">
                 <div class="imageContainer">
                     <?php

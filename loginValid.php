@@ -27,7 +27,7 @@ if (isset($_POST["user_submit"])) {
             $_SESSION["user_id"] = $employee_querry_fetch["employee_id"];
             $_SESSION["user_type"] = "employee";
             alert("user is a employee");
-            location('employee.php');
+            location('employeePanel.php');
         } else {
             $admin_querry = "SELECT * FROM `admins` WHERE (`admin_name` = '$user_name' OR `admin_email` = '$user_name') AND `admin_password` = '$user_password'";
             $admin_querry_run = mysqli_query($connect, $admin_querry);
