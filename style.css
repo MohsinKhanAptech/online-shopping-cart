@@ -14,10 +14,12 @@ form {
 	margin: 2rem 1rem;
 }
 
+.flex-space-around,
 nav {
 	justify-content: space-around;
 }
 
+.flex,
 nav,
 ul {
 	display: flex;
@@ -41,7 +43,7 @@ label {
 }
 
 .card {
-	margin: 0 5rem;
+	margin: 3rem 5rem;
 }
 
 .imageContainer {

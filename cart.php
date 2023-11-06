@@ -16,7 +16,16 @@ include "include/head.php";
     <h1>my cart</h1>
     <?php
     $select_cart = mysqli_query($connect, "SELECT * FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}");
-    if (mysqli_num_rows($select_cart) > 0) {
+    $select_cart_num = mysqli_num_rows($select_cart);
+    $cart_total_sum = mysqli_fetch_assoc(mysqli_query($connect, "SELECT SUM(cart_total) AS sum FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}")); ?>
+
+    <div class="card flex flex-space-around">
+        <h1>total = $<?php echo $cart_total_sum["sum"]; ?></h1>
+        <h1>No. of items = <?php echo $select_cart_num; ?></h1>
+    </div>
+    <hr><br>
+
+    <?php if ($select_cart_num > 0) {
         while ($cart_items = mysqli_fetch_assoc($select_cart)) {
             $select_cart_items = mysqli_query($connect, "SELECT * FROM `products` WHERE `product_id` = {$cart_items["product_id"]}");
             $product = mysqli_fetch_assoc($select_cart_items) ?>
