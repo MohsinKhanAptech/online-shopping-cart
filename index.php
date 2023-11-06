@@ -22,18 +22,18 @@ include "include/head.php";
         while ($row = mysqli_fetch_assoc($product_querry_run)) {
     ?>
             <div class="card">
-                <div class="productImgContainer">
+                <div class="imageContainer">
                     <?php
                     if ($row["product_image_1"] != "") {
-                        echo "<img src='uploads/products/" . $row["product_image_1"] . "' class='productImg' alt=''>";
+                        echo "<img src='uploads/products/" . $row["product_image_1"] . "' class='image' alt=''>";
                         if ($row["product_image_2"] != "") {
-                            echo "<img src='uploads/products/" . $row["product_image_2"] . "' class='productImg' alt=''>";
+                            echo "<img src='uploads/products/" . $row["product_image_2"] . "' class='image' alt=''>";
                             if ($row["product_image_3"] != "") {
-                                echo "<img src='uploads/products/" . $row["product_image_3"] . "' class='productImg' alt=''>";
+                                echo "<img src='uploads/products/" . $row["product_image_3"] . "' class='image' alt=''>";
                                 if ($row["product_image_4"] != "") {
-                                    echo "<img src='uploads/products/" . $row["product_image_4"] . "' class='productImg' alt=''>";
+                                    echo "<img src='uploads/products/" . $row["product_image_4"] . "' class='image' alt=''>";
                                     if ($row["product_image_5"] != "") {
-                                        echo "<img src='uploads/products/" . $row["product_image_5"] . "' class='productImg' alt=''>";
+                                        echo "<img src='uploads/products/" . $row["product_image_5"] . "' class='image' alt=''>";
                                     }
                                 }
                             }
@@ -62,8 +62,8 @@ include "include/head.php";
                     <div><input type="number" name="cart_quantity" id="cart_quantity" value="1" min="1" max="10"> * <sup>for orders above 10 please contact us through email</sup></div>
                     <div><button type="submit" name="submit">add to cart</button></div>
                 </form>
+                <hr>
             </div>
-            <hr width="80%">
     <?php
         };
     } ?>

@@ -22,18 +22,18 @@ include "include/head.php";
     if (mysqli_num_rows($product_querry_run) > 0) {
         while ($row = mysqli_fetch_assoc($product_querry_run)) { ?>
             <div class="card">
-                <div class="productImgContainer">
+                <div class="imageContainer">
                     <?php
                     if ($row["product_image_1"] != "") {
-                        echo "<img src='uploads/products/" . $row["product_image_1"] . "' class='productImg' alt=''>";
+                        echo "<img src='uploads/products/" . $row["product_image_1"] . "' class='image' alt=''>";
                         if ($row["product_image_2"] != "") {
-                            echo "<img src='uploads/products/" . $row["product_image_2"] . "' class='productImg' alt=''>";
+                            echo "<img src='uploads/products/" . $row["product_image_2"] . "' class='image' alt=''>";
                             if ($row["product_image_3"] != "") {
-                                echo "<img src='uploads/products/" . $row["product_image_3"] . "' class='productImg' alt=''>";
+                                echo "<img src='uploads/products/" . $row["product_image_3"] . "' class='image' alt=''>";
                                 if ($row["product_image_4"] != "") {
-                                    echo "<img src='uploads/products/" . $row["product_image_4"] . "' class='productImg' alt=''>";
+                                    echo "<img src='uploads/products/" . $row["product_image_4"] . "' class='image' alt=''>";
                                     if ($row["product_image_5"] != "") {
-                                        echo "<img src='uploads/products/" . $row["product_image_5"] . "' class='productImg' alt=''>";
+                                        echo "<img src='uploads/products/" . $row["product_image_5"] . "' class='image' alt=''>";
                                     }
                                 }
                             }
@@ -63,8 +63,8 @@ include "include/head.php";
                     <div><input type="hidden" name="product_id" value="<?php echo $row["product_id"] ?>"></div>
                     <div><button type="submit" name="submit">delete</button></div>
                 </form>
+                <hr>
             </div>
-            <hr width="80%">
     <?php
         }
     } ?>

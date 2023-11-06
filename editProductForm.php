@@ -7,13 +7,13 @@ include "include/functions.php";
 <html lang="en">
 
 <?php
-$page_title = "add product panel";
+$page_title = "edit product panel";
 include "include/head.php";
 ?>
 
 <body>
     <?php include "include/navbar.php" ?>
-    <h1>add product panel</h1>
+    <h1>edit product panel</h1>
 
     <?php
     if (isset($_POST["submit"])) {
@@ -53,18 +53,18 @@ include "include/head.php";
                     <div><input type="number" name="product_stock" id="product_stock" value="<?php echo $row["product_stock"] ?>" required></div>
                     <div><label for="product_video">Product Video</label></div>
                     <div><input type="text" name="product_video" id="product_video"></div>
-                    <div class="productImgContainer">
+                    <div class="imageContainer">
                         <?php
                         if ($row["product_image_1"] != "") {
-                            echo "<img src='uploads/products/" . $row["product_image_1"] . "' class='productImg' alt=''>";
+                            echo "<img src='uploads/products/" . $row["product_image_1"] . "' class='image' alt=''>";
                             if ($row["product_image_2"] != "") {
-                                echo "<img src='uploads/products/" . $row["product_image_2"] . "' class='productImg' alt=''>";
+                                echo "<img src='uploads/products/" . $row["product_image_2"] . "' class='image' alt=''>";
                                 if ($row["product_image_3"] != "") {
-                                    echo "<img src='uploads/products/" . $row["product_image_3"] . "' class='productImg' alt=''>";
+                                    echo "<img src='uploads/products/" . $row["product_image_3"] . "' class='image' alt=''>";
                                     if ($row["product_image_4"] != "") {
-                                        echo "<img src='uploads/products/" . $row["product_image_4"] . "' class='productImg' alt=''>";
+                                        echo "<img src='uploads/products/" . $row["product_image_4"] . "' class='image' alt=''>";
                                         if ($row["product_image_5"] != "") {
-                                            echo "<img src='uploads/products/" . $row["product_image_5"] . "' class='productImg' alt=''>";
+                                            echo "<img src='uploads/products/" . $row["product_image_5"] . "' class='image' alt=''>";
                                         } else {
                                             echo '<img src="" alt="">';
                                         }
