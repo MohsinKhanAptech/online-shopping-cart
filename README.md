@@ -1,4 +1,4 @@
-# online-shopping-cart Aptech 2<sup>nd<sup> semester E-Project.
+# online-shopping-cart Aptech 2<sup>nd</sup> semester E-Project.
 
 mainly focused on backend batabase and php.
 
