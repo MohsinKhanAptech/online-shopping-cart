@@ -14,15 +14,23 @@ form {
 	margin: 2rem 1rem;
 }
 
-.flex-space-around,
-nav {
-	justify-content: space-around;
+h1 {
+	text-align: center;
 }
 
 .flex,
 nav,
 ul {
 	display: flex;
+}
+
+.flex-space-around,
+nav {
+	justify-content: space-around;
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
 }
 
 ul {
@@ -58,8 +66,6 @@ label {
 	border-radius: 1rem;
 }
 
-.productName,
-.productPrice,
-.productStock {
+.fs-1 {
 	font-size: 1.5rem;
 }

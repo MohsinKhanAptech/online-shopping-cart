@@ -19,9 +19,10 @@ include "include/head.php";
     $select_cart_num = mysqli_num_rows($select_cart);
     $cart_total_sum = mysqli_fetch_assoc(mysqli_query($connect, "SELECT SUM(cart_total) AS sum FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}")); ?>
 
-    <div class="card flex flex-space-around">
+    <div class="card flex flex-space-around flex-grow-1">
         <h1>total = $<?php echo $cart_total_sum["sum"]; ?></h1>
         <h1>No. of items = <?php echo $select_cart_num; ?></h1>
+        <form action="order.php" method="post" class="flex"><button type="submit" name="submit">Place Order</button></form>
     </div>
     <hr><br>
 
@@ -51,15 +52,15 @@ include "include/head.php";
                     }
                     ?>
                 </div>
-                <div class="productName">
+                <div class="fs-1">
                     productName:
                     <?php echo $product["product_name"] ?>
                 </div>
-                <div class="productPrice">
+                <div class="fs-1">
                     productPrice:
                     <?php echo $product["product_price"] ?>
                 </div>
-                <div class="productStock">
+                <div class="fs-1">
                     productStock:
                     <?php echo $product["product_stock"] ?>
                 </div>

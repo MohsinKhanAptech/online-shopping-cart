@@ -42,15 +42,15 @@ include "include/head.php";
                     }
                     ?>
                 </div>
-                <div class="productName">
+                <div class="fs-1">
                     productName:
                     <?php echo $row["product_name"] ?>
                 </div>
-                <div class="productPrice">
+                <div class="fs-1">
                     productPrice:
                     <?php echo $row["product_price"] ?>
                 </div>
-                <div class="productStock">
+                <div class="fs-1">
                     productStock:
                     <?php echo $row["product_stock"] ?>
                 </div>
