@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2023 at 07:15 PM
+-- Generation Time: Nov 11, 2023 at 09:49 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -82,6 +82,21 @@ INSERT INTO `categories` (`category_id`, `category_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `completed_orders`
+--
+
+CREATE TABLE `completed_orders` (
+  `order_id` int(10) NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `order_quantity` int(10) NOT NULL,
+  `order_status_id` int(10) NOT NULL,
+  `order_total` decimal(65,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
@@ -123,7 +138,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`employee_id`, `employee_name`, `employee_email`, `employee_password`, `employee_contact`, `employee_address`, `employee_image`) VALUES
-(1, 'employee', 'employee@gmail.com', 'employee', '03001234567', 'A 563, Main Shahrah-e-Usman, Sector 11-A North Karachi, Karachi, Sindh', 'employee.png');
+(1, 'employee', 'employee@gmail.com', 'employee', '03001234567', 'A 563, Main Shahrah-e-Usman, Sector 11-A, Karachi, Sindh', 'employee.png');
 
 -- --------------------------------------------------------
 
@@ -134,7 +149,9 @@ INSERT INTO `employees` (`employee_id`, `employee_name`, `employee_email`, `empl
 CREATE TABLE `orders` (
   `order_id` int(10) NOT NULL,
   `customer_id` int(10) NOT NULL,
-  `order_status_id` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `order_quantity` int(10) NOT NULL,
+  `order_status_id` int(10) NOT NULL DEFAULT 2,
   `order_total` decimal(65,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -188,6 +205,20 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_price`, `product_stock`, `product_video`, `product_image_1`, `product_image_2`, `product_image_3`, `product_image_4`, `product_image_5`) VALUES
 (5, 'ak 47', 'ak 47', 5, 696969.00, 696969, '', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `review_id` int(10) NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `rating` int(1) NOT NULL,
+  `review` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -213,6 +244,15 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_id`);
 
 --
+-- Indexes for table `completed_orders`
+--
+ALTER TABLE `completed_orders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `fk completed_orders customer_id` (`customer_id`),
+  ADD KEY `fk completed_orders product_id` (`product_id`),
+  ADD KEY `fk completed_orders order_status_id` (`order_status_id`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -230,7 +270,8 @@ ALTER TABLE `employees`
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `fk orders customer_id` (`customer_id`),
-  ADD KEY `fk orders order_status_id` (`order_status_id`);
+  ADD KEY `fk orders order_status_id` (`order_status_id`),
+  ADD KEY `fk orders product_id` (`product_id`);
 
 --
 -- Indexes for table `order_status`
@@ -246,6 +287,14 @@ ALTER TABLE `products`
   ADD KEY `fk product category` (`product_category`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `fk reviews customer_id` (`customer_id`),
+  ADD KEY `fk reviews product_id` (`product_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -259,13 +308,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `category_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `completed_orders`
+--
+ALTER TABLE `completed_orders`
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -277,13 +332,13 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `employee_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `employee_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -295,7 +350,13 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `product_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `review_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -309,17 +370,33 @@ ALTER TABLE `cart_items`
   ADD CONSTRAINT `fk cart_items product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
+-- Constraints for table `completed_orders`
+--
+ALTER TABLE `completed_orders`
+  ADD CONSTRAINT `fk completed_orders customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
+  ADD CONSTRAINT `fk completed_orders order_status_id` FOREIGN KEY (`order_status_id`) REFERENCES `order_status` (`order_status_id`),
+  ADD CONSTRAINT `fk completed_orders product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+
+--
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `fk orders customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
-  ADD CONSTRAINT `fk orders order_status_id` FOREIGN KEY (`order_status_id`) REFERENCES `order_status` (`order_status_id`);
+  ADD CONSTRAINT `fk orders order_status_id` FOREIGN KEY (`order_status_id`) REFERENCES `order_status` (`order_status_id`),
+  ADD CONSTRAINT `fk orders product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `fk product category` FOREIGN KEY (`product_category`) REFERENCES `categories` (`category_id`);
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `fk reviews customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
+  ADD CONSTRAINT `fk reviews product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
