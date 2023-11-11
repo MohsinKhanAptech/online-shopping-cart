@@ -47,7 +47,7 @@ include "include/head.php";
                     <div><input type="hidden" name="employee_id" value="<?php echo $row["employee_id"] ?>"></div>
                     <div><button type="submit" name="submit">edit employee</button></div>
                 </form>
-                <form action="deleteEmployee.php" method="post">
+                <form action="deleteEmployee.php" onsubmit="return confirmMsg()" method="post">
                     <div><input type="hidden" name="employee_id" value="<?php echo $row["employee_id"] ?>"></div>
                     <div><button type="submit" name="submit">delete</button></div>
                 </form>

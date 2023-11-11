@@ -35,8 +35,10 @@ if (isset($_POST["submit"])) {
             location('addProduct.php');
         } else {
             alert('ERROR: something went wrong');
+            location('addProduct.php');
         }
     } else {
         alert('ERROR: product already exists');
+        location('addProduct.php');
     }
 }

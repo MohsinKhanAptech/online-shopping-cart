@@ -59,7 +59,7 @@ include "include/head.php";
                     <div><input type="hidden" name="product_id" value="<?php echo $row["product_id"] ?>"></div>
                     <div><button type="submit" name="submit">edit product</button></div>
                 </form>
-                <form action="deleteProduct.php" method="post">
+                <form action="deleteProduct.php" onsubmit="return confirmMsg()" method="post">
                     <div><input type="hidden" name="product_id" value="<?php echo $row["product_id"] ?>"></div>
                     <div><button type="submit" name="submit">delete</button></div>
                 </form>
