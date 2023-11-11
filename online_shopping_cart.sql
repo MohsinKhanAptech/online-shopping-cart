@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2023 at 09:49 PM
+-- Generation Time: Nov 11, 2023 at 10:15 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -188,6 +188,7 @@ CREATE TABLE `products` (
   `product_name` varchar(100) NOT NULL,
   `product_description` varchar(255) NOT NULL,
   `product_category` int(10) NOT NULL,
+  `product_rating` int(1) NOT NULL,
   `product_price` decimal(65,2) NOT NULL,
   `product_stock` int(10) NOT NULL,
   `product_video` varchar(255) NOT NULL,
@@ -202,8 +203,8 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_price`, `product_stock`, `product_video`, `product_image_1`, `product_image_2`, `product_image_3`, `product_image_4`, `product_image_5`) VALUES
-(5, 'ak 47', 'ak 47', 5, 696969.00, 696969, '', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg');
+INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_rating`, `product_price`, `product_stock`, `product_video`, `product_image_1`, `product_image_2`, `product_image_3`, `product_image_4`, `product_image_5`) VALUES
+(5, 'ak 47', 'ak 47', 5, 0, 696969.00, 696969, '', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg');
 
 -- --------------------------------------------------------
 
