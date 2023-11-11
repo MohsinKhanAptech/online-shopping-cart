@@ -16,7 +16,7 @@ include "include/head.php";
     <h1>signup panel</h1>
     <form action="signupValid.php" method="post" enctype="multipart/form-data">
         <div><label for="user_name">Full Name * <sup>please enter you full name</sup></label></div>
-        <div><input type="text" name="user_name" id="user_name" required></div>
+        <div><input type="text" name="user_name" id="user_name" required autofocus></div>
         <div><label for="user_email">Email</label></div>
         <div><input type="email" name="user_email" id="user_email" required></div>
         <div><label for="user_password">Password</label></div>

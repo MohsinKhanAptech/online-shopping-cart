@@ -18,10 +18,11 @@ include "include/head.php";
         <h1>login panel</h1>
         <form action="loginValid.php" method="post">
             <div><label for="user_name">Name / Email</label></div>
-            <div><input type="text" name="user_name" id="user_name" required></div>
+            <div><input type="text" name="user_name" id="user_name" required autofocus></div>
             <div><label for="user_password">Password</label></div>
             <div><input type="password" name="user_password" id="user_password" required></div>
             <div><button type="submit" name="user_submit">Submit</button></div>
+            <div><label>new here? <a href="signup.php">sign-up</a></label></div>
         </form>
     <?php
     } else {
