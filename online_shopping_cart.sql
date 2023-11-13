@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2023 at 10:15 PM
+-- Generation Time: Nov 13, 2023 at 06:30 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -175,7 +175,8 @@ INSERT INTO `order_status` (`order_status_id`, `order_status`) VALUES
 (2, 'Processing'),
 (3, 'Shipped'),
 (4, 'Backorder'),
-(5, 'On Hold');
+(5, 'On Hold'),
+(6, 'Completed');
 
 -- --------------------------------------------------------
 
@@ -218,6 +219,18 @@ CREATE TABLE `reviews` (
   `product_id` int(10) NOT NULL,
   `rating` int(1) NOT NULL,
   `review` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `wishlist_id` int(10) NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -296,6 +309,12 @@ ALTER TABLE `reviews`
   ADD KEY `fk reviews product_id` (`product_id`);
 
 --
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`wishlist_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -309,7 +328,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -339,13 +358,13 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `order_status_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `order_status_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -358,6 +377,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `reviews`
   MODIFY `review_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
