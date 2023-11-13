@@ -7,14 +7,22 @@ if (isset($_POST["submit"])) {
     $select_cart = mysqli_query($connect, "SELECT * FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}");
 
     if (mysqli_num_rows($select_cart) > 0) {
-        while ($cart = mysqli_fetch_assoc($select_cart)) {
-            $place_order = mysqli_query($connect, "INSERT INTO `orders`(`customer_id`, `product_id`, `order_quantity`, `order_status_id`, `order_total`) VALUES ('{$cart["customer_id"]}','{$cart["product_id"]}','{$cart["cart_quantity"]}','1','{$cart["cart_total"]}')");
-            $remove_cart_item = mysqli_query($connect, "DELETE FROM `cart_items` WHERE `cart_id` = {$cart["cart_id"]};");
-        }
+        $insert_order = mysqli_query(
+            $connect,
+            "INSERT INTO `orders` (`customer_id`,`product_id`,`order_quantity`,`order_total`)
+            SELECT `customer_id`,`product_id`,`cart_quantity`,`cart_total`
+            FROM `cart_items`
+            WHERE `customer_id` = {$_SESSION["user_id"]};"
+        );
+        $clear_cart = mysqli_query(
+            $connect,
+            "DELETE FROM `cart_items`
+            WHERE `customer_id` = {$_SESSION["user_id"]};"
+        );
         alert("order placed");
-        location("cart.php");
+        location("index.php");
     } else {
         alert("Your cart is empty");
-        location("cart.php");
+        location("index.php");
     }
 }
