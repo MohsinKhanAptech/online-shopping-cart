@@ -170,7 +170,7 @@ include "include/head.php";
                                         <button name="submit" class="button button-outline-secondary" type="submit">
                                             Add to cart
                                         </button>
-                                        <a href="addToWishlist.php?product_id=<?php echo $product_id ?>" <?php echo $wishlistExists == 1 ? "style='color: #d90429'" : "style='color: black'"; ?> class="button button-outline-secondary far fa-heart u-s-m-l-6"></a>
+                                        <a href="wishlistAdd.php?product_id=<?php echo $product_id ?>" <?php echo $wishlistExists == 1 ? "style='color: #d90429'" : "style='color: black'"; ?> class="button button-outline-secondary far fa-heart u-s-m-l-6"></a>
                                         <a href="mailto:?subject=Amazing%20Product&body=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>" style="color: black;" class="button button-outline-secondary far fa-envelope u-s-m-l-6" target="_blank"></a>
                                     </div>
                                 </form>
