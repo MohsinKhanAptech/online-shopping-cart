@@ -142,7 +142,7 @@ include "include/head.php";
                                             <h6>There is not any product in specific catalogue.</h6>
                                         </div>
                                     </div>
-                                    <!-- Product Not Found /- -->";
+                                    <!-- Product Not Found /- -->
                                 <?php
                                 } ?>
                             </div>

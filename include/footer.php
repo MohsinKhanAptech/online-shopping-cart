@@ -12,10 +12,10 @@
             <p>
                 Subscribe to the mailing list to receive updates on promotions, new arrivals, discount and coupons.
             </p>
-            <form class="newsletter-form">
+            <form action="newsletter.php" class="newsletter-form" method="post">
                 <label class="sr-only" for="newsletter-field">Enter your Email</label>
-                <input type="text" id="newsletter-field" placeholder="Your Email Address">
-                <button type="submit" class="button">SUBMIT</button>
+                <input name="email" type="text" id="newsletter-field" placeholder="Your Email Address">
+                <button name="submit" type="submit" class="button">SUBMIT</button>
             </form>
         </div>
         <!-- Outer-Footer /- -->
@@ -43,7 +43,7 @@
                         <h6>COMPANY</h6>
                         <ul>
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="index.php">Home</a>
                             </li>
                             <li>
                                 <a href="about.html">About</a>
@@ -134,7 +134,7 @@
                 </ul>
             </div>
             <p class="copyright-text">Copyright &copy; 2023
-                <a href="index.html">groover</a> All Right Reserved
+                <a href="index.php">groover</a> All Right Reserved
             </p>
         </div>
     </div>

@@ -6,13 +6,13 @@ include "include/functions.php";
 $product_id = $_GET["product_id"];
 $select_product = mysqli_query($connect, "SELECT * FROM `products` WHERE `product_id` = '$product_id'");
 $product = mysqli_fetch_assoc($select_product);
-$select_reviews = mysqli_query($connect, "SELECT * FROM `reviews` WHERE `product_id` = '$product_id'");
-$reviews = mysqli_fetch_assoc($select_reviews);
-$five_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 5"));
-$four_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 4"));
-$three_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 3"));
-$two_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 2"));
-$one_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 1"));
+
+$reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) AS reviews_count FROM `reviews` WHERE `product_id` = '$product_id'"));
+$five_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 5"));
+$four_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 4"));
+$three_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 3"));
+$two_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 2"));
+$one_star_reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 1"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -345,35 +345,35 @@ include "include/head.php";
                                                     <div class="star-wrapper">
                                                         <span>5 Stars</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * 5)"></span>
+                                                            <span style="width: calc(15px * <?php echo $five_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5 ?>)"></span>
                                                         </div>
                                                         <span>(<?php echo $five_star_reviews_count["rating_count"] ?>)</span>
                                                     </div>
                                                     <div class="star-wrapper">
                                                         <span>4 Stars</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * 4)"></span>
+                                                            <span style="width: calc(15px * <?php echo $four_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5 ?>)"></span>
                                                         </div>
                                                         <span>(<?php echo $four_star_reviews_count["rating_count"] ?>)</span>
                                                     </div>
                                                     <div class="star-wrapper">
                                                         <span>3 Stars</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * 3)"></span>
+                                                            <span style="width: calc(15px * <?php echo $three_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5 ?>)"></span>
                                                         </div>
                                                         <span>(<?php echo $three_star_reviews_count["rating_count"] ?>)</span>
                                                     </div>
                                                     <div class="star-wrapper">
                                                         <span>2 Stars</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * 2)"></span>
+                                                            <span style="width: calc(15px * <?php echo $two_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5 ?>)"></span>
                                                         </div>
                                                         <span>(<?php echo $two_star_reviews_count["rating_count"] ?>)</span>
                                                     </div>
                                                     <div class="star-wrapper">
                                                         <span>1 Star</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * 1)"></span>
+                                                            <span style="width: calc(15px * <?php echo $one_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5 ?>)"></span>
                                                         </div>
                                                         <span>(<?php echo $one_star_reviews_count["rating_count"] ?>)</span>
                                                     </div>
@@ -426,7 +426,7 @@ include "include/head.php";
                                                 <div class="review-option-heading">
                                                     <h6>
                                                         Reviews
-                                                        <span> (15) </span>
+                                                        <span> (<?php echo $product["product_rating_number"] ?>) </span>
                                                     </h6>
                                                 </div>
                                                 <div class="review-option-box">
@@ -442,85 +442,51 @@ include "include/head.php";
                                             <!-- Review-Options /- -->
                                             <!-- All-Reviews -->
                                             <div class="reviewers">
-                                                <div class="review-data">
-                                                    <div class="reviewer-name-and-date">
-                                                        <h6 class="reviewer-name">John</h6>
-                                                        <h6 class="review-posted-date">10 May 2018</h6>
-                                                    </div>
-                                                    <div class="reviewer-stars-title-body">
-                                                        <div class="reviewer-stars">
-                                                            <div class="star">
-                                                                <span style="width: 67px"></span>
+                                                <?php
+                                                $select_reviews = mysqli_query($connect, "SELECT * FROM `reviews` WHERE `product_id` = '$product_id'");
+                                                $select_customers = mysqli_query(
+                                                    $connect,
+                                                    "SELECT customers.customer_name 
+                                                    FROM `customers` 
+                                                    INNER JOIN `reviews`
+                                                    ON customers.customer_id = reviews.customer_id
+                                                    AND reviews.product_id = {$product["product_id"]};"
+                                                );
+
+                                                if (mysqli_num_rows($select_reviews) > 0) {
+                                                    while (($review = mysqli_fetch_assoc($select_reviews)) && ($cusotmer = mysqli_fetch_assoc($select_customers))) { ?>
+                                                        <div class="review-data">
+                                                            <div class="reviewer-name-and-date">
+                                                                <h6 class="reviewer-name"><?php echo $cusotmer["customer_name"] ?></h6>
+                                                                <h6 class="review-posted-date"><?php echo date_format(date_create($review["review_date"]), "dS F Y") ?></h6>
                                                             </div>
-                                                            <span class="review-title">Good!</span>
-                                                        </div>
-                                                        <p class="review-body">Good Quality...!</p>
-                                                    </div>
-                                                </div>
-                                                <div class="review-data">
-                                                    <div class="reviewer-name-and-date">
-                                                        <h6 class="reviewer-name">Doe</h6>
-                                                        <h6 class="review-posted-date">10 June 2018</h6>
-                                                    </div>
-                                                    <div class="reviewer-stars-title-body">
-                                                        <div class="reviewer-stars">
-                                                            <div class="star">
-                                                                <span style="width: 67px"></span>
+                                                            <div class="reviewer-stars-title-body">
+                                                                <div class="reviewer-stars">
+                                                                    <div class="star">
+                                                                        <span style="width: calc(15px * <?php echo $review["rating"] ?>)"></span>
+                                                                    </div>
+                                                                    <span class="review-title"><?php echo $review["review_title"] ?></span>
+                                                                </div>
+                                                                <p class="review-body"><?php echo $review["review"] ?></p>
                                                             </div>
-                                                            <span class="review-title">Well done!</span>
                                                         </div>
-                                                        <p class="review-body">Cotton is good.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="review-data">
-                                                    <div class="reviewer-name-and-date">
-                                                        <h6 class="reviewer-name">Tim</h6>
-                                                        <h6 class="review-posted-date">10 July 2018</h6>
-                                                    </div>
-                                                    <div class="reviewer-stars-title-body">
-                                                        <div class="reviewer-stars">
-                                                            <div class="star">
-                                                                <span style="width: 67px"></span>
-                                                            </div>
-                                                            <span class="review-title">Well done!</span>
+                                                    <?php
+                                                    }
+                                                } else { ?>
+                                                    <!-- Review Not Found -->
+                                                    <div class='product-not-found'>
+                                                        <div class='not-found'>
+                                                            <h2>SORRY!</h2>
+                                                            <h6>There is not any review of specific product.</h6>
                                                         </div>
-                                                        <p class="review-body">Excellent condition</p>
                                                     </div>
-                                                </div>
-                                                <div class="review-data">
-                                                    <div class="reviewer-name-and-date">
-                                                        <h6 class="reviewer-name">Johnny</h6>
-                                                        <h6 class="review-posted-date">10 March 2018</h6>
-                                                    </div>
-                                                    <div class="reviewer-stars-title-body">
-                                                        <div class="reviewer-stars">
-                                                            <div class="star">
-                                                                <span style="width: 67px"></span>
-                                                            </div>
-                                                            <span class="review-title">Bright!</span>
-                                                        </div>
-                                                        <p class="review-body">Cotton</p>
-                                                    </div>
-                                                </div>
-                                                <div class="review-data">
-                                                    <div class="reviewer-name-and-date">
-                                                        <h6 class="reviewer-name">Alexia C. Marshall</h6>
-                                                        <h6 class="review-posted-date">12 May 2018</h6>
-                                                    </div>
-                                                    <div class="reviewer-stars-title-body">
-                                                        <div class="reviewer-stars">
-                                                            <div class="star">
-                                                                <span style="width: 67px"></span>
-                                                            </div>
-                                                            <span class="review-title">Well done!</span>
-                                                        </div>
-                                                        <p class="review-body">Good polyester Cotton</p>
-                                                    </div>
-                                                </div>
+                                                    <!-- Review Not Found /- -->
+                                                <?php
+                                                } ?>
                                             </div>
                                             <!-- All-Reviews /- -->
                                             <!-- Pagination-Review -->
-                                            <div class="pagination-review-area">
+                                            <!-- <div class="pagination-review-area">
                                                 <div class="pagination-review-number">
                                                     <ul>
                                                         <li style="display: none">
@@ -550,7 +516,7 @@ include "include/head.php";
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <!-- Pagination-Review /- -->
                                         </div>
                                         <!-- Get-Reviews /- -->
@@ -742,21 +708,6 @@ include "include/head.php";
                                     <img id="zoom-pro-quick-view" class="img-fluid" src="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>" alt="Zoom Image">
                                     <div id="gallery-quick-view" class="u-s-m-t-10">
                                         <a class="active" data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                            <img src="include/images/product/product@2x.jpg" alt="Product">
-                                        </a>
-                                        <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                            <img src="include/images/product/product@2x.jpg" alt="Product">
-                                        </a>
-                                        <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                            <img src="include/images/product/product@2x.jpg" alt="Product">
-                                        </a>
-                                        <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                            <img src="include/images/product/product@2x.jpg" alt="Product">
-                                        </a>
-                                        <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                            <img src="include/images/product/product@2x.jpg" alt="Product">
-                                        </a>
-                                        <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
                                             <img src="include/images/product/product@2x.jpg" alt="Product">
                                         </a>
                                     </div>
