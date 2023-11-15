@@ -18,7 +18,7 @@ include "include/head.php";
         <div class="page-cart">
             <div class="vertical-center">
                 <div class="text-center">
-                    <h1>Em <i class="fas fa-child"></i>ty!</h1>
+                    <h1>Em<i class="fas fa-child"></i>ty!</h1>
                     <h5>Your cart is currently empty.</h5>
                     <div class="redirect-link-wrapper u-s-p-t-25">
                         <a class="redirect-link" href="index.php">
