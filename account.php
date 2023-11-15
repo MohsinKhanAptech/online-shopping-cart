@@ -14,7 +14,9 @@ include "include/head.php";
 
 <body>
     <div id="app">
+        <!-- Header -->
         <?php include "include/navbar.php" ?>
+        <!-- Header /- -->
         <!-- Page Introduction Wrapper -->
         <div class="page-style-a">
             <div class="container">

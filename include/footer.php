@@ -65,7 +65,7 @@
                                 <a href="wishlist.html">My Wishlist</a>
                             </li>
                             <li>
-                                <a href="cart.html">My Cart</a>
+                                <a href="cart.php">My Cart</a>
                             </li>
                         </ul>
                     </div>

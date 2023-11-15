@@ -7,80 +7,188 @@ include "include/functions.php";
 <html lang="en">
 
 <?php
-$page_title = "my cart";
+$page_title = "My Cart | OSC";
 include "include/head.php";
 ?>
 
 <body>
-    <?php include "include/navbar.php" ?>
-    <h1>my cart</h1>
-    <?php
-    $select_cart = mysqli_query($connect, "SELECT * FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}");
-    $select_cart_num = mysqli_num_rows($select_cart);
-    $cart_total_sum = mysqli_fetch_assoc(mysqli_query($connect, "SELECT SUM(cart_total) AS sum FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}")); ?>
-
-    <div class="card flex flex-space-around flex-grow-1">
-        <h1>total = $<?php echo $cart_total_sum["sum"]; ?></h1>
-        <h1>No. of items = <?php echo $select_cart_num; ?></h1>
-        <form action="order.php" method="post" class="flex"><button type="submit" name="submit">Place Order</button></form>
-    </div>
-    <hr><br>
-
-    <?php if ($select_cart_num > 0) {
-        while ($cart_items = mysqli_fetch_assoc($select_cart)) {
-            $select_cart_items = mysqli_query($connect, "SELECT * FROM `products` WHERE `product_id` = {$cart_items["product_id"]}");
-            $product = mysqli_fetch_assoc($select_cart_items) ?>
-            <div class="card">
-                <div class="imageContainer">
-                    <?php
-                    if ($product["product_image_1"] != "") {
-                        echo "<img src='uploads/products/" . $product["product_image_1"] . "' class='image' alt=''>";
-                        if ($product["product_image_2"] != "") {
-                            echo "<img src='uploads/products/" . $product["product_image_2"] . "' class='image' alt=''>";
-                            if ($product["product_image_3"] != "") {
-                                echo "<img src='uploads/products/" . $product["product_image_3"] . "' class='image' alt=''>";
-                                if ($product["product_image_4"] != "") {
-                                    echo "<img src='uploads/products/" . $product["product_image_4"] . "' class='image' alt=''>";
-                                    if ($product["product_image_5"] != "") {
-                                        echo "<img src='uploads/products/" . $product["product_image_5"] . "' class='image' alt=''>";
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        echo "<h3>products image not avaliable</h3>";
-                    }
-                    ?>
+    <div id="app">
+        <!-- Header -->
+        <?php include "include/navbar.php" ?>
+        <!-- Header /- -->
+        <!-- Page Introduction Wrapper -->
+        <div class="page-style-a">
+            <div class="container">
+                <div class="page-intro">
+                    <h2>Cart</h2>
+                    <ul class="bread-crumb">
+                        <li class="has-separator">
+                            <i class="ion ion-md-home"></i>
+                            <a href="index.php">Home</a>
+                        </li>
+                        <li class="is-marked">
+                            <a href="cart.php">Cart</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="fs-1">
-                    productName:
-                    <?php echo $product["product_name"] ?>
-                </div>
-                <div class="fs-1">
-                    productPrice:
-                    <?php echo $product["product_price"] ?>
-                </div>
-                <div class="fs-1">
-                    productStock:
-                    <?php echo $product["product_stock"] ?>
-                </div>
-                <form action="updateCart.php" method="post">
-                    <div><input type="hidden" name="cart_id" value="<?php echo $cart_items["cart_id"] ?>"></div>
-                    <div><label for="cart_quantity">quantity</label></div>
-                    <div><input type="number" name="cart_quantity" id="cart_quantity" value="<?php echo $cart_items["cart_quantity"]; ?>" min="1" max="10"> * <sup>for orders above 10 please contact us through email</sup></div>
-                    <div><button type="submit" name="submit">update</button></div>
-                </form>
-                <form action="deleteCartItem.php" method="post">
-                    <div><input type="hidden" name="cart_id" value="<?php echo $cart_items["cart_id"] ?>"></div>
-                    <div><button type="submit" name="submit">remove</button></div>
-                </form>
-                <hr>
             </div>
-    <?php
-        }
-    } else {
-        echo "<br><h1>no items in cart</h1>";
-    } ?>
+        </div>
+        <!-- Page Introduction Wrapper /- -->
+        <!-- Cart-Page -->
+        <div class="page-cart u-s-p-t-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form>
+                            <!-- Products-List-Wrapper -->
+                            <div class="table-wrapper u-s-m-b-60">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $select_cart_items = mysqli_query(
+                                            $connect,
+                                            "SELECT cart_items.cart_id,cart_items.product_id,products.product_image,products.product_name,products.product_price,cart_items.cart_quantity,cart_items.cart_total
+                                            FROM `cart_items`
+                                            INNER JOIN `products`
+                                            ON cart_items.product_id = products.product_id AND cart_items.customer_id = '{$_SESSION["user_id"]}';"
+                                        );
+                                        $cart_total_sum = mysqli_fetch_assoc(mysqli_query($connect, "SELECT SUM(cart_total) AS sum FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}"));
+
+                                        if (mysqli_num_rows($select_cart_items) > 0) {
+                                            while ($row = mysqli_fetch_assoc($select_cart_items)) { ?>
+                                                <tr>
+                                                    <td>
+                                                        <div class="cart-anchor-image">
+                                                            <a href="product.php?product_id=<?php echo $row["product_id"] ?>">
+                                                                <img src="uploads/products/<?php echo $row["product_image"] ?>" alt="Product" />
+                                                                <h6><?php echo $row["product_name"] ?></h6>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="cart-price">$<?php echo $row["product_price"] ?></div>
+                                                    </td>
+                                                    <form action="cartUpdate.php" method="post">
+                                                        <td>
+                                                            <div class="cart-quantity">
+                                                                <div class="quantity">
+                                                                    <input type="text" name="cart_quantity" class="quantity-text-field" value="<?php echo $row["cart_quantity"] ?>" readonly />
+                                                                    <a class="plus-a" data-max="100">&#43;</a>
+                                                                    <a class="minus-a" data-min="1">&#45;</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action-wrapper">
+                                                                <input type="hidden" name="cart_id" value="<?php echo $row["cart_id"] ?>">
+                                                                <input type="hidden" name="product_price" value="<?php echo $row["product_price"] ?>">
+                                                                <button type="submit" name="submit" class="button button-outline-secondary fas fa-sync"></button>
+                                                                <a href="cartDelete.php?cart_id=<?php echo $row["cart_id"] ?>" class="button button-outline-secondary fas fa-trash"></a>
+                                                            </div>
+                                                        </td>
+                                                    </form>
+                                                </tr>
+                                        <?php
+                                            }
+                                        } else {
+                                            location("cartEmpty.php");
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Products-List-Wrapper /- -->
+                            <!-- Coupon -->
+                            <div class="coupon-continue-checkout u-s-m-b-60">
+                                <div class="coupon-area">
+                                    <h6>Enter your coupon code if you have one.</h6>
+                                    <div class="coupon-field">
+                                        <label class="sr-only" for="coupon-code">Apply Coupon</label>
+                                        <input id="coupon-code" type="text" class="text-field" placeholder="Coupon Code" />
+                                        <button type="submit" class="button">Apply Coupon</button>
+                                    </div>
+                                </div>
+                                <div class="button-area">
+                                    <a href="shop-v1-root-category.html" class="continue">Continue Shopping</a>
+                                    <a href="checkout.html" class="checkout">Proceed to Checkout</a>
+                                </div>
+                            </div>
+                            <!-- Coupon /- -->
+                        </form>
+                        <!-- Billing -->
+                        <div class="calculation u-s-m-b-60">
+                            <div class="table-wrapper-2">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Cart Totals</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
+                                            </td>
+                                            <td>
+                                                <span class="calc-text"><?php echo $cart_total_sum["sum"] ?></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 class="calc-h3 u-s-m-b-8">Shipping</h3>
+                                                <div class="calc-choice-text u-s-m-b-4">
+                                                    Free Shipping: Available
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">
+                                                    Tax
+                                                </h3>
+                                                <span> (estimated for your country)</span>
+                                            </td>
+                                            <td>
+                                                <span class="calc-text">$0.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 class="calc-h3 u-s-m-b-0">Total</h3>
+                                            </td>
+                                            <td>
+                                                <span class="calc-text"><?php echo $cart_total_sum["sum"] ?></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Billing /- -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Cart-Page /- -->
+        <!-- Footer -->
+        <?php include "include/footer.php"; ?>
+        <!-- Footer /- -->
+        <!-- Dummy Selectbox -->
+        <?php include "include/dummySelectbox.php"; ?>
+        <!-- Dummy Selectbox /- -->
+        <!-- Responsive-Search -->
+        <?php include "include/responsiveSearch.php"; ?>
+        <!-- Responsive-Search /- -->
+    </div>
+    <?php include "include/scripts.php" ?>
 </body>
 
 </html>

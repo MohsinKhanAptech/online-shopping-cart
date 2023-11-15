@@ -30,7 +30,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                         </a>
                         <ul class="g-dropdown" style="width:200px">
                             <li>
-                                <a href="cart.html">
+                                <a href="cart.php">
                                     <i class="fas fa-cog u-s-m-r-9"></i>
                                     My Cart</a>
                             </li>
@@ -187,7 +187,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                 <span class="mini-total-price float-right">$220.00</span>
             </div>
             <div class="mini-action-anchors">
-                <a href="cart.html" class="cart-anchor">View Cart</a>
+                <a href="cart.php" class="cart-anchor">View Cart</a>
                 <a href="checkout.html" class="checkout-anchor">Checkout</a>
             </div>
         </div>
@@ -694,7 +694,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                         <a href="shop-v2-sub-category.html">Shop</a>
                                     </li>
                                     <li>
-                                        <a href="cart.html">Cart</a>
+                                        <a href="cart.php">Cart</a>
                                     </li>
                                     <li>
                                         <a href="checkout.html">Checkout</a>
@@ -713,7 +713,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                         <a href="cart-empty.html">Cart Ver 1 Empty</a>
                                     </li>
                                     <li>
-                                        <a href="cart.html">Cart Ver 2 Full</a>
+                                        <a href="cart.php">Cart Ver 2 Full</a>
                                     </li>
                                     <li class="menu-title">Wishlist Variations</li>
                                     <li>

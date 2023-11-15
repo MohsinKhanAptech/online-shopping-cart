@@ -13,7 +13,9 @@ include "include/head.php";
 
 <body>
     <div id="app">
+        <!-- Header -->
         <?php include "include/navbar.php" ?>
+        <!-- Header /- -->
         <!-- Main-Slider -->
         <div class="default-height ph-item">
             <div class="slider-main owl-carousel">

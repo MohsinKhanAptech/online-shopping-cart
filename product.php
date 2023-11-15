@@ -26,7 +26,9 @@ include "include/head.php";
 
 <body>
     <div id="app">
+        <!-- Header -->
         <?php include "include/navbar.php" ?>
+        <!-- Header /- -->
         <!-- Page Introduction Wrapper -->
         <div class="page-style-a">
             <div class="container">
@@ -57,26 +59,6 @@ include "include/head.php";
                         <!-- Product-zoom-area -->
                         <div class="zoom-area">
                             <img id="zoom-pro" class="img-fluid" src="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>" alt="Zoom Image" />
-                            <!-- <div id="gallery" class="u-s-m-t-10">
-                                <a class="active" data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                    <img src="include/images/product/product@2x.jpg" alt="Product" />
-                                </a>
-                                <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                    <img src="include/images/product/product@2x.jpg" alt="Product" />
-                                </a>
-                                <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                    <img src="include/images/product/product@2x.jpg" alt="Product" />
-                                </a>
-                                <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                    <img src="include/images/product/product@2x.jpg" alt="Product" />
-                                </a>
-                                <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                    <img src="include/images/product/product@2x.jpg" alt="Product" />
-                                </a>
-                                <a data-image="uploads/products/<?php echo $product["product_image"] ?>" data-zoom-image="uploads/products/<?php echo $product["product_image"] ?>">
-                                    <img src="include/images/product/product@2x.jpg" alt="Product" />
-                                </a>
-                            </div> -->
                         </div>
                         <!-- Product-zoom-area /- -->
                     </div>
@@ -147,45 +129,8 @@ include "include/head.php";
                                     <span><?php echo $product["product_stock"] ?></span>
                                 </div>
                             </div>
-                            <!-- <div class="section-5-product-variants u-s-p-y-14">
-                                <h6 class="information-heading u-s-m-b-8">
-                                    Product Variants:
-                                </h6>
-                                <div class="color u-s-m-b-11">
-                                    <span>Available Color:</span>
-                                    <div class="color-variant select-box-wrapper">
-                                        <select class="select-box product-color">
-                                            <option value="1">Heather Grey</option>
-                                            <option value="3">Black</option>
-                                            <option value="5">White</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="sizes u-s-m-b-11">
-                                    <span>Available Size:</span>
-                                    <div class="size-variant select-box-wrapper">
-                                        <select class="select-box product-size">
-                                            <option value="">Male 2XL</option>
-                                            <option value="">Male 3XL</option>
-                                            <option value="">Kids 4</option>
-                                            <option value="">Kids 6</option>
-                                            <option value="">Kids 8</option>
-                                            <option value="">Kids 10</option>
-                                            <option value="">Kids 12</option>
-                                            <option value="">Female Small</option>
-                                            <option value="">Male Small</option>
-                                            <option value="">Female Medium</option>
-                                            <option value="">Male Medium</option>
-                                            <option value="">Female Large</option>
-                                            <option value="">Male Large</option>
-                                            <option value="">Female XL</option>
-                                            <option value="">Male XL</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div> -->
                             <div class="section-6-social-media-quantity-actions u-s-p-y-14">
-                                <form action="addToCart.php" method="post" class="post-form">
+                                <form action="cartAdd.php" method="post" class="post-form">
                                     <div class="quick-social-media-wrapper u-s-m-b-22">
                                         <span>Share:</span>
                                         <ul class="social-media-list">
