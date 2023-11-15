@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2023 at 06:30 PM
+-- Generation Time: Nov 15, 2023 at 06:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -57,6 +57,17 @@ CREATE TABLE `cart_items` (
   `cart_total` decimal(65,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cart_items`
+--
+
+INSERT INTO `cart_items` (`cart_id`, `customer_id`, `product_id`, `product_price`, `cart_quantity`, `cart_total`) VALUES
+(35, 1, 5, 696969.00, 5, 3484845.00),
+(36, 1, 5, 696969.00, 1, 696969.00),
+(37, 1, 5, 696969.00, 5, 3484845.00),
+(38, 1, 5, 696969.00, 1, 696969.00),
+(39, 1, 5, 696969.00, 2, 1393938.00);
+
 -- --------------------------------------------------------
 
 --
@@ -64,7 +75,6 @@ CREATE TABLE `cart_items` (
 --
 
 CREATE TABLE `categories` (
-  `category_id` int(10) NOT NULL,
   `category_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -72,12 +82,12 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`category_id`, `category_name`) VALUES
-(1, 'stationaries'),
-(2, 'accessories'),
-(3, 'sweets'),
-(4, 'fragrances'),
-(5, 'toys');
+INSERT INTO `categories` (`category_name`) VALUES
+('Accessories'),
+('Fragrances'),
+('Stationaries'),
+('Sweets'),
+('Toys');
 
 -- --------------------------------------------------------
 
@@ -104,18 +114,36 @@ CREATE TABLE `customers` (
   `customer_id` int(10) NOT NULL,
   `customer_name` varchar(100) NOT NULL,
   `customer_email` varchar(255) NOT NULL,
-  `customer_password` varchar(255) NOT NULL,
-  `customer_contact` varchar(50) NOT NULL,
-  `customer_address` varchar(255) NOT NULL,
-  `customer_image` varchar(255) NOT NULL
+  `customer_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `customer_contact`, `customer_address`, `customer_image`) VALUES
-(1, 'asd', 'asd@asd', 'asd', '123', 'asd', 'donatedsalt.jpg');
+INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`) VALUES
+(1, 'asd', 'asd@asd', 'asd'),
+(9, 'asdasd', 'asdasd@asd', 'asdasd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_details`
+--
+
+CREATE TABLE `customer_details` (
+  `customer_detail_id` int(10) NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `street_address` varchar(255) NOT NULL,
+  `town` varchar(50) NOT NULL,
+  `state` int(50) NOT NULL,
+  `postcode` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -139,6 +167,24 @@ CREATE TABLE `employees` (
 
 INSERT INTO `employees` (`employee_id`, `employee_name`, `employee_email`, `employee_password`, `employee_contact`, `employee_address`, `employee_image`) VALUES
 (1, 'employee', 'employee@gmail.com', 'employee', '03001234567', 'A 563, Main Shahrah-e-Usman, Sector 11-A, Karachi, Sindh', 'employee.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletter`
+--
+
+CREATE TABLE `newsletter` (
+  `newsletter_id` int(10) NOT NULL,
+  `newsletter_email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+INSERT INTO `newsletter` (`newsletter_id`, `newsletter_email`) VALUES
+(1, 'mmohsinkhan3685@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -188,24 +234,44 @@ CREATE TABLE `products` (
   `product_id` int(7) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `product_description` varchar(255) NOT NULL,
-  `product_category` int(10) NOT NULL,
-  `product_rating` int(1) NOT NULL,
+  `product_category` varchar(50) NOT NULL,
+  `product_rating` decimal(3,2) NOT NULL,
+  `product_rating_number` int(10) NOT NULL,
   `product_price` decimal(65,2) NOT NULL,
   `product_stock` int(10) NOT NULL,
   `product_video` varchar(255) NOT NULL,
-  `product_image_1` varchar(255) NOT NULL,
-  `product_image_2` varchar(255) NOT NULL,
-  `product_image_3` varchar(255) NOT NULL,
-  `product_image_4` varchar(255) NOT NULL,
-  `product_image_5` varchar(255) NOT NULL
+  `product_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_rating`, `product_price`, `product_stock`, `product_video`, `product_image_1`, `product_image_2`, `product_image_3`, `product_image_4`, `product_image_5`) VALUES
-(5, 'ak 47', 'ak 47', 5, 0, 696969.00, 696969, '', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg', 'AK_47.jpg');
+INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_rating`, `product_rating_number`, `product_price`, `product_stock`, `product_video`, `product_image`) VALUES
+(5, 'ak 47', 'ak 47', 'Toys', 3.29, 7, 696969.00, 696969, '', 'AK_47.jpg'),
+(10, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
+(11, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
+(12, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
+(13, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
+(14, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
+(15, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
+(16, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
+(17, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
+(18, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
+(19, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
+(20, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
+(21, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
+(22, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
+(23, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
+(24, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
+(25, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
+(26, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
+(27, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
+(28, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
+(29, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
+(30, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
+(31, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
+(32, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png');
 
 -- --------------------------------------------------------
 
@@ -218,8 +284,23 @@ CREATE TABLE `reviews` (
   `customer_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL,
   `rating` int(1) NOT NULL,
-  `review` varchar(255) NOT NULL
+  `review_title` varchar(15) NOT NULL,
+  `review` varchar(255) NOT NULL,
+  `review_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`review_id`, `customer_id`, `product_id`, `rating`, `review_title`, `review`, `review_date`) VALUES
+(2, 9, 5, 2, 'no doodoo', 'no doodoo pewpew', '2023-11-15'),
+(3, 1, 5, 5, 'doodoo', 'doodoo pewpew', '2023-11-15'),
+(4, 1, 5, 2, 'no doodoo', 'no doodoo pewpew', '2023-11-15'),
+(5, 1, 5, 5, 'doodoo', 'doodoo pewpew', '2023-11-15'),
+(6, 1, 5, 2, 'no doodoo', 'no doodoo pewpew', '2023-11-15'),
+(7, 1, 5, 5, 'doodoo', 'doodoo pewpew', '2023-11-15'),
+(8, 1, 5, 2, 'no doodoo', 'no doodoo pewpew', '2023-11-15');
 
 -- --------------------------------------------------------
 
@@ -232,6 +313,13 @@ CREATE TABLE `wishlist` (
   `customer_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`wishlist_id`, `customer_id`, `product_id`) VALUES
+(9, 1, 5);
 
 --
 -- Indexes for dumped tables
@@ -255,7 +343,7 @@ ALTER TABLE `cart_items`
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`category_id`);
+  ADD PRIMARY KEY (`category_name`);
 
 --
 -- Indexes for table `completed_orders`
@@ -273,10 +361,22 @@ ALTER TABLE `customers`
   ADD PRIMARY KEY (`customer_id`);
 
 --
+-- Indexes for table `customer_details`
+--
+ALTER TABLE `customer_details`
+  ADD PRIMARY KEY (`customer_detail_id`);
+
+--
 -- Indexes for table `employees`
 --
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`employee_id`);
+
+--
+-- Indexes for table `newsletter`
+--
+ALTER TABLE `newsletter`
+  ADD PRIMARY KEY (`newsletter_id`);
 
 --
 -- Indexes for table `orders`
@@ -328,13 +428,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `category_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `completed_orders`
@@ -346,13 +440,25 @@ ALTER TABLE `completed_orders`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `customer_details`
+--
+ALTER TABLE `customer_details`
+  MODIFY `customer_detail_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
   MODIFY `employee_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `newsletter`
+--
+ALTER TABLE `newsletter`
+  MODIFY `newsletter_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -370,19 +476,19 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `product_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `review_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -415,7 +521,7 @@ ALTER TABLE `orders`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `fk product category` FOREIGN KEY (`product_category`) REFERENCES `categories` (`category_id`);
+  ADD CONSTRAINT `fk product category` FOREIGN KEY (`product_category`) REFERENCES `categories` (`category_name`);
 
 --
 -- Constraints for table `reviews`
