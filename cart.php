@@ -63,38 +63,38 @@ include "include/head.php";
                                         $cart_total_sum = mysqli_fetch_assoc(mysqli_query($connect, "SELECT SUM(cart_total) AS sum FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}"));
 
                                         if (mysqli_num_rows($select_cart_items) > 0) {
-                                            while ($row = mysqli_fetch_assoc($select_cart_items)) { ?>
+                                            while ($cart_item = mysqli_fetch_assoc($select_cart_items)) { ?>
                                                 <tr>
                                                     <td>
                                                         <div class="cart-anchor-image">
-                                                            <a href="product.php?product_id=<?php echo $row["product_id"] ?>">
-                                                                <img src="uploads/products/<?php echo $row["product_image"] ?>" alt="Product" />
-                                                                <h6><?php echo $row["product_name"] ?></h6>
+                                                            <a href="product.php?product_id=<?php echo $cart_item["product_id"] ?>">
+                                                                <img src="uploads/products/<?php echo $cart_item["product_image"] ?>" alt="Product" />
+                                                                <h6><?php echo $cart_item["product_name"] ?></h6>
                                                             </a>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="cart-price">$<?php echo $row["product_price"] ?></div>
+                                                        <div class="cart-price">$<?php echo $cart_item["product_price"] ?></div>
                                                     </td>
-                                                    <form action="cartUpdate.php" method="post">
-                                                        <td>
-                                                            <div class="cart-quantity">
-                                                                <div class="quantity">
-                                                                    <input type="text" name="cart_quantity" class="quantity-text-field" value="<?php echo $row["cart_quantity"] ?>" readonly />
-                                                                    <a class="plus-a" data-max="100">&#43;</a>
-                                                                    <a class="minus-a" data-min="1">&#45;</a>
-                                                                </div>
+                                                    <!-- <form action="cartUpdate.php" method="post"> -->
+                                                    <td>
+                                                        <div class="cart-quantity">
+                                                            <div class="quantity">
+                                                                <input type="text" name="cart_quantity" class="quantity-text-field" value="<?php echo $cart_item["cart_quantity"] ?>" readonly />
+                                                                <a class="plus-a" data-max="100">&#43;</a>
+                                                                <a class="minus-a" data-min="1">&#45;</a>
                                                             </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="action-wrapper">
-                                                                <input type="hidden" name="cart_id" value="<?php echo $row["cart_id"] ?>">
-                                                                <input type="hidden" name="product_price" value="<?php echo $row["product_price"] ?>">
-                                                                <button type="submit" name="submit" class="button button-outline-secondary fas fa-sync"></button>
-                                                                <a href="cartDelete.php?cart_id=<?php echo $row["cart_id"] ?>" class="button button-outline-secondary fas fa-trash"></a>
-                                                            </div>
-                                                        </td>
-                                                    </form>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="action-wrapper">
+                                                            <input type="hidden" name="cart_id" value="<?php echo $cart_item["cart_id"] ?>">
+                                                            <input type="hidden" name="product_price" value="<?php echo $cart_item["product_price"] ?>">
+                                                            <button type="submit" name="submit" class="button button-outline-secondary fas fa-sync"></button>
+                                                            <a href="cartDelete.php?cart_id=<?php echo $cart_item["cart_id"] ?>" class="button button-outline-secondary fas fa-trash"></a>
+                                                        </div>
+                                                    </td>
+                                                    <!-- </form> -->
                                                 </tr>
                                         <?php
                                             }
