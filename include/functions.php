@@ -7,7 +7,7 @@ function location($loc)
 {
     echo "<script>window.location.href='$loc'</script>";
 }
-function historyBack()
+function historyGo($pg = -1)
 {
-    echo "<script>window.history.back();</script>";
+    echo "<script>window.history.go($pg);</script>";
 }

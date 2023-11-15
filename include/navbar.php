@@ -1,3 +1,7 @@
+<?php
+$cart_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`cart_id`) AS num FROM `cart_items` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
+$wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wishlist_id`) AS num FROM `wishlist` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
+?>
 <!-- Header -->
 <header>
     <!-- Top-Header -->
@@ -11,9 +15,9 @@
                             Telephone:+111-444-989</a>
                     </li>
                     <li>
-                        <a href="mailto:contact@onlineshoppingcart.com">
+                        <a href="mailto:contact@OSC.com">
                             <i class="fas fa-envelope u-c-brand u-s-m-r-9"></i>
-                            E-mail: contact@onlineshoppingcart.com
+                            E-mail: contact@OSC.com
                         </a>
                     </li>
                 </ul>
@@ -36,9 +40,17 @@
                                     My Wishlist</a>
                             </li>
                             <li>
-                                <a href="account.html">
-                                    <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
-                                    Login / Signup</a>
+                                <?php if (!isset($_SESSION["user"])) { ?>
+                                    <a href="account.php">
+                                        <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
+                                        Login / Signup</a>
+                                <?php
+                                } else { ?>
+                                    <a href="logout.php">
+                                        <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
+                                        Logout</a>
+                                <?php
+                                } ?>
                             </li>
                         </ul>
                     </li>
@@ -106,7 +118,7 @@
                             <li>
                                 <a id="mini-cart-trigger">
                                     <i class="ion ion-md-basket"></i>
-                                    <span class="item-counter">4</span>
+                                    <span class="item-counter"><?php echo $cart_number["num"] ?></span>
                                 </a>
                             </li>
                         </ul>
@@ -124,7 +136,7 @@
         <div class="fixed-responsive-wrapper">
             <a href="wishlist.html">
                 <i class="far fa-heart"></i>
-                <span class="fixed-item-counter">4</span>
+                <span class="fixed-item-counter"><?php echo $wishlist_number["num"] ?></span>
             </a>
         </div>
     </div>
@@ -688,7 +700,7 @@
                                         <a href="checkout.html">Checkout</a>
                                     </li>
                                     <li>
-                                        <a href="account.html">My Account</a>
+                                        <a href="account.php">My Account</a>
                                     </li>
                                     <li>
                                         <a href="wishlist.html">Wishlist</a>

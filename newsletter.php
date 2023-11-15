@@ -27,4 +27,4 @@ function test_input($data)
 }
 
 alert(isset($emailErr) ? $emailErr : "Subscribed to newsletter");
-historyBack();
+historyGo();

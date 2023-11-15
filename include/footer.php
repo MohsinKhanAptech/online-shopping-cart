@@ -88,7 +88,7 @@
                                 <a href="mailto:contact@domain.com">
                                     <i class="fas fa-envelope u-s-m-r-9"></i>
                                     <span>
-                                        contact@onlineshoppingcart.com</span>
+                                        contact@OSC.com</span>
                                 </a>
                             </li>
                         </ul>

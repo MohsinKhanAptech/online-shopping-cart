@@ -2,6 +2,7 @@
 session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
+
 if (isset($_SESSION["user"])) {
     if (isset($_POST["submit"])) {
         $customer_id = $_SESSION["user_id"];
@@ -15,13 +16,13 @@ if (isset($_SESSION["user"])) {
 
         if ($cart_querry_run) {
             alert('success');
-            location('index.php');
+            historyGo();
         } else {
             alert('ERROR');
-            location('index.php');
+            historyGo();
         }
     }
 } else {
     alert('you must login first');
-    location('login.php');
+    location('account.php');
 }
