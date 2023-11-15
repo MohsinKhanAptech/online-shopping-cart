@@ -62,7 +62,7 @@
                                 <a href="store-directory.html">Categories Directory</a>
                             </li>
                             <li>
-                                <a href="wishlist.html">My Wishlist</a>
+                                <a href="wishlist.php">My Wishlist</a>
                             </li>
                             <li>
                                 <a href="cart.php">My Cart</a>

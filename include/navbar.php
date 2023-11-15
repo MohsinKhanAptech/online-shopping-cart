@@ -35,7 +35,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                     My Cart</a>
                             </li>
                             <li>
-                                <a href="wishlist.html">
+                                <a href="wishlist.php">
                                     <i class="far fa-heart u-s-m-r-9"></i>
                                     My Wishlist</a>
                             </li>
@@ -111,7 +111,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                 </a>
                             </li>
                             <li class="u-d-none-lg">
-                                <a href="wishlist.html">
+                                <a href="wishlist.php">
                                     <i class="far fa-heart"></i>
                                 </a>
                             </li>
@@ -134,7 +134,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
             <button type="button" class="button fas fa-search" id="responsive-search"></button>
         </div>
         <div class="fixed-responsive-wrapper">
-            <a href="wishlist.html">
+            <a href="wishlist.php">
                 <i class="far fa-heart"></i>
                 <span class="fixed-item-counter"><?php echo $wishlist_number["num"] ?></span>
             </a>
@@ -703,7 +703,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                         <a href="account.php">My Account</a>
                                     </li>
                                     <li>
-                                        <a href="wishlist.html">Wishlist</a>
+                                        <a href="wishlist.php">Wishlist</a>
                                     </li>
                                     <li>
                                         <a href="track-order.html">Track your Order</a>
@@ -720,7 +720,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                         <a href="wishlist-empty.html">Wishlist Ver 1 Empty</a>
                                     </li>
                                     <li>
-                                        <a href="wishlist.html">Wishlist Ver 2 Full</a>
+                                        <a href="wishlist.php">Wishlist Ver 2 Full</a>
                                     </li>
                                 </ul>
                                 <ul>
