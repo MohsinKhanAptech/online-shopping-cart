@@ -76,7 +76,7 @@ include "include/head.php";
                                                     <td>
                                                         <div class="cart-price">$<?php echo $cart_item["product_price"] ?></div>
                                                     </td>
-                                                    <!-- <form action="cartUpdate.php" method="post"> -->
+                                                    <form action="cartUpdate.php" method="post">
                                                     <td>
                                                         <div class="cart-quantity">
                                                             <div class="quantity">
@@ -94,7 +94,7 @@ include "include/head.php";
                                                             <a href="cartDelete.php?cart_id=<?php echo $cart_item["cart_id"] ?>" class="button button-outline-secondary fas fa-trash"></a>
                                                         </div>
                                                     </td>
-                                                    <!-- </form> -->
+                                                    </form>
                                                 </tr>
                                         <?php
                                             }
