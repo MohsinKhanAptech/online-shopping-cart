@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-$page_title = "FAQ | OSC";
+$page_title = "FAQ | OSC - OnlineShoppingCart";
 include "include/head.php";
 ?>
 

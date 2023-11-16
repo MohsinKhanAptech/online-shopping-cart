@@ -7,7 +7,7 @@ include "include/functions.php";
 <html lang="en">
 
 <?php
-$page_title = "Log-in / Sign-up | OSC";
+$page_title = "Log-in / Sign-up | OSC - OnlineShoppingCart";
 include "include/head.php";
 ?>
 
@@ -51,13 +51,13 @@ include "include/head.php";
                                     <label for="user-name-email">Username or Email
                                         <span class="astk">*</span>
                                     </label>
-                                    <input name="email" type="text" id="user-name-email" class="text-field" placeholder="Username / Email" required />
+                                    <input name="email" type="text" id="user-name-email" class="text-field" placeholder="Username / Email" maxlength="255" required />
                                 </div>
                                 <div class="u-s-m-b-30">
                                     <label for="login-password">Password
                                         <span class="astk">*</span>
                                     </label>
-                                    <input name="password" type="text" id="login-password" class="text-field" placeholder="Password" required />
+                                    <input name="password" type="text" id="login-password" class="text-field" placeholder="Password" maxlength="255" required />
                                 </div>
                                 <div class="group-inline u-s-m-b-30">
                                     <div class="group-1">
@@ -94,19 +94,19 @@ include "include/head.php";
                                     <label for="user-name">Username
                                         <span class="astk">*</span>
                                     </label>
-                                    <input name="name" type="text" id="user-name" class="text-field" placeholder="Username" required />
+                                    <input name="name" type="text" id="user-name" class="text-field" placeholder="Username" maxlength="100" required />
                                 </div>
                                 <div class="u-s-m-b-30">
                                     <label for="email">Email
                                         <span class="astk">*</span>
                                     </label>
-                                    <input name="email" type="text" id="email" class="text-field" placeholder="Email" required />
+                                    <input name="email" type="text" id="email" class="text-field" placeholder="Email" maxlength="255" required />
                                 </div>
                                 <div class="u-s-m-b-30">
                                     <label for="password">Password
                                         <span class="astk">*</span>
                                     </label>
-                                    <input name="password" type="text" id="password" class="text-field" placeholder="Password" required />
+                                    <input name="password" type="text" id="password" class="text-field" placeholder="Password" maxlength="255" required />
                                 </div>
                                 <div class="u-s-m-b-30">
                                     <input type="checkbox" class="check-box" id="accept" required />

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-$page_title = "Terms & Conditions | OSC";
+$page_title = "Terms & Conditions | OSC - OnlineShoppingCart";
 include "include/head.php";
 ?>
 

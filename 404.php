@@ -7,7 +7,7 @@ include "include/functions.php";
 <html lang="en">
 
 <?php
-$page_title = "Empty Cart | OSC";
+$page_title = "Empty Cart | OSC - OnlineShoppingCart";
 include "include/head.php";
 ?>
 

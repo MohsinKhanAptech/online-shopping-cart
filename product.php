@@ -20,7 +20,7 @@ $wishlistExists = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM `wishlis
 <html lang="en">
 
 <?php
-$page_title = $product["product_name"] . " | OSC";
+$page_title = $product["product_name"] . " | OSC - OnlineShoppingCart";
 include "include/head.php";
 ?>
 

@@ -8,7 +8,7 @@ if (isset($_SESSION["user"])) {
     <html lang="en">
 
     <?php
-    $page_title = "My Wishlist | OSC";
+    $page_title = "My Wishlist | OSC - OnlineShoppingCart";
     include "include/head.php";
     ?>
 
