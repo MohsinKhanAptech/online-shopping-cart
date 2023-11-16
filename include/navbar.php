@@ -121,7 +121,7 @@ if (isset($_SESSION["user"])) {
                                 </a>
                             </li>
                             <li>
-                                <a id="mini-cart-trigger">
+                                <a href="cart.php" //id="mini-cart-trigger">
                                     <i class="ion ion-md-basket"></i>
                                     <span class="item-counter"><?php echo $cart_number["num"] ?></span>
                                 </a>
@@ -147,7 +147,7 @@ if (isset($_SESSION["user"])) {
     </div>
     <!-- Responsive-Buttons /- -->
     <!-- Mini Cart -->
-    <div class="mini-cart-wrapper">
+    <!-- <div class="mini-cart-wrapper">
         <div class="mini-cart">
             <div class="mini-cart-header">
                 YOUR CART
@@ -196,7 +196,7 @@ if (isset($_SESSION["user"])) {
                 <a href="checkout.php" class="checkout-anchor">Checkout</a>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Mini Cart /- -->
     <!-- Bottom-Header -->
     <div class="full-layer-bottom-header">
