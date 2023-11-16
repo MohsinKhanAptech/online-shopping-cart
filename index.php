@@ -47,7 +47,7 @@ include "include/head.php";
         <div class="banner-layer">
             <div class="container">
                 <div class="image-banner">
-                    <a href="shop-v1-root-category.html" class="mx-auto banner-hover effect-dark-opacity">
+                    <a href="shop.php" class="mx-auto banner-hover effect-dark-opacity">
                         <img class="img-fluid" src="include/images/banners/bts.jpg" alt="Winter Season Banner">
                     </a>
                 </div>
@@ -178,7 +178,7 @@ include "include/head.php";
                                                 <div class="what-product-is">
                                                     <ul class="bread-crumb">
                                                         <li class="has-separator">
-                                                            <a href="shop-v1-root-category.html">Men's</a>
+                                                            <a href="shop.php">Men's</a>
                                                         </li>
                                                         <li class="has-separator">
                                                             <a href="shop-v2-sub-category.html">Tops</a>
@@ -227,7 +227,7 @@ include "include/head.php";
                                                 <div class="what-product-is">
                                                     <ul class="bread-crumb">
                                                         <li class="has-separator">
-                                                            <a href="shop-v1-root-category.html">Men's</a>
+                                                            <a href="shop.php">Men's</a>
                                                         </li>
                                                         <li class="has-separator">
                                                             <a href="shop-v2-sub-category.html">Outwear</a>
@@ -273,7 +273,7 @@ include "include/head.php";
                                                 <div class="what-product-is">
                                                     <ul class="bread-crumb">
                                                         <li class="has-separator">
-                                                            <a href="shop-v1-root-category.html">Men's</a>
+                                                            <a href="shop.php">Men's</a>
                                                         </li>
                                                         <li class="has-separator">
                                                             <a href="shop-v2-sub-category.html">Accessories</a>
@@ -319,7 +319,7 @@ include "include/head.php";
                                                 <div class="what-product-is">
                                                     <ul class="bread-crumb">
                                                         <li class="has-separator">
-                                                            <a href="shop-v1-root-category.html">Men's</a>
+                                                            <a href="shop.php">Men's</a>
                                                         </li>
                                                         <li class="has-separator">
                                                             <a href="shop-v2-sub-category.html">Bottoms</a>
@@ -486,7 +486,7 @@ include "include/head.php";
         <div class="banner-image-view-more">
             <div class="container">
                 <div class="image-banner u-s-m-y-40">
-                    <a href="shop-v1-root-category.html" class="mx-auto banner-hover effect-dark-opacity">
+                    <a href="shop.php" class="mx-auto banner-hover effect-dark-opacity">
                         <img class="img-fluid" src="include/images/banners/toy.jpg" alt="Banner Image">
                     </a>
                 </div>

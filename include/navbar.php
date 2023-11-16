@@ -1,6 +1,11 @@
 <?php
-$cart_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`cart_id`) AS num FROM `cart_items` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
-$wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wishlist_id`) AS num FROM `wishlist` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
+if (isset($_SESSION["user"])) {
+    $cart_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`cart_id`) AS num FROM `cart_items` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
+    $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wishlist_id`) AS num FROM `wishlist` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
+} else {
+    $cart_number["num"] = 0;
+    $wishlist_number["num"] = 0;
+}
 ?>
 <!-- Header -->
 <header>
@@ -188,7 +193,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
             </div>
             <div class="mini-action-anchors">
                 <a href="cart.php" class="cart-anchor">View Cart</a>
-                <a href="checkout.html" class="checkout-anchor">Checkout</a>
+                <a href="checkout.php" class="checkout-anchor">Checkout</a>
             </div>
         </div>
     </div>
@@ -208,7 +213,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                             <div class="v-wrapper">
                                 <ul class="v-list animated fadeIn">
                                     <li class="js-backdrop">
-                                        <a href="shop-v1-root-category.html">
+                                        <a href="shop.php">
                                             <i class="ion ion-md-shirt"></i>
                                             Men's Clothing
                                             <i class="ion ion-ios-arrow-forward"></i>
@@ -262,7 +267,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                                 <div class="col-lg-4">
                                                     <ul class="v-level-2">
                                                         <li>
-                                                            <a href="shop-v1-root-category.html">Accessories</a>
+                                                            <a href="shop.php">Accessories</a>
                                                             <ul>
                                                                 <li>
                                                                     <a href="shop-v3-sub-sub-category.html">Watches</a>
@@ -350,7 +355,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                         </div>
                                     </li>
                                     <li class="js-backdrop">
-                                        <a href="shop-v1-root-category.html">
+                                        <a href="shop.php">
                                             <i class="ion ion-ios-shirt"></i>
                                             Women's Clothing
                                             <i class="ion ion-ios-arrow-forward"></i>
@@ -502,7 +507,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                         </div>
                                     </li>
                                     <li class="js-backdrop">
-                                        <a href="shop-v1-root-category.html">
+                                        <a href="shop.php">
                                             <i class="ion ion-md-rocket"></i>
                                             Toys Hobbies & Robots
                                             <i class="ion ion-ios-arrow-forward"></i>
@@ -592,31 +597,31 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="shop-v1-root-category.html">
+                                        <a href="shop.php">
                                             <i class="ion ion-md-phone-portrait"></i>
                                             Mobiles & Tablets
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="shop-v1-root-category.html">
+                                        <a href="shop.php">
                                             <i class="ion ion-md-tv"></i>
                                             Consumer Electronics
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="shop-v1-root-category.html">
+                                        <a href="shop.php">
                                             <i class="ion ion-ios-book"></i>
                                             Books & Audible
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="shop-v1-root-category.html">
+                                        <a href="shop.php">
                                             <i class="ion ion-md-heart"></i>
                                             Beauty & Health
                                         </a>
                                     </li>
                                     <li class="v-none" style="display: none">
-                                        <a href="shop-v1-root-category.html">
+                                        <a href="shop.php">
                                             <i class="ion ion-md-easel"></i>
                                             Furniture Home & Office
                                         </a>
@@ -697,7 +702,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                         <a href="cart.php">Cart</a>
                                     </li>
                                     <li>
-                                        <a href="checkout.html">Checkout</a>
+                                        <a href="checkout.php">Checkout</a>
                                     </li>
                                     <li>
                                         <a href="account.php">My Account</a>
@@ -726,7 +731,7 @@ $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wish
                                 <ul>
                                     <li class="menu-title">Shop Variations</li>
                                     <li>
-                                        <a href="shop-v1-root-category.html">Shop Ver 1 Root Category</a>
+                                        <a href="shop.php">Shop Ver 1 Root Category</a>
                                     </li>
                                     <li>
                                         <a href="shop-v2-sub-category.html">Shop Ver 2 Sub Category</a>

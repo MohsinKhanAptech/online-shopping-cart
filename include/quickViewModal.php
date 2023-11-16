@@ -46,7 +46,7 @@
                                         <a href="index.php">Home</a>
                                     </li>
                                     <li class="has-separator">
-                                        <a href="shop-v1-root-category.html">Men's Clothing</a>
+                                        <a href="shop.php">Men's Clothing</a>
                                     </li>
                                     <li class="has-separator">
                                         <a href="shop-v2-sub-category.html">Tops</a>

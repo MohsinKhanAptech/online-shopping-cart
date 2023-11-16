@@ -14,4 +14,7 @@ if (isset($_SESSION["user"])) {
         alert('ERROR: something went wrong');
         location('cart.php');
     }
+} else {
+    alert('you must login first');
+    location('account.php');
 }
