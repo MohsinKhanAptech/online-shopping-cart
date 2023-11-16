@@ -12,7 +12,7 @@ if (isset($_SESSION["user"])) {
         historyGo();
     } else {
         alert('ERROR: something went wrong');
-        location('cart.php');
+        historyGo();
     }
 } else {
     alert('you must login first');

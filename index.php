@@ -94,7 +94,7 @@ include "include/head.php";
                                                                 echo "<div class='star' title='{$row["product_rating"]} out of 5 - based on 0 Reviews'>
                                                                     <span style='width: calc(15px * {$row["product_rating"]});'></span>
                                                                 </div>
-                                                                <span>({$row["product_rating_number"]})</span>"; ?>
+                                                                <span>({$row["product_review_count"]})</span>"; ?>
                                                             </div>
                                                         </div>
                                                         <div class="price-template">
@@ -201,7 +201,7 @@ include "include/head.php";
                                                 echo "<div class='star' title='{$row["product_rating"]} out of 5 - based on 0 Reviews'>
                                                                     <span style='width: calc(15px * {$row["product_rating"]});'></span>
                                                                 </div>
-                                                                <span>({$row["product_rating_number"]})</span>"; ?>
+                                                                <span>({$row["product_review_count"]})</span>"; ?>
                                             </div>
                                         </div>
                                         <div class="price-template">
@@ -293,7 +293,7 @@ include "include/head.php";
                                                                 echo "<div class='star' title='{$row["product_rating"]} out of 5 - based on 0 Reviews'>
                                                                     <span style='width: calc(15px * {$row["product_rating"]});'></span>
                                                                 </div>
-                                                                <span>({$row["product_rating_number"]})</span>"; ?>
+                                                                <span>({$row["product_review_count"]})</span>"; ?>
                                                             </div>
                                                         </div>
                                                         <div class="price-template">
@@ -377,7 +377,7 @@ include "include/head.php";
                                                                 echo "<div class='star' title='{$row["product_rating"]} out of 5 - based on 0 Reviews'>
                                                                     <span style='width: calc(15px * {$row["product_rating"]});'></span>
                                                                 </div>
-                                                                <span>({$row["product_rating_number"]})</span>"; ?>
+                                                                <span>({$row["product_review_count"]})</span>"; ?>
                                                             </div>
                                                         </div>
                                                         <div class="price-template">
@@ -461,7 +461,7 @@ include "include/head.php";
                                                                 echo "<div class='star' title='{$row["product_rating"]} out of 5 - based on 0 Reviews'>
                                                                     <span style='width: calc(15px * {$row["product_rating"]});'></span>
                                                                 </div>
-                                                                <span>({$row["product_rating_number"]})</span>"; ?>
+                                                                <span>({$row["product_review_count"]})</span>"; ?>
                                                             </div>
                                                         </div>
                                                         <div class="price-template">

@@ -4539,6 +4539,19 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+.height-0 {
+	height: 0;
+	overflow: hidden;
+	transition: height 300ms;
+}
+.review_edit_height_toggle {
+	height: 365px;
+}
+.flex-justify-end {
+	display: flex;
+	justify-content: end;
+	gap: 1rem;
+}
 /* .inline {
 	display: inline;
 } */

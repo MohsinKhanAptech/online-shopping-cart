@@ -1,10 +1,10 @@
 <?php
 if (isset($_SESSION["user"])) {
-    $cart_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`cart_id`) AS num FROM `cart_items` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
-    $wishlist_number = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(`wishlist_id`) AS num FROM `wishlist` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
+    $cart_number = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`cart_id`) AS num FROM `cart_items` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
+    $wishlist_number = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`wishlist_id`) AS num FROM `wishlist` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
 } else {
-    $cart_number["num"] = 0;
-    $wishlist_number["num"] = 0;
+    $cart_number = 0;
+    $wishlist_number = 0;
 }
 ?>
 <!-- Header -->
@@ -123,7 +123,7 @@ if (isset($_SESSION["user"])) {
                             <li>
                                 <a href="cart.php" //id="mini-cart-trigger">
                                     <i class="ion ion-md-basket"></i>
-                                    <span class="item-counter"><?php echo $cart_number["num"] ?></span>
+                                    <span class="item-counter"><?php echo $cart_number ?></span>
                                 </a>
                             </li>
                         </ul>
@@ -141,7 +141,7 @@ if (isset($_SESSION["user"])) {
         <div class="fixed-responsive-wrapper">
             <a href="wishlist.php">
                 <i class="far fa-heart"></i>
-                <span class="fixed-item-counter"><?php echo $wishlist_number["num"] ?></span>
+                <span class="fixed-item-counter"><?php echo $wishlist_number ?></span>
             </a>
         </div>
     </div>

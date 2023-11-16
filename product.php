@@ -7,12 +7,12 @@ $product_id = $_GET["product_id"];
 $select_product = mysqli_query($connect, "SELECT * FROM `products` WHERE `product_id` = '$product_id'");
 $product = mysqli_fetch_assoc($select_product);
 
-$reviews_count = mysqli_fetch_array(mysqli_query($connect, "SELECT COUNT(review_id) AS reviews_count FROM `reviews` WHERE `product_id` = '$product_id'"));
-$five_star_reviews_count = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 5"));
-$four_star_reviews_count = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 4"));
-$three_star_reviews_count = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 3"));
-$two_star_reviews_count = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 2"));
-$one_star_reviews_count = mysqli_fetch_assoc(mysqli_query($connect, "SELECT COUNT(review_id) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 1"));
+$reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS reviews_count FROM `reviews` WHERE `product_id` = '$product_id'"));
+$five_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 5"));
+$four_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 4"));
+$three_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 3"));
+$two_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 2"));
+$one_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 1"));
 
 $wishlistExists = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM `wishlist` WHERE `product_id` = '{$product["product_id"]}' AND `customer_id` = '{$_SESSION["user_id"]}'"));
 ?>
@@ -83,10 +83,10 @@ include "include/head.php";
                                     </li>
                                 </ul>
                                 <div class="product-rating">
-                                    <div class="star" title="<?php echo "{$product["product_rating"]} out of 5 - based on {$product["product_rating_number"]} Reviews" ?>">
+                                    <div class="star" title="<?php echo "{$product["product_rating"]} out of 5 - based on {$product["product_review_count"]} Reviews" ?>">
                                         <span style="width: calc(15px * <?php echo $product["product_rating"] ?>)"></span>
                                     </div>
-                                    <span>(<?php echo $product["product_rating_number"] ?>)</span>
+                                    <span>(<?php echo $product["product_review_count"] ?>)</span>
                                 </div>
                             </div>
                             <div class="section-2-short-description u-s-p-y-14">
@@ -189,11 +189,8 @@ include "include/head.php";
                                     <li class="nav-item">
                                         <a class="nav-link active" data-toggle="tab" href="#description">Description</a>
                                     </li>
-                                    <!-- <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#specification">Specifications</a>
-                                    </li> -->
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#review">Reviews (<?php echo $product["product_rating_number"] ?>)</a>
+                                        <a class="nav-link" data-toggle="tab" href="#review">Reviews (<?php echo $product["product_review_count"] ?>)</a>
                                     </li>
                                 </ul>
                             </div>
@@ -208,74 +205,6 @@ include "include/head.php";
                                     </div>
                                 </div>
                                 <!-- Description-Tab /- -->
-                                <!-- Specifications-Tab -->
-                                <!-- <div class="tab-pane fade" id="specification">
-                                    <div class="specification-whole-container">
-                                        <div class="spec-ul u-s-m-b-50">
-                                            <h4 class="spec-heading">Key Features</h4>
-                                            <ul>
-                                                <li>Heather Grey</li>
-                                                <li>Black</li>
-                                                <li>White</li>
-                                            </ul>
-                                        </div>
-                                        <div class="u-s-m-b-50">
-                                            <h4 class="spec-heading">What's in the Box?</h4>
-                                            <h3 class="spec-answer">1 x hoodie</h3>
-                                        </div>
-                                        <div class="spec-table u-s-m-b-50">
-                                            <h4 class="spec-heading">General Information</h4>
-                                            <table>
-                                                <tr>
-                                                    <td>Sku</td>
-                                                    <td>AY536FA08JT86NAFAMZ</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="spec-table u-s-m-b-50">
-                                            <h4 class="spec-heading">Product Information</h4>
-                                            <table>
-                                                <tr>
-                                                    <td>Main Material</td>
-                                                    <td>Cotton</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Color</td>
-                                                    <td>Heather Grey, Black, White</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sleeves</td>
-                                                    <td>Long Sleeve</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Top Fit</td>
-                                                    <td>Regular</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Print</td>
-                                                    <td>Not Printed</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Neck</td>
-                                                    <td>Round Neck</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Pieces Count</td>
-                                                    <td>1 piece</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Occasion</td>
-                                                    <td>Casual</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Shipping Weight (kg)</td>
-                                                    <td>0.5</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- Specifications-Tab /- -->
                                 <!-- Reviews-Tab -->
                                 <div class="tab-pane fade" id="review">
                                     <div class="review-whole-container">
@@ -286,7 +215,7 @@ include "include/head.php";
                                                     <div class="circle-wrapper">
                                                         <h1><?php echo round($product["product_rating"], 1) ?></h1>
                                                     </div>
-                                                    <h6 class="review-h6">Based on <?php echo $product["product_rating_number"] ?> Reviews</h6>
+                                                    <h6 class="review-h6">Based on <?php echo $product["product_review_count"] ?> Reviews</h6>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6">
@@ -294,80 +223,159 @@ include "include/head.php";
                                                     <div class="star-wrapper">
                                                         <span>5 Stars</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * <?php echo empty($five_star_reviews_count["rating_count"]) ? 0 : $five_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5; ?>)"></span>
+                                                            <span style="width: calc(15px * <?php echo empty($five_star_reviews_count) ? 0 : $five_star_reviews_count / $reviews_count * 5; ?>)"></span>
                                                         </div>
-                                                        <span>(<?php echo $five_star_reviews_count["rating_count"] ?>)</span>
+                                                        <span>(<?php echo $five_star_reviews_count ?>)</span>
                                                     </div>
                                                     <div class="star-wrapper">
                                                         <span>4 Stars</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * <?php echo empty($four_star_reviews_count["rating_count"]) ? 0 : $four_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5; ?>)"></span>
+                                                            <span style="width: calc(15px * <?php echo empty($four_star_reviews_count) ? 0 : $four_star_reviews_count / $reviews_count * 5; ?>)"></span>
                                                         </div>
-                                                        <span>(<?php echo $four_star_reviews_count["rating_count"] ?>)</span>
+                                                        <span>(<?php echo $four_star_reviews_count ?>)</span>
                                                     </div>
                                                     <div class="star-wrapper">
                                                         <span>3 Stars</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * <?php echo empty($three_star_reviews_count["rating_count"]) ? 0 : $three_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5; ?>)"></span>
+                                                            <span style="width: calc(15px * <?php echo empty($three_star_reviews_count) ? 0 : $three_star_reviews_count / $reviews_count * 5; ?>)"></span>
                                                         </div>
-                                                        <span>(<?php echo $three_star_reviews_count["rating_count"] ?>)</span>
+                                                        <span>(<?php echo $three_star_reviews_count ?>)</span>
                                                     </div>
                                                     <div class="star-wrapper">
                                                         <span>2 Stars</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * <?php echo empty($two_star_reviews_count["rating_count"]) ? 0 : $two_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5; ?>)"></span>
+                                                            <span style="width: calc(15px * <?php echo empty($two_star_reviews_count) ? 0 : $two_star_reviews_count / $reviews_count * 5; ?>)"></span>
                                                         </div>
-                                                        <span>(<?php echo $two_star_reviews_count["rating_count"] ?>)</span>
+                                                        <span>(<?php echo $two_star_reviews_count ?>)</span>
                                                     </div>
                                                     <div class="star-wrapper">
                                                         <span>1 Star</span>
                                                         <div class="star">
-                                                            <span style="width: calc(15px * <?php echo empty($one_star_reviews_count["rating_count"]) ? 0 : $one_star_reviews_count["rating_count"] / $reviews_count["reviews_count"] * 5; ?>)"></span>
+                                                            <span style="width: calc(15px * <?php echo empty($one_star_reviews_count) ? 0 : $one_star_reviews_count / $reviews_count * 5; ?>)"></span>
                                                         </div>
-                                                        <span>(<?php echo $one_star_reviews_count["rating_count"] ?>)</span>
+                                                        <span>(<?php echo $one_star_reviews_count ?>)</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row r-2 u-s-m-b-26 u-s-p-b-22">
-                                            <div class="col-lg-12">
-                                                <div class="your-rating-wrapper">
-                                                    <h6 class="review-h6">Your Review matters.</h6>
-                                                    <h6 class="review-h6">
-                                                        What do you think of this product?
-                                                    </h6>
-                                                    <form>
-                                                        <div class="star-wrapper u-s-m-b-8">
-                                                            <div class="star">
-                                                                <span id="your-stars" style="width: 0"></span>
+                                        <?php
+                                        $review_check = mysqli_query($connect, "SELECT * FROM `reviews` WHERE `customer_id` = '{$_SESSION["user_id"]}' AND `product_id` = '$product_id'");
+
+                                        if (isset($_SESSION["user"]) && !mysqli_num_rows($review_check) > 0) { ?>
+                                            <div class="row r-2 u-s-m-b-26 u-s-p-b-22">
+                                                <div class="col-lg-12">
+                                                    <div class="your-rating-wrapper">
+                                                        <h6 class="review-h6">Your Review matters.</h6>
+                                                        <h6 class="review-h6">
+                                                            What do you think of this product?
+                                                        </h6>
+                                                        <form action="reviewAdd.php" method="post">
+                                                            <div class="star-wrapper u-s-m-b-8">
+                                                                <label for="your-rating-value">Your Rating:</label>
+                                                                <div class="star">
+                                                                    <span id="your-stars" style="width: 0"></span>
+                                                                </div>
+                                                                <input name="rating" id="your-rating-value" type="number" class="text-field" placeholder="0" min="1" max="5" />
+                                                                <span id="star-comment"></span>
                                                             </div>
-                                                            <label for="your-rating-value">Stars</label>
-                                                            <input id="your-rating-value" type="text" class="text-field" placeholder="0.0" />
-                                                            <span id="star-comment"></span>
-                                                        </div>
-                                                        <label for="your-name">Name
-                                                            <span class="astk"> *</span>
-                                                        </label>
-                                                        <input id="your-name" type="text" class="text-field" placeholder="Your Name" />
-                                                        <label for="your-email">Email
-                                                            <span class="astk"> *</span>
-                                                        </label>
-                                                        <input id="your-email" type="text" class="text-field" placeholder="Your Email" />
-                                                        <label for="review-title">Review Title
-                                                            <span class="astk"> *</span>
-                                                        </label>
-                                                        <input id="review-title" type="text" class="text-field" placeholder="Review Title" />
-                                                        <label for="review-text-area">Review
-                                                            <span class="astk"> *</span>
-                                                        </label>
-                                                        <textarea class="text-area u-s-m-b-8" id="review-text-area" placeholder="Review"></textarea>
-                                                        <button class="button button-outline-secondary">
-                                                            Submit Review
-                                                        </button>
-                                                    </form>
+                                                            <label for="review-title">Review Title
+                                                                <span class="astk"> *</span>
+                                                            </label>
+                                                            <input name="review_title" id="review-title" type="text" class="text-field" placeholder="Review Title" maxlength="25" />
+                                                            <label for="review-text-area">Review
+                                                                <span class="astk"> *</span>
+                                                            </label>
+                                                            <textarea name="review" class="text-area u-s-m-b-8" id="review-text-area" placeholder="Review" maxlength="255"></textarea>
+                                                            <div class="flex-justify-end">
+                                                                <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
+                                                                <button type="submit" name="submit" class="button button-outline-secondary">
+                                                                    Submit Review
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        <?php
+                                        } elseif (isset($_SESSION["user"])) {
+                                            $select_reviews = mysqli_query(
+                                                $connect,
+                                                "SELECT customers.customer_name,reviews.*
+                                                FROM `customers` 
+                                                INNER JOIN `reviews`
+                                                ON customers.customer_id = reviews.customer_id AND reviews.product_id = {$product["product_id"]};"
+                                            );
+                                            $review = mysqli_fetch_assoc($select_reviews); ?>
+
+                                            <div class="get-reviews u-s-p-b-22">
+                                                <div class="review-options u-s-m-b-16">
+                                                    <div class="review-option-heading">
+                                                        <h6>Your Review</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="reviewers">
+                                                    <div class="review-data">
+                                                        <div class="reviewer-name-and-date">
+                                                            <h6 class="reviewer-name"><?php echo $review["customer_name"] ?></h6>
+                                                            <h6 class="review-posted-date"><?php echo date_format(date_create($review["review_date"]), "dS F Y") ?></h6>
+                                                        </div>
+                                                        <div class="reviewer-stars-title-body">
+                                                            <div class="reviewer-stars">
+                                                                <div class="star">
+                                                                    <span style="width: calc(15px * <?php echo $review["rating"] ?>)"></span>
+                                                                </div>
+                                                                <span class="review-title"><?php echo $review["review_title"] ?></span>
+                                                            </div>
+                                                            <p class="review-body"><?php echo $review["review"] ?></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-justify-end">
+                                                        <a onclick="document.getElementById('review_edit_id').classList.toggle('review_edit_height_toggle');" href="javascript:void(0);" class="button button-outline-secondary fas fa-pen"></a>
+                                                        <a href="reviewDelete.php?review_id=<?php echo $review["review_id"] ?>" class="button button-outline-secondary fas fa-trash"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div id="review_edit_id" class="row r-2 u-s-m-b-26 u-s-p-b-22 height-0">
+                                                <div class="col-lg-12">
+                                                    <div class="your-rating-wrapper">
+                                                        <h6 class="review-h6">
+                                                            You have already reviewed this product.
+                                                        </h6>
+                                                        <form action="reviewUpdate.php" method="post">
+                                                            <div class="star-wrapper u-s-m-b-8">
+                                                                <label for="your-rating-value">Your Rating:</label>
+                                                                <div class="star">
+                                                                    <span id="your-stars" style="width: 0"></span>
+                                                                </div>
+                                                                <input name="rating" id="your-rating-value" type="number" class="text-field" placeholder="0" min="1" max="5" value="<?php echo $review["rating"] ?>" />
+                                                                <span id="star-comment"></span>
+                                                            </div>
+                                                            <label for="review-title">Review Title
+                                                                <span class="astk"> *</span>
+                                                            </label>
+                                                            <input name="review_title" id="review-title" type="text" class="text-field" placeholder="Review Title" maxlength="25" value="<?php echo $review["review_title"] ?>" />
+                                                            <label for="review-text-area">Review
+                                                                <span class="astk"> *</span>
+                                                            </label>
+                                                            <textarea name="review" class="text-area u-s-m-b-8" id="review-text-area" placeholder="Review" maxlength="255"><?php echo $review["review"] ?></textarea>
+                                                            <div class="flex-justify-end">
+                                                                <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
+                                                                <input type="hidden" name="review_id" value="<?php echo $review["review_id"] ?>">
+                                                                <button type="submit" name="submit" class="button button-outline-secondary">
+                                                                    Submit Review
+                                                                </button>
+                                                                <button onclick="document.getElementById('review_edit_id').classList.toggle('review_edit_height_toggle');" type="button" class="button button-outline-secondary">
+                                                                    Cancel
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        <?php
+                                        } ?>
                                         <!-- Get-Reviews -->
                                         <div class="get-reviews u-s-p-b-22">
                                             <!-- Review-Options -->
@@ -375,7 +383,7 @@ include "include/head.php";
                                                 <div class="review-option-heading">
                                                     <h6>
                                                         Reviews
-                                                        <span> (<?php echo $product["product_rating_number"] ?>) </span>
+                                                        <span> (<?php echo $product["product_review_count"] ?>) </span>
                                                     </h6>
                                                 </div>
                                                 <!-- <div class="review-option-box">
@@ -392,21 +400,20 @@ include "include/head.php";
                                             <!-- All-Reviews -->
                                             <div class="reviewers">
                                                 <?php
-                                                $select_reviews = mysqli_query($connect, "SELECT * FROM `reviews` WHERE `product_id` = '$product_id'");
-                                                $select_customers = mysqli_query(
+                                                //  $select_reviews = mysqli_query($connect, "SELECT * FROM `reviews` WHERE `product_id` = '$product_id'");
+                                                $select_reviews = mysqli_query(
                                                     $connect,
-                                                    "SELECT customers.customer_name 
+                                                    "SELECT customers.customer_name,reviews.*
                                                     FROM `customers` 
                                                     INNER JOIN `reviews`
-                                                    ON customers.customer_id = reviews.customer_id
-                                                    AND reviews.product_id = {$product["product_id"]};"
+                                                    ON customers.customer_id = reviews.customer_id AND reviews.product_id = {$product["product_id"]};"
                                                 );
 
                                                 if (mysqli_num_rows($select_reviews) > 0) {
-                                                    while (($review = mysqli_fetch_assoc($select_reviews)) && ($cusotmer = mysqli_fetch_assoc($select_customers))) { ?>
+                                                    while (($review = mysqli_fetch_assoc($select_reviews))) { ?>
                                                         <div class="review-data">
                                                             <div class="reviewer-name-and-date">
-                                                                <h6 class="reviewer-name"><?php echo $cusotmer["customer_name"] ?></h6>
+                                                                <h6 class="reviewer-name"><?php echo $review["customer_name"] ?></h6>
                                                                 <h6 class="review-posted-date"><?php echo date_format(date_create($review["review_date"]), "dS F Y") ?></h6>
                                                             </div>
                                                             <div class="reviewer-stars-title-body">
@@ -522,7 +529,7 @@ include "include/head.php";
                                                             echo "<div class='star' title='{$row["product_rating"]} out of 5 - based on 0 Reviews'>
                                                                     <span style='width: calc(15px * {$row["product_rating"]});'></span>
                                                                 </div>
-                                                                <span>({$row["product_rating_number"]})</span>"; ?>
+                                                                <span>({$row["product_review_count"]})</span>"; ?>
                                                         </div>
                                                     </div>
                                                     <div class="price-template">
