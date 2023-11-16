@@ -134,7 +134,8 @@ include "include/head.php";
         <?php include "include/dummySelectbox.php"; ?>
         <!-- Dummy Selectbox /- -->
         <!-- Quick-view-Modal -->
-        <?php include "include/quickViewModal.php"; ?>
+        <?php // include "include/quickViewModal.php"; 
+        ?>
         <!-- Quick-view-Modal /- -->
     </div>
     <?php include "include/scripts.php" ?>

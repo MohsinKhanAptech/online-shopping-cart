@@ -515,7 +515,7 @@ include "include/head.php";
                                                             </li>
                                                         </ul>
                                                         <h6 class="item-title">
-                                                            <?php echo "<a href='product.php'> {$row["product_name"]} </a>" ?>
+                                                            <?php echo "<a href='product.php?product_id={$row["product_id"]}'> {$row["product_name"]} </a>" ?>
                                                         </h6>
                                                         <div class="item-stars">
                                                             <?php
@@ -629,7 +629,8 @@ include "include/head.php";
         <?php include "include/responsiveSearch.php"; ?>
         <!-- Responsive-Search /- -->
         <!-- Quick-view-Modal -->
-        <?php include "include/quickViewModal.php"; ?>
+        <?php // include "include/quickViewModal.php"; 
+        ?>
         <!-- Quick-view-Modal /- -->
     </div>
     <?php include "include/scripts.php" ?>

@@ -59,20 +59,6 @@ include "include/head.php";
             <div class="container">
                 <div class="sec-maker-header text-center">
                     <h3 class="sec-maker-h3">STATIONARY</h3>
-                    <!-- <ul class="nav tab-nav-style-1-a justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#men-latest-products">Latest Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#men-best-selling-products">Best Selling</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#men-top-rating-products">Top Rating</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#men-featured-products">Featured Products</a>
-                        </li>
-                    </ul> -->
                 </div>
                 <div class="wrapper-content">
                     <div class="outer-area-tab">
@@ -92,13 +78,6 @@ include "include/head.php";
                                                         <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
                                                             <?php echo "<img class='img-fluid' src='uploads/products/{$row["product_image"]}' alt='Product'>" ?>
                                                         </a>
-                                                        <div class="item-action-behaviors">
-                                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                                            </a>
-                                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                                        </div>
                                                     </div>
                                                     <div class="item-content">
                                                         <div class="what-product-is">
@@ -108,7 +87,7 @@ include "include/head.php";
                                                                 </li>
                                                             </ul>
                                                             <h6 class="item-title">
-                                                                <?php echo "<a href='product.php'> {$row["product_name"]} </a>" ?>
+                                                                <?php echo "<a href='product.php?product_id={$row["product_id"]}'> {$row["product_name"]} </a>" ?>
                                                             </h6>
                                                             <div class="item-stars">
                                                                 <?php
@@ -147,223 +126,6 @@ include "include/head.php";
                                     <!-- Product Not Found /- -->
                                 <?php
                                 } ?>
-                            </div>
-                            <div class="tab-pane fade" id="men-best-selling-products">
-                                <!-- Product Not Found -->
-                                <div class="product-not-found">
-                                    <div class="not-found">
-                                        <h2>SORRY!</h2>
-                                        <h6>There is not any product in specific catalogue.</h6>
-                                    </div>
-                                </div>
-                                <!-- Product Not Found /- -->
-                            </div>
-                            <div class="tab-pane fade" id="men-top-rating-products">
-                                <div class="slider-fouc">
-                                    <div class="products-slider owl-carousel" data-item="4">
-                                        <div class="item">
-                                            <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
-                                                    <img class="img-fluid" src="include/images/product/product@3x.jpg" alt="Product">
-                                                </a>
-                                                <div class="item-action-behaviors">
-                                                    <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                                    </a>
-                                                    <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                    <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                    <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="item-content">
-                                                <div class="what-product-is">
-                                                    <ul class="bread-crumb">
-                                                        <li class="has-separator">
-                                                            <a href="shop.php">Men's</a>
-                                                        </li>
-                                                        <li class="has-separator">
-                                                            <a href="shop-v2-sub-category.html">Tops</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-v3-sub-sub-category.html">Suits</a>
-                                                        </li>
-                                                    </ul>
-                                                    <h6 class="item-title">
-                                                        <a href="product.php?product_id=<?php echo $row["product_id"] ?>">Black Maire Full Men Suit</a>
-                                                    </h6>
-                                                    <div class="item-stars">
-                                                        <div class='star' title="4.5 out of 5 - based on 23 Reviews">
-                                                            <span style='width:67px'></span>
-                                                        </div>
-                                                        <span>(23)</span>
-                                                    </div>
-                                                </div>
-                                                <div class="price-template">
-                                                    <div class="item-new-price">
-                                                        $55.00
-                                                    </div>
-                                                    <div class="item-old-price">
-                                                        $60.00
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tag sale">
-                                                <span>SALE</span>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
-                                                    <img class="img-fluid" src="include/images/product/product@3x.jpg" alt="Product">
-                                                </a>
-                                                <div class="item-action-behaviors">
-                                                    <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                                    </a>
-                                                    <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                    <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                    <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="item-content">
-                                                <div class="what-product-is">
-                                                    <ul class="bread-crumb">
-                                                        <li class="has-separator">
-                                                            <a href="shop.php">Men's</a>
-                                                        </li>
-                                                        <li class="has-separator">
-                                                            <a href="shop-v2-sub-category.html">Outwear</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-v3-sub-sub-category.html">Jackets</a>
-                                                        </li>
-                                                    </ul>
-                                                    <h6 class="item-title">
-                                                        <a href="product.php?product_id=<?php echo $row["product_id"] ?>">Woodsmoke Rookie Parka Jacket</a>
-                                                    </h6>
-                                                    <div class="item-stars">
-                                                        <div class='star' title="4.5 out of 5 - based on 23 Reviews">
-                                                            <span style='width:67px'></span>
-                                                        </div>
-                                                        <span>(23)</span>
-                                                    </div>
-                                                </div>
-                                                <div class="price-template">
-                                                    <div class="item-new-price">
-                                                        $55.00
-                                                    </div>
-                                                    <div class="item-old-price">
-                                                        $60.00
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
-                                                    <img class="img-fluid" src="include/images/product/product@3x.jpg" alt="Product">
-                                                </a>
-                                                <div class="item-action-behaviors">
-                                                    <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                                    </a>
-                                                    <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                    <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                    <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="item-content">
-                                                <div class="what-product-is">
-                                                    <ul class="bread-crumb">
-                                                        <li class="has-separator">
-                                                            <a href="shop.php">Men's</a>
-                                                        </li>
-                                                        <li class="has-separator">
-                                                            <a href="shop-v2-sub-category.html">Accessories</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-v3-sub-sub-category.html">Ties</a>
-                                                        </li>
-                                                    </ul>
-                                                    <h6 class="item-title">
-                                                        <a href="product.php?product_id=<?php echo $row["product_id"] ?>">Blue Zodiac Boxes Reg Tie</a>
-                                                    </h6>
-                                                    <div class="item-stars">
-                                                        <div class='star' title="4.5 out of 5 - based on 23 Reviews">
-                                                            <span style='width:67px'></span>
-                                                        </div>
-                                                        <span>(23)</span>
-                                                    </div>
-                                                </div>
-                                                <div class="price-template">
-                                                    <div class="item-new-price">
-                                                        $55.00
-                                                    </div>
-                                                    <div class="item-old-price">
-                                                        $60.00
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
-                                                    <img class="img-fluid" src="include/images/product/product@3x.jpg" alt="Product">
-                                                </a>
-                                                <div class="item-action-behaviors">
-                                                    <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                                    </a>
-                                                    <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                    <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                    <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                                </div>
-                                            </div>
-                                            <div class="item-content">
-                                                <div class="what-product-is">
-                                                    <ul class="bread-crumb">
-                                                        <li class="has-separator">
-                                                            <a href="shop.php">Men's</a>
-                                                        </li>
-                                                        <li class="has-separator">
-                                                            <a href="shop-v2-sub-category.html">Bottoms</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-v3-sub-sub-category.html">Shoes</a>
-                                                        </li>
-                                                    </ul>
-                                                    <h6 class="item-title">
-                                                        <a href="product.php?product_id=<?php echo $row["product_id"] ?>">Zambezi Carved Leather Business Casual Shoes
-                                                        </a>
-                                                    </h6>
-                                                    <div class="item-stars">
-                                                        <div class='star' title="4.5 out of 5 - based on 23 Reviews">
-                                                            <span style='width:67px'></span>
-                                                        </div>
-                                                        <span>(23)</span>
-                                                    </div>
-                                                </div>
-                                                <div class="price-template">
-                                                    <div class="item-new-price">
-                                                        $55.00
-                                                    </div>
-                                                    <div class="item-old-price">
-                                                        $60.00
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tag discount">
-                                                <span>-15%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="men-featured-products">
-                                <!-- Product Not Found -->
-                                <div class="product-not-found">
-                                    <div class="not-found">
-                                        <h2>SORRY!</h2>
-                                        <h6>There is not any product in specific catalogue.</h6>
-                                    </div>
-                                </div>
-                                <!-- Product Not Found /- -->
                             </div>
                         </div>
                     </div>
@@ -423,13 +185,6 @@ include "include/head.php";
                                         <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
                                             <?php echo "<img class='img-fluid' src='uploads/products/{$row["product_image"]}' alt='Product'>" ?>
                                         </a>
-                                        <div class="item-action-behaviors">
-                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                            </a>
-                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                        </div>
                                     </div>
                                     <div class="item-content">
                                         <div class="what-product-is">
@@ -439,7 +194,7 @@ include "include/head.php";
                                                 </li>
                                             </ul>
                                             <h6 class="item-title">
-                                                <?php echo "<a href='product.php'> {$row["product_name"]} </a>" ?>
+                                                <?php echo "<a href='product.php?product_id={$row["product_id"]}'> {$row["product_name"]} </a>" ?>
                                             </h6>
                                             <div class="item-stars">
                                                 <?php
@@ -522,13 +277,6 @@ include "include/head.php";
                                                         <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
                                                             <?php echo "<img class='img-fluid' src='uploads/products/{$row["product_image"]}' alt='Product'>" ?>
                                                         </a>
-                                                        <div class="item-action-behaviors">
-                                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                                            </a>
-                                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                                        </div>
                                                     </div>
                                                     <div class="item-content">
                                                         <div class="what-product-is">
@@ -538,7 +286,7 @@ include "include/head.php";
                                                                 </li>
                                                             </ul>
                                                             <h6 class="item-title">
-                                                                <?php echo "<a href='product.php'> {$row["product_name"]} </a>" ?>
+                                                                <?php echo "<a href='product.php?product_id={$row["product_id"]}'> {$row["product_name"]} </a>" ?>
                                                             </h6>
                                                             <div class="item-stars">
                                                                 <?php
@@ -613,13 +361,6 @@ include "include/head.php";
                                                         <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
                                                             <?php echo "<img class='img-fluid' src='uploads/products/{$row["product_image"]}' alt='Product'>" ?>
                                                         </a>
-                                                        <div class="item-action-behaviors">
-                                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                                            </a>
-                                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                                        </div>
                                                     </div>
                                                     <div class="item-content">
                                                         <div class="what-product-is">
@@ -629,7 +370,7 @@ include "include/head.php";
                                                                 </li>
                                                             </ul>
                                                             <h6 class="item-title">
-                                                                <?php echo "<a href='product.php'> {$row["product_name"]} </a>" ?>
+                                                                <?php echo "<a href='product.php?product_id={$row["product_id"]}'> {$row["product_name"]} </a>" ?>
                                                             </h6>
                                                             <div class="item-stars">
                                                                 <?php
@@ -704,13 +445,6 @@ include "include/head.php";
                                                         <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
                                                             <?php echo "<img class='img-fluid' src='uploads/products/{$row["product_image"]}' alt='Product'>" ?>
                                                         </a>
-                                                        <div class="item-action-behaviors">
-                                                            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                                            </a>
-                                                            <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                                        </div>
                                                     </div>
                                                     <div class="item-content">
                                                         <div class="what-product-is">
@@ -720,7 +454,7 @@ include "include/head.php";
                                                                 </li>
                                                             </ul>
                                                             <h6 class="item-title">
-                                                                <?php echo "<a href='product.php'> {$row["product_name"]} </a>" ?>
+                                                                <?php echo "<a href='product.php?product_id={$row["product_id"]}'> {$row["product_name"]} </a>" ?>
                                                             </h6>
                                                             <div class="item-stars">
                                                                 <?php
@@ -842,7 +576,8 @@ include "include/head.php";
         <?php include "include/responsiveSearch.php"; ?>
         <!-- Responsive-Search /- -->
         <!-- Quick-view-Modal -->
-        <?php include "include/quickViewModal.php"; ?>
+        <?php // include "include/quickViewModal.php"; 
+        ?>
         <!-- Quick-view-Modal /- -->
     </div>
     <?php include "include/scripts.php" ?>

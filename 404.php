@@ -22,11 +22,14 @@ include "include/head.php";
                     <h5>We can't seem to find the page you're looking for.</h5>
                     <h5>If you are not logged-in please <a class="redirect-link" href="account.php">log-in</a> and try again.</h5>
                     <div class="redirect-link-wrapper u-s-p-t-25">
-                        <a class="redirect-link" href="index.php" style="margin-right: 1rem">
+                        <a class="redirect-link" href="index.php">
                             <span>Home</span>
                         </a>
-                        <a class="redirect-link" href="account.php">
+                        <a class="redirect-link" href="account.php" style="margin: 0 1rem">
                             <span>Log-in</span>
+                        </a>
+                        <a class="redirect-link" onclick="history.back()">
+                            <span>Go Back</span>
                         </a>
                     </div>
                 </div>

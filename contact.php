@@ -81,8 +81,8 @@ include "include/head.php";
                             <h1 class="contact-h1">Contact Us</h1>
                             <div class="contact-material u-s-m-b-16">
                                 <h6>Location</h6>
-                                <span>4441 Jett Lane</span>
-                                <span>Bellflower, CA 90706</span>
+                                <span>A 563, Main Shahrah-e-Usman, Sector 11-A</span>
+                                <span>North Karachi Twp, Karachi, Sindh 75850</span>
                             </div>
                             <div class="contact-material u-s-m-b-16">
                                 <h6>Email</h6>
@@ -97,7 +97,9 @@ include "include/head.php";
                 </div>
             </div>
             <div class="u-s-p-t-80">
-                <div id="map"></div>
+                <div id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14466.136769377172!2d67.0652637!3d24.9819581!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb340e584b891c3%3A0x29b2cbc198ba2dbd!2sAptech%20Computer%20Education%20North%20Karachi%20Center!5e0!3m2!1sen!2s!4v1700144406527!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
         <!-- Contact-Page /- -->

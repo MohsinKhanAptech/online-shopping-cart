@@ -2,8 +2,7 @@
 session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
-if (isset($_SESSION["user"])) {
-?>
+if (isset($_SESSION["user"])) { ?>
     <!DOCTYPE html>
     <html lang="en">
 
