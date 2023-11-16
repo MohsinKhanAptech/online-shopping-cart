@@ -1623,9 +1623,7 @@ body {
 /* Medium devices (tablets, less than and equal to 991px) */
 @media (max-width: 991px) {
 	.item-img-wrapper-link:before {
-		opacity: 1;
-		top: auto;
-		height: 70px;
+		content: none;
 	}
 	.item-action-behaviors {
 		opacity: 1;
