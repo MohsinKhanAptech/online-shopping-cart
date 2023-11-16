@@ -236,7 +236,7 @@ CREATE TABLE `products` (
   `product_description` varchar(255) NOT NULL,
   `product_category` varchar(50) NOT NULL,
   `product_rating` decimal(3,2) NOT NULL,
-  `product_rating_number` int(10) NOT NULL,
+  `product_review_count` int(10) NOT NULL,
   `product_price` decimal(65,2) NOT NULL,
   `product_stock` int(10) NOT NULL,
   `product_video` varchar(255) NOT NULL,
@@ -247,7 +247,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_rating`, `product_rating_number`, `product_price`, `product_stock`, `product_video`, `product_image`) VALUES
+INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_rating`, `product_review_count`, `product_price`, `product_stock`, `product_video`, `product_image`) VALUES
 (5, 'ak 47', 'ak 47', 'Toys', 3.29, 7, 696969.00, 696969, '', 'AK_47.jpg'),
 (10, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
 (11, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
