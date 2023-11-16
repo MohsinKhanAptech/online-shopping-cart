@@ -21,6 +21,9 @@ include "include/head.php";
                     <h1>Em<i class="fas fa-child"></i>ty!</h1>
                     <h5>Your cart is currently empty.</h5>
                     <div class="redirect-link-wrapper u-s-p-t-25">
+                        <a class="redirect-link" href="index.php" style="margin-right: 1rem">
+                            <span>Home</span>
+                        </a>
                         <a class="redirect-link" href="shop.php">
                             <span>Return to Shop</span>
                         </a>
