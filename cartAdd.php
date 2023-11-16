@@ -12,9 +12,12 @@ if (isset($_SESSION["user"])) {
         $cart_total = $product_price * $cart_quantity;
 
         $cart_querry = "INSERT INTO `cart_items`(`customer_id`, `product_id`, `product_price`, `cart_quantity`, `cart_total`) VALUES ('$customer_id','$product_id','$product_price','$cart_quantity','$cart_total')";
-        $cart_querry_run = mysqli_query($connect, $cart_querry);
 
-        if ($cart_querry_run) {
+        if (mysqli_query($connect, $cart_querry)) {
+            if (isset($_POST["wishlist_id"])) {
+                $wishlist_id = $_POST["wishlist_id"];
+                mysqli_query($connect, "DELETE FROM `wishlist` WHERE `wishlist_id` = $wishlist_id");
+            };
             alert('success');
             historyGo();
         } else {

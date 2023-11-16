@@ -56,9 +56,9 @@ if (isset($_SESSION["user"])) {
                                         $select_wishlist_items = mysqli_query(
                                             $connect,
                                             "SELECT wishlist.wishlist_id,products.product_id,products.product_image,products.product_name,products.product_price,products.product_stock
-                                        FROM `wishlist`
-                                        INNER JOIN `products`
-                                        ON wishlist.product_id = products.product_id AND wishlist.customer_id = {$_SESSION["user_id"]};"
+                                            FROM `wishlist`
+                                            INNER JOIN `products`
+                                            ON wishlist.product_id = products.product_id AND wishlist.customer_id = {$_SESSION["user_id"]};"
                                         );
 
                                         if (mysqli_num_rows($select_wishlist_items) > 0) {
@@ -80,10 +80,16 @@ if (isset($_SESSION["user"])) {
                                                     </td>
                                                     <td>
                                                         <div class="action-wrapper">
-                                                            <button class="button button-outline-secondary">
-                                                                Add to Cart
-                                                            </button>
-                                                            <a href="wishlistDelete.php?wishlist_id=<?php echo $wishlist_item["wishlist_id"] ?>" class="button button-outline-secondary fas fa-trash"></a>
+                                                            <form action="cartAdd.php" method="post">
+                                                                <input type="hidden" name="wishlist_id" value="<?php echo $wishlist_item["wishlist_id"] ?>">
+                                                                <input type="hidden" name="product_id" value="<?php echo $wishlist_item["product_id"] ?>">
+                                                                <input type="hidden" name="product_price" value="<?php echo $wishlist_item["product_price"] ?>">
+                                                                <input type="hidden" name="cart_quantity" value="1">
+                                                                <button type="submit" name="submit" class="button button-outline-secondary">
+                                                                    Add to Cart
+                                                                </button>
+                                                                <a href="wishlistDelete.php?wishlist_id=<?php echo $wishlist_item["wishlist_id"] ?>" class="button button-outline-secondary fas fa-trash"></a>
+                                                            </form>
                                                         </div>
                                                     </td>
                                                 </tr>

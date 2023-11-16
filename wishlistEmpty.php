@@ -21,7 +21,7 @@ include "include/head.php";
                     <h1>Em<i class="fas fa-child"></i>ty!</h1>
                     <h5>No Products were added to the wishlist.</h5>
                     <div class="redirect-link-wrapper u-s-p-t-25">
-                        <a class="redirect-link" href="index.php">
+                        <a class="redirect-link" href="shop.php">
                             <span>Return to Shop</span>
                         </a>
                     </div>
