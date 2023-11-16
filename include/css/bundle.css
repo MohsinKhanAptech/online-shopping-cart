@@ -209,19 +209,6 @@ body {
 	background: rgba(52, 58, 64, 0.5);
 }
 
-/* Page introduction style b */
-.page-style-b {
-	background: url(../images/pattern/pattern-b.png) repeat center center;
-}
-.page-style-b:after {
-	background: #000000;
-}
-
-/* Page introduction style c */
-.page-style-c:after {
-	background: #000000;
-}
-
 /**
  * Asterisk "*" after the field label, If the field is required.
  */

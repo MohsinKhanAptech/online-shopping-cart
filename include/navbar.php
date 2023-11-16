@@ -664,10 +664,10 @@ if (isset($_SESSION["user"])) {
                                         <a href="index.php" class="u-c-brand">Home</a>
                                     </li>
                                     <li>
-                                        <a href="about.html">About</a>
+                                        <a href="about.php">About</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact</a>
+                                        <a href="contact.php">Contact</a>
                                     </li>
                                     <li>
                                         <a href="faq.php">FAQ</a>
