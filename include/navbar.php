@@ -670,13 +670,13 @@ if (isset($_SESSION["user"])) {
                                         <a href="contact.html">Contact</a>
                                     </li>
                                     <li>
-                                        <a href="faq.html">FAQ</a>
+                                        <a href="faq.php">FAQ</a>
                                     </li>
                                     <li>
                                         <a href="store-directory.html">Store Directory</a>
                                     </li>
                                     <li>
-                                        <a href="terms-and-conditions.html">Terms & Conditions</a>
+                                        <a href="termsAndConditions.php">Terms & Conditions</a>
                                     </li>
                                     <li>
                                         <a href="404.html">404</a>
@@ -711,7 +711,7 @@ if (isset($_SESSION["user"])) {
                                         <a href="wishlist.php">Wishlist</a>
                                     </li>
                                     <li>
-                                        <a href="track-order.html">Track your Order</a>
+                                        <a href="trackOrder.php">Track your Order</a>
                                     </li>
                                     <li class="menu-title">Cart Variations</li>
                                     <li>

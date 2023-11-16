@@ -27,13 +27,13 @@
                         <h6>CUSTOMER SERVICE</h6>
                         <ul>
                             <li>
-                                <a href="faq.html">FAQs</a>
+                                <a href="faq.php">FAQs</a>
                             </li>
                             <li>
-                                <a href="track-order.html">Track Order</a>
+                                <a href="trackOrder.php">Track Order</a>
                             </li>
                             <li>
-                                <a href="terms-and-conditions.html">Terms & Conditions</a>
+                                <a href="termsAndConditions.php">Terms & Conditions</a>
                             </li>
                         </ul>
                     </div>

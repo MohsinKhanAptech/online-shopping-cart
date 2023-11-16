@@ -28,7 +28,7 @@ include "include/head.php";
                             <a href="index.php">Home</a>
                         </li>
                         <li class="is-marked">
-                            <a href="#">Account</a>
+                            <a href="account.php">Account</a>
                         </li>
                     </ul>
                 </div>
@@ -111,7 +111,7 @@ include "include/head.php";
                                 <div class="u-s-m-b-30">
                                     <input type="checkbox" class="check-box" id="accept" required />
                                     <label class="label-text no-color" for="accept">I’ve read and accept the
-                                        <a href="terms-and-conditions.html" class="u-c-brand">terms & conditions</a>
+                                        <a href="termsAndConditions.php" class="u-c-brand">terms & conditions</a>
                                     </label>
                                 </div>
                                 <div class="u-s-m-b-45">

@@ -18,7 +18,7 @@ if (isset($_SESSION["user"])) {
                 $wishlist_id = $_POST["wishlist_id"];
                 mysqli_query($connect, "DELETE FROM `wishlist` WHERE `wishlist_id` = $wishlist_id");
             };
-            alert('success');
+            // alert('success');
             historyGo();
         } else {
             alert('ERROR');

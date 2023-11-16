@@ -43,7 +43,7 @@ include "include/head.php";
                             <a href="index.php"><?php echo $product["product_category"] ?></a>
                         </li>
                         <li class="is-marked">
-                            <a href="#"><?php echo $product["product_name"] ?></a>
+                            <a href="product.php?product_id=<?php echo $product["product_id"] ?>"><?php echo $product["product_name"] ?></a>
                         </li>
                     </ul>
                 </div>
