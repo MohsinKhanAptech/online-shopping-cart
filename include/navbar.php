@@ -640,17 +640,17 @@ if (isset($_SESSION["user"])) {
                 <div class="col-lg-9">
                     <ul class="bottom-nav g-nav u-d-none-lg">
                         <li>
-                            <a href="custom-deal-page.html">New Arrivals
+                            <a href="deals.php?orderby=Latest">New Arrivals
                                 <span class="superscript-label-new">NEW</span>
                             </a>
                         </li>
                         <li>
-                            <a href="custom-deal-page.html">Exclusive Deals
+                            <a href="deals.php?orderby=Best Selling">Best Selling
                                 <span class="superscript-label-hot">HOT</span>
                             </a>
                         </li>
                         <li>
-                            <a href="custom-deal-page.html">Flash Deals
+                            <a href="deals.php?orderby=Best Rating">Best Rating
                             </a>
                         </li>
                         <li class="mega-position">
@@ -758,13 +758,13 @@ if (isset($_SESSION["user"])) {
                                     </li>
                                     <li class="menu-title">Custom Deals Page</li>
                                     <li>
-                                        <a href="custom-deal-page.html">Custom Deal Page</a>
+                                        <a href="deals.php?orderby=Latest">Custom Deal Page</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <a href="custom-deal-page.html">Super Sale
+                            <a href="deals.php?orderby=Highest Price">Super Sale
                                 <span class="superscript-label-discount">-15%</span>
                             </a>
                         </li>
