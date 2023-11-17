@@ -7,14 +7,15 @@ $product_id = $_GET["product_id"];
 $select_product = mysqli_query($connect, "SELECT * FROM `products` WHERE `product_id` = '$product_id'");
 $product = mysqli_fetch_assoc($select_product);
 
-$reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS reviews_count FROM `reviews` WHERE `product_id` = '$product_id'"));
-$five_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 5"));
-$four_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 4"));
-$three_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 3"));
-$two_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 2"));
-$one_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) AS rating_count FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 1"));
+$reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) FROM `reviews` WHERE `product_id` = '$product_id'"));
 
-$wishlistExists = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM `wishlist` WHERE `product_id` = '{$product["product_id"]}' AND `customer_id` = '{$_SESSION["user_id"]}'"));
+$five_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 5"));
+$four_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 4"));
+$three_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 3"));
+$two_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 2"));
+$one_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 1"));
+
+$wishlistExists = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(wishlist_id) FROM `wishlist` WHERE `product_id` = '{$product["product_id"]}' AND `customer_id` = '{$_SESSION["user_id"]}'"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +34,7 @@ include "include/head.php";
         <div class="page-style-a">
             <div class="container">
                 <div class="page-intro">
-                    <h2>Detail</h2>
+                    <h2>Product Detail</h2>
                     <ul class="bread-crumb">
                         <li class="has-separator">
                             <i class="ion ion-md-home"></i>
@@ -126,7 +127,11 @@ include "include/head.php";
                                 </div>
                                 <div class="left">
                                     <span>Only:</span>
-                                    <span><?php echo $product["product_stock"] ?></span>
+                                    <span><?php echo $product["product_stock"] ?> left</span>
+                                </div>
+                                <div class="left">
+                                    <span>Sold:</span>
+                                    <span><?php echo $product["product_sold"] ?></span>
                                 </div>
                             </div>
                             <div class="section-6-social-media-quantity-actions u-s-p-y-14">
@@ -170,7 +175,7 @@ include "include/head.php";
                                         <button name="submit" class="button button-outline-secondary" type="submit">
                                             Add to cart
                                         </button>
-                                        <a href="wishlistAdd.php?product_id=<?php echo $product_id ?>" <?php echo $wishlistExists == 1 ? "style='color: #d90429'" : "style='color: black'"; ?> class="button button-outline-secondary far fa-heart u-s-m-l-6"></a>
+                                        <a href="wishlistAdd.php?product_id=<?php echo $product_id ?>" <?php echo $wishlistExists > 0 ? "style='color: #d90429'" : "style='color: black'"; ?> class="button button-outline-secondary far fa-heart u-s-m-l-6"></a>
                                         <a href="mailto:?subject=Amazing%20Product&body=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>" style="color: black;" class="button button-outline-secondary far fa-envelope u-s-m-l-6" target="_blank"></a>
                                     </div>
                                 </form>
