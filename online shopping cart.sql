@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2023 at 06:17 PM
+-- Generation Time: Nov 17, 2023 at 05:34 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -62,11 +62,11 @@ CREATE TABLE `cart_items` (
 --
 
 INSERT INTO `cart_items` (`cart_id`, `customer_id`, `product_id`, `product_price`, `cart_quantity`, `cart_total`) VALUES
-(35, 1, 5, 696969.00, 5, 3484845.00),
 (36, 1, 5, 696969.00, 1, 696969.00),
 (37, 1, 5, 696969.00, 5, 3484845.00),
 (38, 1, 5, 696969.00, 1, 696969.00),
-(39, 1, 5, 696969.00, 2, 1393938.00);
+(39, 1, 5, 696969.00, 2, 1393938.00),
+(40, 1, 5, 696969.00, 1, 696969.00);
 
 -- --------------------------------------------------------
 
@@ -231,47 +231,48 @@ INSERT INTO `order_status` (`order_status_id`, `order_status`) VALUES
 --
 
 CREATE TABLE `products` (
-  `product_id` int(7) NOT NULL,
+  `product_id` int(10) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `product_description` varchar(255) NOT NULL,
   `product_category` varchar(50) NOT NULL,
-  `product_rating` decimal(3,2) NOT NULL,
-  `product_review_count` int(10) NOT NULL,
+  `product_rating` decimal(3,2) NOT NULL DEFAULT 0.00,
+  `product_review_count` int(10) NOT NULL DEFAULT 0,
   `product_price` decimal(65,2) NOT NULL,
-  `product_stock` int(10) NOT NULL,
-  `product_video` varchar(255) NOT NULL,
-  `product_image` varchar(255) NOT NULL
+  `product_stock` int(10) NOT NULL DEFAULT 1,
+  `product_sold` int(10) NOT NULL DEFAULT 0,
+  `product_image` varchar(255) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_rating`, `product_review_count`, `product_price`, `product_stock`, `product_video`, `product_image`) VALUES
-(5, 'ak 47', 'ak 47', 'Toys', 3.29, 7, 696969.00, 696969, '', 'AK_47.jpg'),
-(10, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
-(11, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
-(12, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
-(13, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
-(14, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
-(15, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
-(16, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
-(17, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
-(18, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
-(19, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
-(20, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
-(21, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
-(22, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
-(23, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, '', 'AK_47.jpg'),
-(24, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, '', 'gulab_jamun.png'),
-(25, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
-(26, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
-(27, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
-(28, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
-(29, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
-(30, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
-(31, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png'),
-(32, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, '', 'Terre.png');
+INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_rating`, `product_review_count`, `product_price`, `product_stock`, `product_sold`, `product_image`, `timestamp`) VALUES
+(5, 'ak 47', 'ak 47', 'Toys', 3.67, 3, 696969.00, 696969, 0, 'AK_47.jpg', '2023-11-17 08:12:09'),
+(10, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, 0, 'gulab_jamun.png', '2023-11-17 08:12:09'),
+(11, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, 0, 'AK_47.jpg', '2023-11-17 08:12:09'),
+(12, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, 0, 'gulab_jamun.png', '2023-11-17 08:12:09'),
+(13, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, 0, 'AK_47.jpg', '2023-11-17 08:12:09'),
+(14, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, 0, 'gulab_jamun.png', '2023-11-17 08:12:09'),
+(15, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, 0, 'AK_47.jpg', '2023-11-17 08:12:09'),
+(16, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, 0, 'gulab_jamun.png', '2023-11-17 08:12:09'),
+(17, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, 0, 'AK_47.jpg', '2023-11-17 08:12:09'),
+(18, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, 0, 'gulab_jamun.png', '2023-11-17 08:12:09'),
+(19, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, 0, 'AK_47.jpg', '2023-11-17 08:12:09'),
+(20, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, 0, 'gulab_jamun.png', '2023-11-17 08:12:09'),
+(21, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, 0, 'AK_47.jpg', '2023-11-17 08:12:09'),
+(22, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, 0, 'gulab_jamun.png', '2023-11-17 08:12:09'),
+(23, 'ak 47', 'ak 47', 'Toys', 0.00, 0, 696969.00, 696969, 0, 'AK_47.jpg', '2023-11-17 08:12:09'),
+(24, 'Gulab Jamun', 'Gulab Jamun', 'Sweets', 0.00, 0, 69.00, 69, 0, 'gulab_jamun.png', '2023-11-17 08:12:09'),
+(25, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
+(26, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
+(27, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
+(28, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
+(29, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
+(30, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
+(31, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
+(32, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09');
 
 -- --------------------------------------------------------
 
@@ -284,7 +285,7 @@ CREATE TABLE `reviews` (
   `customer_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL,
   `rating` int(1) NOT NULL,
-  `review_title` varchar(15) NOT NULL,
+  `review_title` varchar(25) NOT NULL,
   `review` varchar(255) NOT NULL,
   `review_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -294,13 +295,9 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`review_id`, `customer_id`, `product_id`, `rating`, `review_title`, `review`, `review_date`) VALUES
-(2, 9, 5, 2, 'no doodoo', 'no doodoo pewpew', '2023-11-15'),
-(3, 1, 5, 5, 'doodoo', 'doodoo pewpew', '2023-11-15'),
-(4, 1, 5, 2, 'no doodoo', 'no doodoo pewpew', '2023-11-15'),
-(5, 1, 5, 5, 'doodoo', 'doodoo pewpew', '2023-11-15'),
-(6, 1, 5, 2, 'no doodoo', 'no doodoo pewpew', '2023-11-15'),
-(7, 1, 5, 5, 'doodoo', 'doodoo pewpew', '2023-11-15'),
-(8, 1, 5, 2, 'no doodoo', 'no doodoo pewpew', '2023-11-15');
+(20, 1, 5, 1, 'doodoo', 'no doodoo no pewpew', '2023-11-16'),
+(21, 1, 5, 5, 'doodoo', 'doodoo pewpew', '2023-11-16'),
+(29, 1, 5, 5, 'doodoo', 'doodoo pewpew', '2023-11-16');
 
 -- --------------------------------------------------------
 
@@ -313,13 +310,6 @@ CREATE TABLE `wishlist` (
   `customer_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `wishlist`
---
-
-INSERT INTO `wishlist` (`wishlist_id`, `customer_id`, `product_id`) VALUES
-(9, 1, 5);
 
 --
 -- Indexes for dumped tables
@@ -428,7 +418,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `completed_orders`
@@ -476,19 +466,19 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `review_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
