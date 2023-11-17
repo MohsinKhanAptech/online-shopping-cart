@@ -157,7 +157,7 @@ include "include/head.php";
                                         <div class="what-product-is">
                                             <ul class="bread-crumb">
                                                 <li class="has-separator">
-                                                    <a href="index.php">Home</a>
+                                                    <a href="shop.php">Shop</a>
                                                 </li>
                                                 <li>
                                                     <a href="shop-v2-sub-category.html"><?php echo $row["product_category"] ?></a>

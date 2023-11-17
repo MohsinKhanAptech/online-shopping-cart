@@ -74,7 +74,7 @@ include "include/head.php";
                                 </div>
                                 <ul class="bread-crumb">
                                     <li class="has-separator">
-                                        <a href="index.php">Home</a>
+                                        <a href="shop.php">Shop</a>
                                     </li>
                                     <li class="has-separator">
                                         <a href="#"><?php echo $product["product_category"] ?></a>
