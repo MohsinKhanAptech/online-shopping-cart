@@ -4176,7 +4176,7 @@ body {
 	display: block;
 }
 .list-style .product-item {
-	display: block;
+	display: grid;
 	width: 100%;
 	max-width: 100%;
 }
