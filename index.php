@@ -47,8 +47,8 @@ include "include/head.php";
         <div class="banner-layer">
             <div class="container">
                 <div class="image-banner">
-                    <a href="shop.php" class="mx-auto banner-hover effect-dark-opacity">
-                        <img class="img-fluid" src="include/images/banners/bts.jpg" alt="Winter Season Banner">
+                    <a href="shop.php?category=Stationaries" class="mx-auto banner-hover effect-dark-opacity">
+                        <img class="img-fluid" src="include/images/banners/bts.jpg" alt="Back To School Banner">
                     </a>
                 </div>
             </div>
@@ -129,6 +129,11 @@ include "include/head.php";
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="redirect-link-wrapper text-center u-s-p-t-25 u-s-p-b-80">
+                    <a class="redirect-link" href="shop.php?category=Stationaries">
+                        <span>View more on this category</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -241,12 +246,12 @@ include "include/head.php";
         <div class="banner-image-view-more">
             <div class="container">
                 <div class="image-banner u-s-m-y-40">
-                    <a href="shop.php" class="mx-auto banner-hover effect-dark-opacity">
-                        <img class="img-fluid" src="include/images/banners/toy.jpg" alt="Banner Image">
+                    <a href="shop.php?category=Toys" class="mx-auto banner-hover effect-dark-opacity">
+                        <img class="img-fluid" src="include/images/banners/toy.jpg" alt="Toys Banner">
                     </a>
                 </div>
                 <div class="redirect-link-wrapper text-center u-s-p-t-25 u-s-p-b-80">
-                    <a class="redirect-link" href="store-directory.html">
+                    <a class="redirect-link" href="shop.php?category=Toys">
                         <span>View more on this category</span>
                     </a>
                 </div>
@@ -330,7 +335,7 @@ include "include/head.php";
                     </div>
                 </div>
                 <div class="redirect-link-wrapper text-center u-s-p-t-25 u-s-p-b-80">
-                    <a class="redirect-link" href="store-directory.html">
+                    <a class="redirect-link" href="shop.php?category=Fragrances">
                         <span>View more on this category</span>
                     </a>
                 </div>
@@ -414,7 +419,7 @@ include "include/head.php";
                     </div>
                 </div>
                 <div class="redirect-link-wrapper text-center u-s-p-t-25 u-s-p-b-80">
-                    <a class="redirect-link" href="store-directory.html">
+                    <a class="redirect-link" href="shop.php?category=Accessories">
                         <span>View more on this category</span>
                     </a>
                 </div>
@@ -498,7 +503,7 @@ include "include/head.php";
                     </div>
                 </div>
                 <div class="redirect-link-wrapper text-center u-s-p-t-25 u-s-p-b-80">
-                    <a class="redirect-link" href="store-directory.html">
+                    <a class="redirect-link" href="shop.php?category=Sweets">
                         <span>View more on this category</span>
                     </a>
                 </div>
@@ -507,7 +512,7 @@ include "include/head.php";
         <!-- Sweets /- -->
         <!-- Continue-Link -->
         <div class="continue-link-wrapper u-s-p-b-80">
-            <a class="continue-link" href="store-directory.html" title="View all products on site">
+            <a class="continue-link" href="shop.php" title="View all products on site">
                 <i class="ion ion-ios-more"></i>
             </a>
         </div>

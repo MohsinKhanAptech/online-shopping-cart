@@ -3,7 +3,7 @@ session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
 
-$product_id = $_GET["product_id"];
+$product_id = isset($_GET["product_id"]) ? $_GET["product_id"] : mysqli_fetch_column(mysqli_query($connect, "SELECT `product_id` FROM `products` ORDER BY `product_sold` DESC LIMIT 1"));
 $select_product = mysqli_query($connect, "SELECT * FROM `products` WHERE `product_id` = '$product_id'");
 $product = mysqli_fetch_assoc($select_product);
 

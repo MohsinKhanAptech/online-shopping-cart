@@ -59,7 +59,7 @@
                         <h6>INFORMATION</h6>
                         <ul>
                             <li>
-                                <a href="store-directory.html">Categories Directory</a>
+                                <a href="shop.php">Shop</a>
                             </li>
                             <li>
                                 <a href="wishlist.php">My Wishlist</a>
@@ -76,7 +76,8 @@
                         <ul>
                             <li>
                                 <i class="fas fa-location-arrow u-s-m-r-9"></i>
-                                <span>819 Sugar Camp Road, West Concord, MN 55985</span>
+                                <span>A 563, Main Shahrah-e-Usman, Sector 11-A North Karachi Twp, Karachi, Sindh 75850
+                                </span>
                             </li>
                             <li>
                                 <a href="tel:+923086561801">

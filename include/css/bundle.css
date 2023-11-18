@@ -855,7 +855,7 @@ body {
 		content: "\F368";
 	}
 	.v-wrapper {
-		height: 265px;
+		height: 235px;
 		overflow-y: auto;
 		border: 1px solid #dcdcdd;
 		padding: 15px;
@@ -4567,6 +4567,10 @@ body {
 		rgba(0, 0, 0, 0) 25%
 	);
 	padding-left: 4px;
+}
+.v-list,
+.v-wrapper {
+	border-radius: 0 0 8px 8px;
 }
 /* .inline {
 	display: inline;
