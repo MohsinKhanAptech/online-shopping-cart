@@ -4531,8 +4531,15 @@ body {
 body {
 	overflow-x: hidden;
 }
+
+.d-grid,
 .x4grid {
 	display: grid;
+}
+.d-grid {
+	gap: 0.5rem;
+}
+.x4grid {
 	grid-template-columns: 1fr 1fr 1fr 0.75fr;
 	justify-content: center;
 	align-items: center;
@@ -4549,6 +4556,17 @@ body {
 	display: flex;
 	justify-content: end;
 	gap: 1rem;
+}
+.activeRating {
+	border-left: solid gold 4px;
+	border-radius: 4px;
+	background: rgb(255, 215, 0);
+	background: linear-gradient(
+		90deg,
+		rgba(255, 215, 0, 0.5) 0%,
+		rgba(0, 0, 0, 0) 25%
+	);
+	padding-left: 4px;
 }
 /* .inline {
 	display: inline;

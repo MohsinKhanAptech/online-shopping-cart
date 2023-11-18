@@ -230,9 +230,9 @@ include "include/head.php";
                             $str = trim($_SERVER['QUERY_STRING'], "&page=$page");
                             if ($product_pages == 1) {
                                 echo
-                                `<li class="active">
-                                <a href="#">1</a>
-                                </li>`;
+                                "<li class='active'>
+                                <a href='#'>1</a>
+                                </li>";
                             } else {
                                 if ($page > 0) {
                                     $page--;

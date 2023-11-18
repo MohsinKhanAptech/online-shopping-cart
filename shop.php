@@ -8,18 +8,27 @@ include "include/functions.php";
 <html lang="en">
 
 <?php
+$five_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` = 5"));
+$four_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` >= 4"));
+$three_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` >= 3"));
+$two_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` >= 2"));
+$one_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` >= 1"));
+
 $product_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) AS count FROM `products`"));
 $orderby = isset($_GET["orderby"]) ? $_GET["orderby"] : "Latest";
 $limit =  isset($_GET["limit"]) ? $_GET["limit"] : 8;
 $page = isset($_GET["page"]) ? $_GET["page"] : 0;
 $offset = $limit * $page;
 
-$get_category = isset($_GET["category"]) ? $_GET["category"] : null;
-$category = isset($get_category) ? "`product_category` = $get_category" : null;
-$price = isset($_GET["price_min"]) && isset($_GET["price_max"]) ? "`product_price` >= {$_GET["price_min"]} AND `product_price` <= {$_GET["price_max"]}" : null;
-$rating = isset($_GET["rating"]) ? "`product_rating` >= {$_GET["rating"]}" : null;
+$get_category = isset($_GET["category"]) ? $_GET["category"] : 0;
+$category = empty($get_category) ? "`product_category` != ''" : "`product_category` = '$get_category'";
+$get_price_min = isset($_GET["price_min"]) ? $_GET["price_min"] : 1;
+$get_price_max = isset($_GET["price_max"]) ? $_GET["price_max"] : 5000000;
+$price = "`product_price` >= $get_price_min AND `product_price` <= $get_price_max";
+$get_rating = isset($_GET["rating"]) ? $_GET["rating"] : 0;
+$rating = "`product_rating` >= $get_rating";
 
-$where = isset($category) && isset($price) && isset($rating) ? $category . "AND" . $price . "AND" . $rating : 1;
+$where = "$category  AND  $price  AND  $rating";
 
 switch ($orderby) {
     case 'Latest':
@@ -74,6 +83,9 @@ switch ($orderby) {
         break;
 }
 
+$product_count_querry = $orderquerry;
+$product_count = mysqli_fetch_column(mysqli_query($connect, str_replace("*", "COUNT(product_id)", $product_count_querry)));
+
 include "include/head.php";
 ?>
 
@@ -117,7 +129,7 @@ include "include/head.php";
                                 <h3 class="title-name">Browse Categories</h3>
                                 <!-- Level 3 -->
                                 <ul class="fetch-categories">
-                                    <li <?php echo !isset($get_category) ? 'class="fetch-mark-category"' : ''; ?>>
+                                    <li <?php echo empty($get_category) ? 'class="fetch-mark-category"' : ''; ?>>
                                         <a href="shop.php">All
                                             <span class="total-fetch-items">(<?php echo $product_count; ?>)</span>
                                         </a>
@@ -138,87 +150,96 @@ include "include/head.php";
                                 <!-- //end Level 3 -->
                             </div>
                             <!-- Fetch-Categories-from-Root-Category  /- -->
-                            <!-- Filters -->
-                            <!-- Filter-Price -->
-                            <div class="facet-filter-by-price">
-                                <h3 class="title-name">Price</h3>
-                                <form class="facet-form" action="#" method="post">
-                                    <!-- Final-Result -->
-                                    <div class="amount-result clearfix">
-                                        <div class="price-from">$1</div>
-                                        <div class="price-to">$3000</div>
+                            <form action="shop.php" method="get" id="shopFilterForm">
+                                <!-- Filters -->
+                                <!-- Filter-Price -->
+                                <div class="facet-filter-by-price">
+                                    <h3 class="title-name">Price ($)</h3>
+                                    <!-- Range  -->
+                                    <div class="price-filter amount-result clearfix d-grid">
+                                        <input type="number" name="price_min" id="" min="1" max="99999999999" value="<?php echo $get_price_min ?>" step="0.01">
+                                        <input type="number" name="price_max" id="" min="1" max="99999999999" value="<?php echo $get_price_max ?>" step="0.01">
+                                        <button type="submit" class="button button-primary">
+                                            Filter
+                                        </button>
                                     </div>
-                                    <!-- Final-Result /- -->
-                                    <!-- Range-Slider  -->
-                                    <div class="price-filter"></div>
-                                    <!-- Range-Slider /- -->
-                                    <!-- Range-Manipulator -->
-                                    <div class="price-slider-range" data-min="1" data-max="5000" data-default-low="1" data-default-high="3000" data-currency="$"></div>
-                                    <!-- Range-Manipulator /- -->
-                                    <button type="submit" class="button button-primary">
-                                        Filter
-                                    </button>
-                                </form>
-                            </div>
-                            <!-- Filter-Price /- -->
-                            <!-- Filter-Rating -->
-                            <div class="facet-filter-by-rating">
-                                <h3 class="title-name">Rating</h3>
-                                <div class="facet-form">
-                                    <!-- 5 Stars -->
-                                    <div class="facet-link">
-                                        <div class="item-stars">
-                                            <div class="star">
-                                                <span style="width: 76px"></span>
-                                            </div>
-                                        </div>
-                                        <span class="total-fetch-items">(0)</span>
-                                    </div>
-                                    <!-- 5 Stars /- -->
-                                    <!-- 4 & Up Stars -->
-                                    <div class="facet-link">
-                                        <div class="item-stars">
-                                            <div class="star">
-                                                <span style="width: 60px"></span>
-                                            </div>
-                                        </div>
-                                        <span class="total-fetch-items">& Up (5)</span>
-                                    </div>
-                                    <!-- 4 & Up Stars /- -->
-                                    <!-- 3 & Up Stars -->
-                                    <div class="facet-link">
-                                        <div class="item-stars">
-                                            <div class="star">
-                                                <span style="width: 45px"></span>
-                                            </div>
-                                        </div>
-                                        <span class="total-fetch-items">& Up (0)</span>
-                                    </div>
-                                    <!-- 3 & Up Stars /- -->
-                                    <!-- 2 & Up Stars -->
-                                    <div class="facet-link">
-                                        <div class="item-stars">
-                                            <div class="star">
-                                                <span style="width: 30px"></span>
-                                            </div>
-                                        </div>
-                                        <span class="total-fetch-items">& Up (0)</span>
-                                    </div>
-                                    <!-- 2 & Up Stars /- -->
-                                    <!-- 1 & Up Stars -->
-                                    <div class="facet-link">
-                                        <div class="item-stars">
-                                            <div class="star">
-                                                <span style="width: 15px"></span>
-                                            </div>
-                                        </div>
-                                        <span class="total-fetch-items">& Up (0)</span>
-                                    </div>
-                                    <!-- 1 & Up Stars /- -->
+                                    <!-- Range /- -->
                                 </div>
-                            </div>
-                            <!-- Filter-Rating -->
-                            <!-- Filters /- -->
+                                <!-- Filter-Price /- -->
+                                <!-- Filter-Rating -->
+                                <div class="facet-filter-by-rating">
+                                    <h3 class="title-name">Rating</h3>
+                                    <div class="facet-form">
+                                        <!-- 5 Stars -->
+                                        <div class="facet-link">
+                                            <input type="radio" onclick="document.getElementById('shopFilterForm').submit()" name="rating" id="fiveStar" value="5" style="display: none;">
+                                            <label <?php echo $get_rating == 5 ? "class='activeRating'" : ''; ?> for="fiveStar">
+                                                <div class="item-stars">
+                                                    <div class="star">
+                                                        <span style="width: 75px"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="total-fetch-items">(<?php echo $five_star_reviews_count ?>)</span>
+                                            </label>
+                                        </div>
+                                        <!-- 5 Stars /- -->
+                                        <!-- 4 & Up Stars -->
+                                        <div class="facet-link">
+                                            <input type="radio" onclick="document.getElementById('shopFilterForm').submit()" name="rating" id="fourStar" value="4" style="display: none;">
+                                            <label <?php echo $get_rating == 4 ? "class='activeRating'" : ''; ?> for="fourStar">
+                                                <div class="item-stars">
+                                                    <div class="star">
+                                                        <span style="width: 60px"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="total-fetch-items">& Up (<?php echo $four_star_reviews_count ?>)</span>
+                                            </label>
+                                        </div>
+                                        <!-- 4 & Up Stars /- -->
+                                        <!-- 3 & Up Stars -->
+                                        <div class="facet-link">
+                                            <input type="radio" onclick="document.getElementById('shopFilterForm').submit()" name="rating" id="threeStar" value="3" style="display: none;">
+                                            <label <?php echo $get_rating == 3 ? "class='activeRating'" : ''; ?> for="threeStar">
+                                                <div class="item-stars">
+                                                    <div class="star">
+                                                        <span style="width: 45px"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="total-fetch-items">& Up (<?php echo $three_star_reviews_count ?>)</span>
+                                            </label>
+                                        </div>
+                                        <!-- 3 & Up Stars /- -->
+                                        <!-- 2 & Up Stars -->
+                                        <div class="facet-link">
+                                            <input type="radio" onclick="document.getElementById('shopFilterForm').submit()" name="rating" id="twoStar" value="2" style="display: none;">
+                                            <label <?php echo $get_rating == 2 ? "class='activeRating'" : ''; ?> for="twoStar">
+                                                <div class="item-stars">
+                                                    <div class="star">
+                                                        <span style="width: 30px"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="total-fetch-items">& Up (<?php echo $two_star_reviews_count ?>)</span>
+                                            </label>
+                                        </div>
+                                        <!-- 2 & Up Stars /- -->
+                                        <!-- 1 & Up Stars -->
+                                        <div class="facet-link">
+                                            <input type="radio" onclick="document.getElementById('shopFilterForm').submit()" name="rating" id="oneStar" value="1" style="display: none;">
+                                            <label <?php echo $get_rating == 1 || !isset($_GET["rating"]) ? "class='activeRating'" : ''; ?> for="oneStar">
+                                                <div class="item-stars">
+                                                    <div class="star">
+                                                        <span style="width: 15px"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="total-fetch-items">& Up (<?php echo $one_star_reviews_count ?>)</span>
+                                            </label>
+                                        </div>
+                                        <!-- 1 & Up Stars /- -->
+                                    </div>
+                                </div>
+                                <!-- Filter-Rating -->
+                                <!-- Filters /- -->
+                            </form>
                         </div>
                     </div>
                     <!-- Shop-Left-Side-Bar-Wrapper /- -->
@@ -315,18 +336,18 @@ include "include/head.php";
                                             if ($row["product_price"] > 100) {
                                                 echo
                                                 '<div class="tag discount">
-                                            <span>-15%</span>
-                                        </div>';
+                                                    <span>-15%</span>
+                                                </div>';
                                             } elseif ($row["product_sold"] > 25) {
                                                 echo
                                                 '<div class="tag hot">
-                                            <span>HOT</span>
-                                        </div>';
+                                                    <span>HOT</span>
+                                                </div>';
                                             } else {
                                                 echo
                                                 '<div class="tag new">
-                                            <span>NEW</span>
-                                        </div>';
+                                                    <span>NEW</span>
+                                                </div>';
                                             } ?>
                                         </div>
                                     </div>
@@ -356,18 +377,18 @@ include "include/head.php";
                                 $str = trim($_SERVER['QUERY_STRING'], "&page=$page");
                                 if ($product_pages == 1) {
                                     echo
-                                    `<li class="active">
-                                <a href="#">1</a>
-                                </li>`;
+                                    "<li class='active'>
+                                        <a href='shop.php?$str&page=$page'>1</a>
+                                    </li>";
                                 } else {
                                     if ($page > 0) {
                                         $page--;
                                         echo
                                         "<li>
-                                        <a href='shop.php?$str&page=$page' title='Previous'>
-                                            <i class='fa fa-angle-left'></i>
-                                        </a>
-                                    </li>";
+                                            <a href='shop.php?$str&page=$page' title='Previous'>
+                                                <i class='fa fa-angle-left'></i>
+                                            </a>
+                                        </li>";
                                         $page++;
                                     }
                                     for ($i = 0; $i < $product_pages; $i++) {
@@ -375,17 +396,17 @@ include "include/head.php";
                                         $p = $i + 1;
                                         echo
                                         "<li $c>
-                                        <a href='shop.php?$str&page=$i'>$p</a>
-                                    </li>";
+                                            <a href='shop.php?$str&page=$i'>$p</a>
+                                        </li>";
                                     }
                                     if ($page < $product_pages - 1) {
                                         $page++;
                                         echo
                                         "<li>
-                                        <a href='shop.php?$str&page=$page' title='Next'>
-                                            <i class='fa fa-angle-right'></i>
-                                        </a>
-                                    </li>";
+                                            <a href='shop.php?$str&page=$page' title='Next'>
+                                                <i class='fa fa-angle-right'></i>
+                                            </a>
+                                        </li>";
                                         $page--;
                                     }
                                 } ?>
