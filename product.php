@@ -41,7 +41,7 @@ include "include/head.php";
                             <a href="index.php">Home</a>
                         </li>
                         <li class="has-separator">
-                            <a href="index.php"><?php echo $product["product_category"] ?></a>
+                            <a href="shop.php?category=<?php echo $product["product_category"] ?>"><?php echo $product["product_category"] ?></a>
                         </li>
                         <li class="is-marked">
                             <a href="product.php?product_id=<?php echo $product["product_id"] ?>"><?php echo $product["product_name"] ?></a>
@@ -69,7 +69,7 @@ include "include/head.php";
                             <div class="section-1-title-breadcrumb-rating">
                                 <div class="product-title">
                                     <h1>
-                                        <a href="#"><?php echo $product["product_name"] ?></a>
+                                        <a href="product.php?product_id=<?php echo $product["product_id"] ?>"><?php echo $product["product_name"] ?></a>
                                     </h1>
                                 </div>
                                 <ul class="bread-crumb">
@@ -77,10 +77,10 @@ include "include/head.php";
                                         <a href="shop.php">Shop</a>
                                     </li>
                                     <li class="has-separator">
-                                        <a href="#"><?php echo $product["product_category"] ?></a>
+                                        <a href="shop.php?category=<?php echo $product["product_category"] ?>"><?php echo $product["product_category"] ?></a>
                                     </li>
                                     <li class="is-marked">
-                                        <a href="#"><?php echo $product["product_name"] ?></a>
+                                        <a href="product.php?product_id=<?php echo $product["product_id"] ?>"><?php echo $product["product_name"] ?></a>
                                     </li>
                                 </ul>
                                 <div class="product-rating">
@@ -511,19 +511,12 @@ include "include/head.php";
                                                     <a class="item-img-wrapper-link" href="product.php?product_id=<?php echo $row["product_id"] ?>">
                                                         <?php echo "<img class='img-fluid' src='uploads/products/{$row["product_image"]}' alt='Product'>" ?>
                                                     </a>
-                                                    <div class="item-action-behaviors">
-                                                        <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look
-                                                        </a>
-                                                        <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                        <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                        <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                                    </div>
                                                 </div>
                                                 <div class="item-content">
                                                     <div class="what-product-is">
                                                         <ul class="bread-crumb">
                                                             <li>
-                                                                <?php echo "<a href='shop-v3-sub-sub-category.html'> {$row["product_category"]} </a>" ?>
+                                                                <?php echo "<a href='shop.php?category={$row["product_category"]}'> {$row["product_category"]} </a>" ?>
                                                             </li>
                                                         </ul>
                                                         <h6 class="item-title">
@@ -531,10 +524,11 @@ include "include/head.php";
                                                         </h6>
                                                         <div class="item-stars">
                                                             <?php
-                                                            echo "<div class='star' title='{$row["product_rating"]} out of 5 - based on 0 Reviews'>
-                                                                    <span style='width: calc(15px * {$row["product_rating"]});'></span>
-                                                                </div>
-                                                                <span>({$row["product_review_count"]})</span>"; ?>
+                                                            echo
+                                                            "<div class='star' title='{$row["product_rating"]} out of 5 - based on 0 Reviews'>
+                                                                <span style='width: calc(15px * {$row["product_rating"]});'></span>
+                                                            </div>
+                                                            <span>({$row["product_review_count"]})</span>"; ?>
                                                         </div>
                                                     </div>
                                                     <div class="price-template">
@@ -547,7 +541,7 @@ include "include/head.php";
                                                     </div>
                                                 </div>
                                                 <div class="tag discount">
-                                                    <span><?php echo "-" . ($row["product_price"] > 100 ? 5 : 15) . "%" ?></span>
+                                                    <span><?php echo "-" . ($row["product_price"] > 100 ? 15 : 5) . "%" ?></span>
                                                 </div>
                                             </div>
                                         <?php
@@ -569,63 +563,6 @@ include "include/head.php";
                         </div>
                     </section>
                     <!-- Similar-Products /- -->
-                    <!-- Recently-View-Products  -->
-                    <!-- <section class="section-maker">
-                        <div class="container">
-                            <div class="sec-maker-header text-center">
-                                <h3 class="sec-maker-h3">Recently View</h3>
-                            </div>
-                            <div class="slider-fouc">
-                                <div class="products-slider owl-carousel" data-item="4">
-                                    <div class="item">
-                                        <div class="image-container">
-                                            <a class="item-img-wrapper-link" href="single-product.html">
-                                                <img class="img-fluid" src="include/images/product/product@3x.jpg" alt="Product" />
-                                            </a>
-                                            <div class="item-action-behaviors">
-                                                <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick Look</a>
-                                                <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                                <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                                <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="item-content">
-                                            <div class="what-product-is">
-                                                <ul class="bread-crumb">
-                                                    <li class="has-separator">
-                                                        <a href="shop.php">Men's</a>
-                                                    </li>
-                                                    <li class="has-separator">
-                                                        <a href="shop-v2-sub-category.html">Outwear</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-v3-sub-sub-category.html">Jackets</a>
-                                                    </li>
-                                                </ul>
-                                                <h6 class="item-title">
-                                                    <a href="single-product.html">Maire Battlefield Jeep Men's Jacket</a>
-                                                </h6>
-                                                <div class="item-stars">
-                                                    <div class="star" title="0 out of 5 - based on 0 Reviews">
-                                                        <span style="width: 0"></span>
-                                                    </div>
-                                                    <span>(0)</span>
-                                                </div>
-                                            </div>
-                                            <div class="price-template">
-                                                <div class="item-new-price">$55.00</div>
-                                                <div class="item-old-price">$60.00</div>
-                                            </div>
-                                        </div>
-                                        <div class="tag hot">
-                                            <span>HOT</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section> -->
-                    <!-- Recently-View-Products /- -->
                 </div>
                 <!-- Different-Product-Section /- -->
             </div>

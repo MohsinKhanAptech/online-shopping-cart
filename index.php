@@ -83,7 +83,7 @@ include "include/head.php";
                                                         <div class="what-product-is">
                                                             <ul class="bread-crumb">
                                                                 <li>
-                                                                    <?php echo "<a href='shop-v3-sub-sub-category.html'> {$row["product_category"]} </a>" ?>
+                                                                    <?php echo "<a href='shop.php?category={$row["product_category"]}'> {$row["product_category"]} </a>" ?>
                                                                 </li>
                                                             </ul>
                                                             <h6 class="item-title">
@@ -195,7 +195,7 @@ include "include/head.php";
                                         <div class="what-product-is">
                                             <ul class="bread-crumb">
                                                 <li>
-                                                    <?php echo "<a href='shop-v3-sub-sub-category.html'> {$row["product_category"]} </a>" ?>
+                                                    <?php echo "<a href='shop.php?category={$row["product_category"]}'> {$row["product_category"]} </a>" ?>
                                                 </li>
                                             </ul>
                                             <h6 class="item-title">
@@ -287,7 +287,7 @@ include "include/head.php";
                                                         <div class="what-product-is">
                                                             <ul class="bread-crumb">
                                                                 <li>
-                                                                    <?php echo "<a href='shop-v3-sub-sub-category.html'> {$row["product_category"]} </a>" ?>
+                                                                    <?php echo "<a href='shop.php?category={$row["product_category"]}'> {$row["product_category"]} </a>" ?>
                                                                 </li>
                                                             </ul>
                                                             <h6 class="item-title">
@@ -371,7 +371,7 @@ include "include/head.php";
                                                         <div class="what-product-is">
                                                             <ul class="bread-crumb">
                                                                 <li>
-                                                                    <?php echo "<a href='shop-v3-sub-sub-category.html'> {$row["product_category"]} </a>" ?>
+                                                                    <?php echo "<a href='shop.php?category={$row["product_category"]}'> {$row["product_category"]} </a>" ?>
                                                                 </li>
                                                             </ul>
                                                             <h6 class="item-title">
@@ -455,7 +455,7 @@ include "include/head.php";
                                                         <div class="what-product-is">
                                                             <ul class="bread-crumb">
                                                                 <li>
-                                                                    <?php echo "<a href='shop-v3-sub-sub-category.html'> {$row["product_category"]} </a>" ?>
+                                                                    <?php echo "<a href='shop.php?category={$row["product_category"]}'> {$row["product_category"]} </a>" ?>
                                                                 </li>
                                                             </ul>
                                                             <h6 class="item-title">

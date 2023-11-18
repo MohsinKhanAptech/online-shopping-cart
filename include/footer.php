@@ -135,7 +135,7 @@
                 </ul>
             </div>
             <p class="copyright-text">Copyright &copy; 2023
-                <a href="index.php">groover</a> All Right Reserved
+                <a href="index.php">OSC</a> All Right Reserved
             </p>
         </div>
     </div>

@@ -60,7 +60,7 @@ if (isset($_SESSION["user"])) {
                                             INNER JOIN `products`
                                             ON cart_items.product_id = products.product_id AND cart_items.customer_id = '{$_SESSION["user_id"]}';"
                                         );
-                                        $cart_total_sum = mysqli_fetch_assoc(mysqli_query($connect, "SELECT SUM(cart_total) AS sum FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}"));
+                                        $cart_total_sum = mysqli_fetch_column(mysqli_query($connect, "SELECT SUM(cart_total) FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}"));
 
                                         if (mysqli_num_rows($select_cart_items) > 0) {
                                             while ($cart_item = mysqli_fetch_assoc($select_cart_items)) { ?>
@@ -136,7 +136,7 @@ if (isset($_SESSION["user"])) {
                                                     <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
                                                 </td>
                                                 <td>
-                                                    <span class="calc-text">$<?php echo $cart_total_sum["sum"] ?></span>
+                                                    <span class="calc-text">$<?php echo $cart_total_sum ?></span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -164,7 +164,7 @@ if (isset($_SESSION["user"])) {
                                                     <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                                 </td>
                                                 <td>
-                                                    <span class="calc-text">$<?php echo $cart_total_sum["sum"] ?></span>
+                                                    <span class="calc-text">$<?php echo $cart_total_sum ?></span>
                                                 </td>
                                             </tr>
                                         </tbody>

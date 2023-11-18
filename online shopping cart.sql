@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2023 at 05:34 PM
+-- Generation Time: Nov 18, 2023 at 08:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -56,17 +56,6 @@ CREATE TABLE `cart_items` (
   `cart_quantity` int(10) NOT NULL,
   `cart_total` decimal(65,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cart_items`
---
-
-INSERT INTO `cart_items` (`cart_id`, `customer_id`, `product_id`, `product_price`, `cart_quantity`, `cart_total`) VALUES
-(36, 1, 5, 696969.00, 1, 696969.00),
-(37, 1, 5, 696969.00, 5, 3484845.00),
-(38, 1, 5, 696969.00, 1, 696969.00),
-(39, 1, 5, 696969.00, 2, 1393938.00),
-(40, 1, 5, 696969.00, 1, 696969.00);
 
 -- --------------------------------------------------------
 
@@ -139,11 +128,18 @@ CREATE TABLE `customer_details` (
   `country` varchar(50) NOT NULL,
   `street_address` varchar(255) NOT NULL,
   `town` varchar(50) NOT NULL,
-  `state` int(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
   `postcode` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `phone` int(20) NOT NULL
+  `phone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customer_details`
+--
+
+INSERT INTO `customer_details` (`customer_detail_id`, `customer_id`, `first_name`, `last_name`, `country`, `street_address`, `town`, `state`, `postcode`, `email`, `phone`) VALUES
+(2, 1, 'asd', 'asd', 'Pakistan', 'asd', 'asd', 'Sindh', 'asd', 'asd@asd', '03001234567');
 
 -- --------------------------------------------------------
 
@@ -196,10 +192,21 @@ CREATE TABLE `orders` (
   `order_id` int(10) NOT NULL,
   `customer_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL,
+  `order_price` decimal(65,2) NOT NULL,
   `order_quantity` int(10) NOT NULL,
   `order_status_id` int(10) NOT NULL DEFAULT 2,
   `order_total` decimal(65,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `customer_id`, `product_id`, `order_price`, `order_quantity`, `order_status_id`, `order_total`) VALUES
+(24, 1, 5, 696969.00, 1, 2, 696969.00),
+(25, 1, 5, 696969.00, 5, 2, 3484845.00),
+(26, 1, 5, 696969.00, 1, 2, 696969.00),
+(27, 1, 5, 696969.00, 3, 2, 2090907.00);
 
 -- --------------------------------------------------------
 
@@ -272,7 +279,8 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `pr
 (29, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
 (30, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
 (31, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
-(32, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09');
+(32, 'Terre d\'Hermès', 'Terre d\'Hermès', 'Fragrances', 0.00, 0, 112.99, 99, 0, 'Terre.png', '2023-11-17 08:12:09'),
+(33, 'ak 47', 'ak 47', 'Toys', 3.67, 3, 696969.00, 696969, 0, 'AK_47.jpg', '2023-11-17 08:12:09');
 
 -- --------------------------------------------------------
 
@@ -310,6 +318,14 @@ CREATE TABLE `wishlist` (
   `customer_id` int(10) NOT NULL,
   `product_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`wishlist_id`, `customer_id`, `product_id`) VALUES
+(26, 1, 5),
+(27, 1, 11);
 
 --
 -- Indexes for dumped tables
@@ -436,7 +452,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT for table `customer_details`
 --
 ALTER TABLE `customer_details`
-  MODIFY `customer_detail_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_detail_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -454,7 +470,7 @@ ALTER TABLE `newsletter`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -466,7 +482,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -478,7 +494,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
