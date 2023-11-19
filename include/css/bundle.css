@@ -4572,6 +4572,27 @@ body {
 .v-wrapper {
 	border-radius: 0 0 8px 8px;
 }
+#livesearch {
+	position: absolute;
+	z-index: 500;
+	width: calc(100% - 1.9rem);
+	background: #ffffff;
+	font-size: 13px;
+	line-height: 24px;
+	overflow: hidden;
+	overflow-wrap: break-word;
+}
+.searchResult {
+	padding: 8px 15px;
+	border: 1px solid #ededed;
+}
+
+.searchResult > a {
+	display: block;
+}
+#viewMore {
+	text-decoration: underline;
+}
 /* .inline {
 	display: inline;
 } */

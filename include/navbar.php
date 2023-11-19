@@ -1,5 +1,6 @@
 <?php
 if (isset($_SESSION["user"])) {
+    $user_name = $_SESSION["user"];
     $cart_number = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`cart_id`) AS num FROM `cart_items` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
     $wishlist_number = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`wishlist_id`) AS num FROM `wishlist` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
 } else {
@@ -30,7 +31,7 @@ if (isset($_SESSION["user"])) {
             <nav>
                 <ul class="secondary-nav g-nav">
                     <li>
-                        <a>My Account
+                        <a><?php echo isset($user_name) ? $user_name : "My Account" ?>
                             <i class="fas fa-chevron-down u-s-m-l-9"></i>
                         </a>
                         <ul class="g-dropdown" style="width:200px">
@@ -71,31 +72,30 @@ if (isset($_SESSION["user"])) {
                 <div class="col-lg-3 col-md-9 col-sm-6">
                     <div class="brand-logo text-lg-center">
                         <a href="index.php">
-                            <img src="include/images/main-logo/logo1.png" alt="groover Brand Logo" class="app-brand-logo">
+                            <img src="include/images/main-logo/logo1.png" alt="OSC Brand Logo" class="app-brand-logo">
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-6 u-d-none-lg">
-                    <form class="form-searchbox">
+                    <form class="form-searchbox" action="shop.php" method="get">
                         <label class="sr-only" for="search-landscape">Search</label>
-                        <input id="search-landscape" type="text" class="text-field" placeholder="Search everything">
+                        <input name="search" id="search-landscape" onkeyup="showResult(this.value,document.getElementById('select-category').value);" type="text" class="text-field" placeholder="Search everything" maxlength="100">
                         <div class="select-box-position">
                             <div class="select-box-wrapper select-hide">
                                 <label class="sr-only" for="select-category">Choose category for search</label>
-                                <select class="select-box" id="select-category">
-                                    <option selected="selected" value="">
-                                        All
-                                    </option>
-                                    <option value="">Accessories</option>
-                                    <option value="">Fragrances</option>
-                                    <option value="">Stationaries</option>
-                                    <option value="">Sweets</option>
-                                    <option value="">Toys</option>
+                                <select name="category" class="select-box" id="select-category">
+                                    <option selected="selected" value="0">All</option>
+                                    <option value="Accessories">Accessories</option>
+                                    <option value="Fragrances">Fragrances</option>
+                                    <option value="Stationaries">Stationaries</option>
+                                    <option value="Sweets">Sweets</option>
+                                    <option value="Toys">Toys</option>
                                 </select>
                             </div>
                         </div>
                         <button id="btn-search" type="submit" class="button button-primary fas fa-search"></button>
                     </form>
+                    <div id="livesearch"></div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6">
                     <nav>
@@ -290,3 +290,21 @@ if (isset($_SESSION["user"])) {
     <!-- Bottom-Header /- -->
 </header>
 <!-- Header /- -->
+<script>
+    function showResult(search, category) {
+        if (search.length == 0) {
+            document.getElementById("livesearch").innerHTML = "";
+            document.getElementById("livesearch").classList.remove("searchResult");
+            return;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("livesearch").innerHTML = this.responseText;
+                document.getElementById("livesearch").classList.add("searchResult");
+            }
+        }
+        xmlhttp.open("GET", "search.php?search=" + search + "&category=" + category, true);
+        xmlhttp.send();
+    }
+</script>

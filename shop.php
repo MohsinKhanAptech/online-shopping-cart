@@ -8,13 +8,8 @@ include "include/functions.php";
 <html lang="en">
 
 <?php
-$five_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` = 5"));
-$four_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` >= 4"));
-$three_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` >= 3"));
-$two_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` >= 2"));
-$one_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE `product_rating` >= 1"));
 
-$product_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) AS count FROM `products`"));
+$all_product_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products`"));
 $orderby = isset($_GET["orderby"]) ? $_GET["orderby"] : "Latest";
 $limit =  isset($_GET["limit"]) ? $_GET["limit"] : 8;
 $page = isset($_GET["page"]) ? $_GET["page"] : 0;
@@ -27,8 +22,10 @@ $get_price_max = isset($_GET["price_max"]) ? $_GET["price_max"] : 5000000;
 $price = "`product_price` >= $get_price_min AND `product_price` <= $get_price_max";
 $get_rating = isset($_GET["rating"]) ? $_GET["rating"] : 0;
 $rating = "`product_rating` >= $get_rating";
+$get_search = isset($_GET["search"]) ? $_GET["search"] : "";
+$search = "`product_name` LIKE '%$get_search%'";
 
-$where = "$category  AND  $price  AND  $rating";
+$where = "$category AND $price AND $rating AND $search";
 
 switch ($orderby) {
     case 'Latest':
@@ -83,6 +80,12 @@ switch ($orderby) {
         break;
 }
 
+$five_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE $category AND `product_rating` = 5"));
+$four_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE $category AND `product_rating` >= 4"));
+$three_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE $category AND `product_rating` >= 3"));
+$two_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE $category AND `product_rating` >= 2"));
+$one_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE $category AND `product_rating` >= 1"));
+
 $product_count_querry = $orderquerry;
 $product_count = mysqli_fetch_column(mysqli_query($connect, str_replace("*", "COUNT(product_id)", $product_count_querry)));
 
@@ -115,6 +118,20 @@ include "include/head.php";
         <!-- Shop-Page -->
         <div class="page-shop u-s-p-t-80">
             <div class="container">
+                <!-- Search-Results -->
+                <?php
+                if (empty($get_search)) {
+                } else {
+                    echo
+                    "<div class='search-results-wrapper u-s-p-b-80'>
+                        <h4 style='text-transform:capitalize;'>WE FOUND $product_count RESULTS FOR
+                            <i>$get_search</i>" .
+                        ($x = $get_category == 0 ? "" : " IN $get_category")
+                        . "</h4>
+                    </div>";
+                }
+                ?>
+                <!-- Search-Results /- -->
                 <!-- Shop-Intro -->
                 <div class="shop-intro">
                     <h3>Men's Clothing</h3>
@@ -131,7 +148,7 @@ include "include/head.php";
                                 <ul class="fetch-categories">
                                     <li <?php echo empty($get_category) ? 'class="fetch-mark-category"' : ''; ?>>
                                         <a href="shop.php">All
-                                            <span class="total-fetch-items">(<?php echo $product_count; ?>)</span>
+                                            <span class="total-fetch-items">(<?php echo $all_product_count; ?>)</span>
                                         </a>
                                     </li>
                                     <?php
@@ -152,6 +169,7 @@ include "include/head.php";
                             <!-- Fetch-Categories-from-Root-Category  /- -->
                             <form action="shop.php" method="get" id="shopFilterForm">
                                 <!-- Filters -->
+                                <input type="hidden" name="category" value="<?php echo $get_category ?>">
                                 <!-- Filter-Price -->
                                 <div class="facet-filter-by-price">
                                     <h3 class="title-name">Price ($)</h3>

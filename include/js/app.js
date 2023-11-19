@@ -71,8 +71,8 @@ $(function () {
 	// ------------------------Back Drop Arena ---------------------------
 	let listItembackDropFlag = false;
 	let $backDrop;
-	let $searchFormWrapper;
-	let $searchFormElement;
+	// let $searchFormWrapper;
+	// let $searchFormElement;
 	let $allListItemsForHover = $(".js-backdrop");
 	// ------------------------Back Drop Arena End ---------------------------
 	// Object Settings
