@@ -83,7 +83,7 @@ if (isset($_SESSION["user"])) {
                         <div class="select-box-position">
                             <div class="select-box-wrapper select-hide">
                                 <label class="sr-only" for="select-category">Choose category for search</label>
-                                <select name="category" class="select-box" id="select-category">
+                                <select name="category" onchange="showResult(document.getElementById('search-landscape').value,this.value);" class="select-box" id="select-category">
                                     <option selected="selected" value="0">All</option>
                                     <option value="Accessories">Accessories</option>
                                     <option value="Fragrances">Fragrances</option>
