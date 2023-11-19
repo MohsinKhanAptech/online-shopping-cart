@@ -4582,15 +4582,23 @@ body {
 	overflow: hidden;
 	overflow-wrap: break-word;
 }
+#responsiveSearch.searchResult {
+	position: absolute;
+	width: 100%;
+	overflow: hidden;
+	overflow-wrap: break-word;
+}
+#responsiveSearch > a {
+	color: #ededed;
+}
 .searchResult {
 	padding: 8px 15px;
 	border: 1px solid #ededed;
 }
-
 .searchResult > a {
 	display: block;
 }
-#viewMore {
+.viewMore {
 	text-decoration: underline;
 }
 /* .inline {

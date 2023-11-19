@@ -15,7 +15,7 @@ if (mysqli_num_rows($search_product_name) > 0) {
     while ($row = mysqli_fetch_assoc($search_product_name)) {
         echo "<a href='product.php?product_id={$row["product_id"]}'>{$row["product_name"]} in {$row["product_category"]}</a>";
     }
-    echo "<a href='shop.php?search=$get_search&category=$get_category' id='viewMore'>View more</a>";
+    echo "<a href='shop.php?search=$get_search&category=$get_category' class='viewMore'>View more</a>";
 } else {
     echo "no result found";
 }

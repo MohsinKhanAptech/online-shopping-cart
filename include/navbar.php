@@ -295,6 +295,8 @@ if (isset($_SESSION["user"])) {
         if (search.length == 0) {
             document.getElementById("livesearch").innerHTML = "";
             document.getElementById("livesearch").classList.remove("searchResult");
+            document.getElementById("responsiveSearch").innerHTML = "";
+            document.getElementById("responsiveSearch").classList.remove("searchResult");
             return;
         }
         var xmlhttp = new XMLHttpRequest();
@@ -302,6 +304,8 @@ if (isset($_SESSION["user"])) {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("livesearch").innerHTML = this.responseText;
                 document.getElementById("livesearch").classList.add("searchResult");
+                document.getElementById("responsiveSearch").innerHTML = this.responseText;
+                document.getElementById("responsiveSearch").classList.add("searchResult");
             }
         }
         xmlhttp.open("GET", "search.php?search=" + search + "&category=" + category, true);
