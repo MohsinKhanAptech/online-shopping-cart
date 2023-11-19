@@ -124,9 +124,9 @@ include "include/head.php";
                 } else {
                     echo
                     "<div class='search-results-wrapper u-s-p-b-80'>
-                        <h4 style='text-transform:capitalize;'>WE FOUND $product_count RESULTS FOR
-                            <i>$get_search</i>" .
-                        ($x = $get_category == 0 ? "" : " IN $get_category")
+                        <h4 style='text-transform:uppercase;'>WE FOUND $product_count RESULTS FOR
+                            <i>'$get_search'</i>" .
+                        ($x = $get_category == 0 ? "" : " IN '$get_category'")
                         . "</h4>
                     </div>";
                 }
