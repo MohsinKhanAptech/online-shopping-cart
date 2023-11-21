@@ -38,11 +38,11 @@ include "include/head.php";
                             <h1>Welcome to
                                 <span>Groover</span>
                             </h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, delectus, modi? Accusamus fuga itaque laborum modi nam ullam vel veniam! Beatae consectetur debitis ipsa ipsam iusto provident quod. Sit, voluptatum!. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, ea, earum eum eveniet ex, expedita id molestias nisi perspiciatis saepe vero voluptas voluptatum. Id, illum ipsum iste laboriosam placeat quo.
+                            <p>At our store, we are passionate about providing our customers with unique and creative items that are not typically found in brick-and-mortar stores. Our team of experts works tirelessly to curate a collection of high-quality products that are sure to delight our customers.
                             </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, delectus, modi? Accusamus fuga itaque laborum modi nam ullam vel veniam! Beatae consectetur debitis ipsa ipsam iusto provident quod. Sit, voluptatum!. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, ea, earum eum eveniet ex, expedita id molestias nisi perspiciatis saepe vero voluptas voluptatum. Id, illum ipsum iste laboriosam placeat quo.
+                            <p>We believe that every gift should be special and that every occasion deserves to be celebrated in style. Whether you’re looking for the perfect gift for a loved one or a unique piece of stationery to make your mark, we’ve got you covered. Thank you for choosing our store for all your gift and stationary needs!
                             </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, delectus, modi? Accusamus fuga itaque laborum modi nam ullam vel veniam! Beatae consectetur debitis ipsa ipsam iusto provident quod. Sit, voluptatum!. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, ea, earum eum eveniet ex, expedita id molestias nisi perspiciatis saepe vero voluptas voluptatum. Id, illum ipsum iste laboriosam placeat quo.
+                            <p>Our online gift and stationary store is passionate about providing our customers with unique and creative items that are not typically found in brick-and-mortar stores. Our team of experts works tirelessly to curate a collection of high-quality products that are sure to delight our customers. We believe that every gift should be special and that every occasion deserves to be celebrated in style. Whether you’re looking for the perfect gift for a loved one or a unique piece of stationery to make your mark, we’ve got you covered.
                             </p>
                         </div>
                     </div>

@@ -39,34 +39,38 @@ include "include/head.php";
                 </div>
                 <ul class="term-list">
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
+                        By accessing this website, we assume you accept these terms and conditions. Do not continue to use our website if you do not agree to take all of the terms and conditions stated on this page.
                     </li>
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
+                        The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: “Client”, “You” and “Your” refers to you, the person log on this website and compliant to the Company's terms and conditions. “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.
                     </li>
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
+                        <h6>Cookies</h6>
+                        We employ the use of cookies. By accessing our website, you agreed to use cookies in agreement with our Privacy Policy.
                     </li>
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
+                        <h6>Intellectual Property Rights</h6>
+                        Unless otherwise stated, we or our licensors own the intellectual property rights in the website and material on the website. All intellectual property rights are reserved.
                     </li>
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
+                        <h6>License</h6>
+                        You may access this from our website for your own personal use subjected to restrictions set in these terms and conditions. You must not republish material from our website, sell, rent or sub-license material from our website.
                     </li>
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
+                        <h6>Limitations of Liability</h6>
+                        We shall not be held responsible for any direct, indirect, incidental, consequential or punitive damages arising out of the use of our website.
                     </li>
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
+                        <h6>Dispute Resolution</h6>
+                        Any dispute arising out of or in connection with this agreement shall be resolved through arbitration in accordance with the rules of the American Arbitration Association.
                     </li>
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
+                        <h6>Changes to Terms and Conditions</h6>
+                        We reserve the right to modify these terms and conditions at any time without notice. By using our website, you agree to be bound by the current version of these terms and conditions.
                     </li>
                     <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
-                    </li>
-                    <li>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci dicta dolorum eius enim iusto maiores natus nostrum quis voluptatibus? Ad illum ipsum libero officia quis quos ratione reiciendis rem?
+                        <h6>Contact Us</h6>
+                        If you have any questions about these terms and conditions, please contact us at support@OSC.com.
                     </li>
                 </ul>
             </div>
