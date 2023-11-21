@@ -8,7 +8,7 @@ include "include/functions.php";
 <html lang="en">
 
 <?php
-$product_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) AS count FROM `products`"));
+$product_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products`"));
 $orderby = isset($_GET["orderby"]) ? $_GET["orderby"] : "Latest";
 $limit =  isset($_GET["limit"]) ? $_GET["limit"] : 8;
 $page = isset($_GET["page"]) ? $_GET["page"] : 0;

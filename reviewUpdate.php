@@ -13,12 +13,12 @@ if (isset($_SESSION["user"])) {
 
     $querry = "UPDATE `reviews` SET `rating`='$rating',`review_title`='$review_title',`review`='$review' WHERE `review_id` = '$review_id' AND `customer_id` = '$customer_id';";
 
-    $count_5stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) AS count_5stars FROM `reviews` WHERE `rating` = 5;"));
-    $count_4stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) AS count_4stars FROM `reviews` WHERE `rating` = 4;"));
-    $count_3stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) AS count_3stars FROM `reviews` WHERE `rating` = 3;"));
-    $count_2stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) AS count_2stars FROM `reviews` WHERE `rating` = 2;"));
-    $count_1stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) AS count_1stars FROM `reviews` WHERE `rating` = 1;"));
-    $product_review_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`rating`) AS count FROM `reviews`;"));
+    $count_5stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) FROM `reviews` WHERE `rating` = 5 AND `product_id` = '$product_id';"));
+    $count_4stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) FROM `reviews` WHERE `rating` = 4 AND `product_id` = '$product_id';"));
+    $count_3stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) FROM `reviews` WHERE `rating` = 3 AND `product_id` = '$product_id';"));
+    $count_2stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) FROM `reviews` WHERE `rating` = 2 AND `product_id` = '$product_id';"));
+    $count_1stars = mysqli_fetch_column(mysqli_query($connect, "SELECT count(`rating`) FROM `reviews` WHERE `rating` = 1 AND `product_id` = '$product_id';"));
+    $product_review_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`rating`) FROM `reviews` WHERE `product_id` = '$product_id';"));
 
     $product_rating = round(($count_5stars * 5 + $count_4stars * 4 + $count_3stars * 3 + $count_2stars * 2 + $count_1stars * 1) / ($product_review_count > 0 ? $product_review_count : 0), 2);
 

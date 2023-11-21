@@ -15,7 +15,7 @@ $three_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT C
 $two_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 2"));
 $one_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`review_id`) FROM `reviews` WHERE `product_id` = '$product_id' AND `rating` = 1"));
 
-$wishlistExists = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(wishlist_id) FROM `wishlist` WHERE `product_id` = '{$product["product_id"]}' AND `customer_id` = '{$_SESSION["user_id"]}'"));
+$wishlistExists = isset($_SESSION["user_id"]) ? mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(wishlist_id) FROM `wishlist` WHERE `product_id` = '{$product["product_id"]}' AND `customer_id` = '{$_SESSION["user_id"]}'")) : 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -264,7 +264,7 @@ include "include/head.php";
                                             </div>
                                         </div>
                                         <?php
-                                        $review_check = mysqli_query($connect, "SELECT * FROM `reviews` WHERE `customer_id` = '{$_SESSION["user_id"]}' AND `product_id` = '$product_id'");
+                                        $review_check = isset($_SESSION["user_id"]) ? mysqli_query($connect, "SELECT * FROM `reviews` WHERE `customer_id` = '{$_SESSION["user_id"]}' AND `product_id` = '$product_id'") : 0;
 
                                         if (isset($_SESSION["user"]) && !mysqli_num_rows($review_check) > 0) { ?>
                                             <div class="row r-2 u-s-m-b-26 u-s-p-b-22">
@@ -308,7 +308,7 @@ include "include/head.php";
                                                 "SELECT customers.customer_name,reviews.*
                                                 FROM `customers` 
                                                 INNER JOIN `reviews`
-                                                ON customers.customer_id = reviews.customer_id AND reviews.product_id = {$product["product_id"]};"
+                                                ON reviews.customer_id = '{$_SESSION["user_id"]}' AND reviews.product_id = '{$product["product_id"]}';"
                                             );
                                             $review = mysqli_fetch_assoc($select_reviews); ?>
 
@@ -336,7 +336,7 @@ include "include/head.php";
                                                     </div>
                                                     <div class="flex-justify-end">
                                                         <a onclick="document.getElementById('review_edit_id').classList.toggle('review_edit_height_toggle');" href="javascript:void(0);" class="button button-outline-secondary fas fa-pen"></a>
-                                                        <a href="reviewDelete.php?review_id=<?php echo $review["review_id"] ?>" class="button button-outline-secondary fas fa-trash"></a>
+                                                        <a href="reviewDelete.php?review_id=<?php echo $review["review_id"] ?>&product_id=<?php echo $review["product_id"] ?>" class="button button-outline-secondary fas fa-trash"></a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -79,7 +79,7 @@ if (isset($_SESSION["user"])) {
                 <div class="col-lg-6 u-d-none-lg">
                     <form class="form-searchbox" action="shop.php" method="get">
                         <label class="sr-only" for="search-landscape">Search</label>
-                        <input name="search" id="search-landscape" onkeyup="showResult(this.value,document.getElementById('select-category').value);" type="text" class="text-field" placeholder="Search everything" maxlength="100">
+                        <input name="search" id="search-landscape" onkeyup="showResult(this.value,document.getElementById('select-category').value);" type="text" class="text-field" placeholder="Search everything" maxlength="100" autocomplete="off">
                         <div class="select-box-position">
                             <div class="select-box-wrapper select-hide">
                                 <label class="sr-only" for="select-category">Choose category for search</label>

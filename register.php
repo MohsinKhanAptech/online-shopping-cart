@@ -16,17 +16,17 @@ if (isset($_POST["submit"])) {
         if ($dup_email_check == 0) {
             if (mysqli_query($connect, $querry)) {
                 alert('signup successful');
-                location('login.php');
+                location('account.php');
             } else {
                 alert('ERROR: signup unsuccessful');
-                location('signup.php');
+                location('account.php');
             }
         } else {
             alert('name is already taken');
-            location('signup.php');
+            location('account.php');
         }
     } else {
         alert('email is already taken');
-        location('signup.php');
+        location('account.php');
     }
 }

@@ -65,7 +65,7 @@ include "include/head.php";
                         <div class="tab-content">
                             <div class="tab-pane active show fade" id="men-latest-products">
                                 <?php
-                                $product_querry = "SELECT * FROM `products` WHERE `product_category` = 'Stationary' LIMIT 8";
+                                $product_querry = "SELECT * FROM `products` WHERE `product_category` = 'Stationaries' LIMIT 8";
                                 $product_querry_run = mysqli_query($connect, $product_querry);
 
                                 if (mysqli_num_rows($product_querry_run) > 0) { ?>
