@@ -4590,6 +4590,7 @@ body {
 }
 #responsiveSearch > a {
 	color: #ededed;
+	text-transform: capitalize;
 }
 .searchResult {
 	padding: 8px 15px;
@@ -4597,10 +4598,8 @@ body {
 }
 .searchResult > a {
 	display: block;
+	text-transform: capitalize;
 }
 .viewMore {
 	text-decoration: underline;
 }
-/* .inline {
-	display: inline;
-} */

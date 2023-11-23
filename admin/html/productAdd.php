@@ -1,10 +1,16 @@
+<?php
+session_start();
+include "include/dbconfig.php";
+include "include/functions.php";
+?>
+
 <!DOCTYPE html>
 
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <?php
-$title = "Product List";
-$page = "product add";
+$title = "Product Add";
+$currentPage = "productAdd";
 include "include/head.php";
 ?>
 
@@ -23,9 +29,9 @@ include "include/head.php";
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     <!-- Content -->
-                    <form action="productAddValid.php" method="post" enctype="multipart/form-data">
+                    <form action="productAddValid.php" method="post" enctype="multipart/form-data" autocomplete="off">
                         <div class="container-xxl flex-grow-1 container-p-y">
-                            <h4 class="py-3 mb-4">Add Product</h4>
+                            <h4 class="py-3 mb-4">Product Add</h4>
                             <div class="app-ecommerce">
                                 <!-- Add Product -->
                                 <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
@@ -34,7 +40,7 @@ include "include/head.php";
                                         <p class="text-muted">Orders placed across your store</p>
                                     </div>
                                     <div class="d-flex align-content-center flex-wrap gap-3">
-                                        <button onclick="location.href='products.php'" type="button" class="btn btn-label-secondary">Discard</button>
+                                        <button onclick="location.href='productList.php'" type="button" class="btn btn-label-secondary">Discard</button>
                                         <button type="submit" name="submit" class="btn btn-primary">Publish product</button>
                                     </div>
                                 </div>
@@ -49,16 +55,16 @@ include "include/head.php";
                                             <div class="card-body">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="ecommerce-product-name">Name</label>
-                                                    <input type="text" class="form-control" id="ecommerce-product-name" placeholder="Product title" name="product_name" aria-label="Product title" maxlength="100">
+                                                    <input type="text" class="form-control" id="ecommerce-product-name" placeholder="Product title" name="product_name" aria-label="Product title" maxlength="100" required>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <label class="form-label" for="Price">Price</label>
-                                                        <input type="number" class="form-control" id="Price" placeholder="Price" name="product_price" min="1" step="0.01" maxlength="65">
+                                                        <input type="number" class="form-control" id="Price" placeholder="Price" name="product_price" min="1" step="0.01" maxlength="65" required>
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label" for="Category">Category</label>
-                                                        <select name="product_category" id="Category" class="form-control">
+                                                        <select name="product_category" id="Category" class="form-control" required>
                                                             <option value="Accessories">Accessories</option>
                                                             <option value="Fragrances">Fragrances</option>
                                                             <option value="Stationaries">Stationaries</option>
@@ -71,7 +77,7 @@ include "include/head.php";
                                                 <div>
                                                     <label class="form-label">Description</label>
                                                     <div class="form-control p-2">
-                                                        <textarea name="product_description" id="" rows="8" class="ql-editor ql-blank" maxlength="1000" style="border: none;resize: none;width: 100%;height: 100%;" placeholder="Product Description"></textarea>
+                                                        <textarea name="product_description" id="" rows="8" class="ql-editor ql-blank" maxlength="1000" style="border: none;resize: none;width: 100%;height: 100%;" placeholder="Product Description" required></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -83,8 +89,10 @@ include "include/head.php";
                                                 <h5 class="mb-0 card-title">Media</h5>
                                             </div>
                                             <div class="card-body">
+                                                <img id="uploadPreview" class="w-px-150 h-px-150 d-none rounded" />
                                                 <div class="dz-message needsclick my-2">
-                                                    <div><input type="file" name="product_image" id="btnBrowse" class="form-control" maxlength="255" accept="image/png, image/jpeg, image/jpg"></div>
+                                                    <label class="form-label" for="btnBrowse">please select an image with a 1:1 aspect ratio (a square image)</label>
+                                                    <div><input type="file" name="product_image" id="btnBrowse" class="form-control" maxlength="255" accept="image/png, image/jpeg, image/jpg" required onchange="document.getElementById('uploadPreview').classList.add('d-none');PreviewImage();"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -120,7 +128,7 @@ include "include/head.php";
                                                                 <label class="form-label" for="ecommerce-product-stock">Add to Stock</label>
                                                                 <div class="row mb-3 g-3">
                                                                     <div class="col-12 col-sm-9">
-                                                                        <input type="number" class="form-control" id="ecommerce-product-stock" placeholder="Quantity" name="product_stock" aria-label="Quantity" min="1">
+                                                                        <input type="number" class="form-control" id="ecommerce-product-stock" placeholder="Quantity" name="product_stock" aria-label="Quantity" min="1" required>
                                                                     </div>
                                                                     <div class="col-12 col-sm-3">
                                                                         <button type="submit" name="submit" class="btn btn-primary"><i class="bx bx-check me-2"></i>Confirm</button>
@@ -155,3 +163,13 @@ include "include/head.php";
 </body>
 
 </html>
+<script type="text/javascript">
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("btnBrowse").files[0]);
+        oFReader.onload = function(oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+            document.getElementById("uploadPreview").classList.remove("d-none");
+        };
+    };
+</script>

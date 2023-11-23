@@ -13,9 +13,11 @@ if (isset($_POST["submit"])) {
 
     $querry = "INSERT INTO `products`( `product_name`, `product_description`, `product_category`, `product_price`, `product_stock`, `product_image`) VALUES ('$product_name','$product_description','$product_category','$product_price','$product_stock','$product_image')";
 
+    $product_id = mysqli_fetch_column(mysqli_query($connect, "SELECT `product_id` FROM `products` WHERE `product_name` = '$product_name'"));
+
     if (mysqli_query($connect, $querry)) {
-        move_uploaded_file($product_image_tmp, "../../../public/uploads/products/" . $product_image);
-        historyGo();
+        move_uploaded_file($product_image_tmp, "../../public/uploads/products/" . $product_image);
+        location("productView.php?product_id=$product_id");
     } else {
         alert("something went wrong");
         historyGo();

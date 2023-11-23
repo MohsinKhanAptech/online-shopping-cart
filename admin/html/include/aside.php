@@ -46,13 +46,13 @@
     <div class="menu-inner-shadow"></div>
     <ul class="menu-inner py-1">
         <!-- Dashboards -->
-        <li class="menu-item  <?php echo $page == "index" ? "active open" : ""; ?>">
+        <li class="menu-item  <?php echo $currentPage == "index" ? "active open" : ""; ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item <?php echo $page == "index" ? "active" : ""; ?>">
+                <li class="menu-item <?php echo $currentPage == "index" ? "active" : ""; ?>">
                     <a href="index.php" class="menu-link">
                         <div data-i18n="Home">Home</div>
                     </a>
@@ -60,63 +60,100 @@
             </ul>
         </li>
         <!-- Product Pages -->
-        <li class="menu-item <?php echo $page == "products" || $page == "product add" || $page == "product delete" ? "active open" : ""; ?>">
+        <li class="menu-item <?php echo $currentPage == "productView" || $currentPage == "productList" || $currentPage == "productAdd" || $currentPage == "productEdit" || $currentPage == "productDelete" ? "active open" : ""; ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div data-i18n="Front Pages">Products</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item <?php echo $page == "products" ? "active" : ""; ?>">
-                    <a href="products.php" class="menu-link">
-                        <div data-i18n="Landing">View Products</div>
+                <li class="menu-item <?php echo $currentPage == "productList" ? "active" : ""; ?>">
+                    <a href="productList.php" class="menu-link">
+                        <div>Product List</div>
                     </a>
                 </li>
-                <li class="menu-item <?php echo $page == "product add" ? "active" : ""; ?>">
+                <li class="menu-item <?php echo $currentPage == "productAdd" ? "active" : ""; ?>">
                     <a href="productAdd.php" class="menu-link">
-                        <div data-i18n="Pricing">Add Product</div>
+                        <div>Product Add</div>
                     </a>
                 </li>
-                <li class="menu-item <?php echo $page == "product delete" ? "active" : ""; ?>">
+                <li class="menu-item <?php echo $currentPage == "productView" ? "active" : ""; ?>">
+                    <a href="productView.php" class="menu-link">
+                        <div>Product View</div>
+                    </a>
+                </li>
+                <li class="menu-item <?php echo $currentPage == "productEdit" ? "active" : ""; ?>">
+                    <a href="productEdit.php" class="menu-link">
+                        <div>Product Edit</div>
+                    </a>
+                </li>
+                <li class="menu-item <?php echo $currentPage == "productDelete" ? "active" : ""; ?>">
                     <a href="productDelete.php" class="menu-link">
-                        <div data-i18n="Payment">Remove Product</div>
+                        <div>Product Remove</div>
                     </a>
                 </li>
             </ul>
         </li>
-        <!-- Employees & Users -->
-        <li class="menu-item">
+        <!-- / Product Pages -->
+        <!-- Employees -->
+        <li class="menu-item" <?php echo $currentPage == "employeeView" || $currentPage == "employeeList" || $currentPage == "employeeAdd" || $currentPage == "employeeEdit" || $currentPage == "employeeDelete" ? "active open" : ""; ?>>
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <iconify-icon class="menu-icon tf-icons" icon="bx:user"></iconify-icon>
-                <div data-i18n="Layouts">Employees &amp; Users</div>
+                <i class="bx bx-hard-hat me-1"></i>
+                <div data-i18n="Layouts">Employees</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="employees.php" class="menu-link">
-                        <div data-i18n="Without menu">View Employees</div>
+                    <a href="employeeList.php" class="menu-link">
+                        <div>Employee List</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="employeeAdd.php" class="menu-link">
-                        <div data-i18n="Without navbar">Add Employee</div>
+                        <div>Employee Add</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="employeeView.php" class="menu-link">
+                        <div>Employee View</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="employeeEdit.php" class="menu-link">
+                        <div>Employee Edit</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="employeeDelete.php" class="menu-link">
-                        <div data-i18n="Without navbar">Remove Employee</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="users.php" class="menu-link">
-                        <div data-i18n="Without menu">View Users</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="userDelete.php" class="menu-link">
-                        <div data-i18n="Without navbar">Remove User</div>
+                        <div>Employee Remove</div>
                     </a>
                 </li>
             </ul>
         </li>
+        <!-- / Employees -->
+        <!-- Customers -->
+        <li class="menu-item" <?php echo $currentPage == "customerView" || $currentPage == "customerList" || $currentPage == "customerEdit" || $currentPage == "customerDelete" ? "active open" : ""; ?>>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="bx bx-user me-1"></i>
+                <div data-i18n="Layouts">Customers</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="customerList.php" class="menu-link">
+                        <div>Customer List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="customerView.php" class="menu-link">
+                        <div>Customer View</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="customerDelete.php" class="menu-link">
+                        <div>Customer Remove</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- / Customers -->
         <!-- Pages -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>

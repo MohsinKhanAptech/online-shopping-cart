@@ -16,16 +16,13 @@ if (isset($_POST["submit"])) {
         $_SESSION["user_id"] = $customer_querry_fetch["customer_id"];
         $_SESSION["user_type"] = "customer";
         location('index.php');
-    } elseif ($user_email = "employee" && $user_password = "employee") {
-        // $_SESSION["user"] = $employee_querry_fetch["employee_name"];
-        // $_SESSION["user_id"] = $employee_querry_fetch["employee_id"];
-        // $_SESSION["user_type"] = "employee";
+    } elseif ($user_email == "employee" && $user_password == "employee") {
         location('employeePanel.php');
-    } elseif ($user_email = "admin" && $user_password = "admin") {
+    } elseif ($user_email == "admin" && $user_password == "admin") {
         // $_SESSION["user"] = $admin_querry_fetch["admin_name"];
         // $_SESSION["user_id"] = $admin_querry_fetch["admin_id"];
         // $_SESSION["user_type"] = "admin";
-        location('adminPanel.php');
+        location('../admin/html/index.php');
     } else {
         alert('login information invalid');
         location('account.php');
