@@ -101,27 +101,27 @@
                 <div data-i18n="Layouts">Employees</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item <?php echo $currentPage == "employeeList" ? "active" : ""; ?>">
                     <a href="employeeList.php" class="menu-link">
                         <div>Employee List</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item <?php echo $currentPage == "employeeAdd" ? "active" : ""; ?>">
                     <a href="employeeAdd.php" class="menu-link">
                         <div>Employee Add</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item <?php echo $currentPage == "employeeView" ? "active" : ""; ?>">
                     <a href="employeeView.php" class="menu-link">
                         <div>Employee View</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item <?php echo $currentPage == "employeeEdit" ? "active" : ""; ?>">
                     <a href="employeeEdit.php" class="menu-link">
                         <div>Employee Edit</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item <?php echo $currentPage == "employeeDelete" ? "active" : ""; ?>">
                     <a href="employeeDelete.php" class="menu-link">
                         <div>Employee Remove</div>
                     </a>
@@ -130,23 +130,23 @@
         </li>
         <!-- / Employees -->
         <!-- Customers -->
-        <li class="menu-item" <?php echo $currentPage == "customerView" || $currentPage == "customerList" || $currentPage == "customerEdit" || $currentPage == "customerDelete" ? "active open" : ""; ?>>
+        <li class="menu-item" <?php echo $currentPage == "customerView" || $currentPage == "customerList" || $currentPage == "customerDelete" ? "active open" : ""; ?>>
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="bx bx-user me-1"></i>
                 <div data-i18n="Layouts">Customers</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item" <?php echo $currentPage == "customerList" ? "active" : ""; ?>>
                     <a href="customerList.php" class="menu-link">
                         <div>Customer List</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item <?php echo $currentPage == "customerView" ? "active" : ""; ?>">
                     <a href="customerView.php" class="menu-link">
                         <div>Customer View</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item <?php echo $currentPage == "customerDelete" ? "active" : ""; ?>">
                     <a href="customerDelete.php" class="menu-link">
                         <div>Customer Remove</div>
                     </a>
