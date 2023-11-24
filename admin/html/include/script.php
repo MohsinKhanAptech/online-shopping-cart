@@ -32,4 +32,3 @@
 <script src="../libs/dropzone.js"></script>
 <script src="../libs/flatpickr.js"></script>
 <script src="../libs/jquery-repeater.js"></script>
-<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>

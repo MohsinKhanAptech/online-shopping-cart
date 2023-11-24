@@ -177,7 +177,7 @@ include "include/head.php";
                                                                 "<td class='d-lg-table-cell d-none'>
                                                                     <span class='text-truncate d-flex align-items-center'>
                                                                         <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-dark me-2'>
-                                                                            <iconify-icon icon='ic:round-watch'></iconify-icon>
+                                                                            <i class='bx bxs-watch'></i>
                                                                         </span>Accessories
                                                                     </span>
                                                                 </td>";
@@ -186,7 +186,7 @@ include "include/head.php";
                                                                 "<td class='d-lg-table-cell d-none'>
                                                                     <span class='text-truncate d-flex align-items-center'>
                                                                         <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-primary me-2'>
-                                                                            <iconify-icon icon='tabler:perfume'></iconify-icon>
+                                                                            <i class='bx bxs-spray-can'></i>
                                                                         </span>Fragrances
                                                                     </span>
                                                                 </td>";
@@ -195,7 +195,7 @@ include "include/head.php";
                                                                 "<td class='d-lg-table-cell d-none'>
                                                                     <span class='text-truncate d-flex align-items-center'>
                                                                         <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-warning me-2'>
-                                                                            <iconify-icon icon='clarity:pencil-solid'></iconify-icon>
+                                                                            <i class='bx bxs-pencil'></i>
                                                                         </span>Stationaries
                                                                     </span>
                                                                 </td>";
@@ -204,7 +204,7 @@ include "include/head.php";
                                                                 "<td class='d-lg-table-cell d-none'>
                                                                     <span class='text-truncate d-flex align-items-center'>
                                                                         <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-danger me-2'>
-                                                                            <iconify-icon icon='fa6-solid:candy-cane'></iconify-icon>
+                                                                            <i class='bx bxs-cake'></i>
                                                                         </span>Sweets
                                                                     </span>
                                                                 </td>";
@@ -213,7 +213,7 @@ include "include/head.php";
                                                                 "<td class='d-lg-table-cell d-none'>
                                                                     <span class='text-truncate d-flex align-items-center'>
                                                                         <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-info me-2'>
-                                                                            <iconify-icon icon='mdi:child-toy'></iconify-icon>
+                                                                            <i class='bx bxs-bot'></i>
                                                                         </span>Toys
                                                                     </span>
                                                                 </td>";
