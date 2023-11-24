@@ -6,11 +6,12 @@ if (isset($_POST["submit"])) {
     $employee_name = $_POST["employee_name"];
     $employee_email = $_POST["employee_email"];
     $employee_password = $_POST["employee_password"];
+    $employee_contact = $_POST["employee_contact"];
     $employee_address = $_POST["employee_address"];
     $employee_image = $_FILES["employee_image"]["name"];
     $employee_image_tmp = $_FILES["employee_image"]["tmp_name"];
 
-    $querry = "INSERT INTO `employees`( `employee_name`, `employee_email`, `employee_password`, `employee_address`, `employee_image`) VALUES ('$employee_name','$employee_email','$employee_password','$employee_address','$employee_image')";
+    $querry = "INSERT INTO `employees`( `employee_name`, `employee_email`, `employee_password`, `employee_contact`, `employee_address`, `employee_image`) VALUES ('$employee_name','$employee_email','$employee_password','$employee_contact','$employee_address','$employee_image')";
 
     $employee_id = mysqli_fetch_column(mysqli_query($connect, "SELECT `employee_id` FROM `employees` WHERE `employee_name` = '$employee_name'"));
 

@@ -21,8 +21,6 @@
         top: 7rem;
     }
 
-    /* #productListSearch {} */
-
     #livesearch.searchResult,
     #productViewSearch.searchResult,
     #productListSearch.searchResult {
@@ -44,6 +42,21 @@
         display: inline-block;
         width: 3em;
         text-align: end;
+    }
+
+    .password {
+        -webkit-text-security: disc;
+    }
+
+    input#employee_contact::-webkit-outer-spin-button,
+    input#employee_contact::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input#employee_contact[type=number] {
+        -moz-appearance: textfield;
     }
 </style>
 <!-- Navbar -->
@@ -96,7 +109,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="javascript:void(0);">
+                        <a class="dropdown-item" href="logout.php">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>

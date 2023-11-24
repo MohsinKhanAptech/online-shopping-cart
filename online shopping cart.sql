@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 08:01 PM
+-- Generation Time: Nov 24, 2023 at 09:36 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -103,35 +103,36 @@ CREATE TABLE `customers` (
   `customer_id` int(10) NOT NULL,
   `customer_name` varchar(100) NOT NULL,
   `customer_email` varchar(255) NOT NULL,
-  `customer_password` varchar(255) NOT NULL
+  `customer_password` varchar(255) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`) VALUES
-(1, 'asad', 'asad@gmail.com', 'asad'),
-(10, 'ahmed', 'ahmed@gmail.com', 'ahmed'),
-(11, 'ali', 'ali@gmail.com', 'ali'),
-(12, 'Aisha', 'Aisha@gmail.com', 'Aisha'),
-(13, 'Abeer', 'Abeer@gmail.com', 'Abeer'),
-(14, 'Babar', 'Babar@gmail.com', 'Babar'),
-(15, 'Bisma', 'Bisma@gmail.com', 'Bisma'),
-(16, 'Asim', 'Asim@gmail.com', 'Asim'),
-(17, 'Akmal', 'Akmal@gmail.com', 'Akmal'),
-(18, 'Anthony', 'Anthony@gmail.com', 'Anthony'),
-(19, 'Ashraf', 'Ashraf@gmail.com', 'Ashraf'),
-(20, 'Anya', 'Anya@gmail.com', 'Anya'),
-(21, 'Anam', 'Anam@gmail.com', 'Anam'),
-(22, 'Amna', 'Amna@gmail.com', 'Amna'),
-(23, 'Bashir', 'Bashir@gmail.com', 'Bashir'),
-(24, 'Bashar', 'Bashar@gmail.com', 'Bashar'),
-(25, 'Babul', 'Babul@gmail.com', 'Babul'),
-(26, 'Amir', 'Amir@gmail.com', 'Amir'),
-(27, 'Asim', 'Asim@gmail.com', 'Asim'),
-(28, 'Asif', 'Asif@gmail.com', 'Asif'),
-(29, 'Asun', 'Asun@gmail.com', 'Asun');
+INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `timestamp`) VALUES
+(1, 'asad', 'asad@gmail.com', 'asad', '2023-11-24 11:13:57'),
+(10, 'ahmed', 'ahmed@gmail.com', 'ahmed', '2023-11-24 11:13:57'),
+(11, 'ali', 'ali@gmail.com', 'ali', '2023-11-24 11:13:57'),
+(12, 'Aisha', 'Aisha@gmail.com', 'Aisha', '2023-11-24 11:13:57'),
+(13, 'Abeer', 'Abeer@gmail.com', 'Abeer', '2023-11-24 11:13:57'),
+(14, 'Babar', 'Babar@gmail.com', 'Babar', '2023-11-24 11:13:57'),
+(15, 'Bisma', 'Bisma@gmail.com', 'Bisma', '2023-11-24 11:13:57'),
+(16, 'Asim', 'Asim@gmail.com', 'Asim', '2023-11-24 11:13:57'),
+(17, 'Akmal', 'Akmal@gmail.com', 'Akmal', '2023-11-24 11:13:57'),
+(18, 'Anthony', 'Anthony@gmail.com', 'Anthony', '2023-11-24 11:13:57'),
+(19, 'Ashraf', 'Ashraf@gmail.com', 'Ashraf', '2023-11-24 11:13:57'),
+(20, 'Anya', 'Anya@gmail.com', 'Anya', '2023-11-24 11:13:57'),
+(21, 'Anam', 'Anam@gmail.com', 'Anam', '2023-11-24 11:13:57'),
+(22, 'Amna', 'Amna@gmail.com', 'Amna', '2023-11-24 11:13:57'),
+(23, 'Bashir', 'Bashir@gmail.com', 'Bashir', '2023-11-24 11:13:57'),
+(24, 'Bashar', 'Bashar@gmail.com', 'Bashar', '2023-11-24 11:13:57'),
+(25, 'Babul', 'Babul@gmail.com', 'Babul', '2023-11-24 11:13:57'),
+(26, 'Amir', 'Amir@gmail.com', 'Amir', '2023-11-24 11:13:57'),
+(27, 'Asim', 'Asim@gmail.com', 'Asim', '2023-11-24 11:13:57'),
+(28, 'Asif', 'Asif@gmail.com', 'Asif', '2023-11-24 11:13:57'),
+(29, 'Asun', 'Asun@gmail.com', 'Asun', '2023-11-24 11:13:57');
 
 -- --------------------------------------------------------
 
@@ -172,16 +173,17 @@ CREATE TABLE `employees` (
   `employee_email` varchar(255) NOT NULL,
   `employee_password` varchar(255) NOT NULL,
   `employee_contact` varchar(50) NOT NULL,
-  `employee_address` varchar(255) NOT NULL,
-  `employee_image` varchar(255) NOT NULL
+  `employee_address` varchar(500) NOT NULL,
+  `employee_image` varchar(255) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`employee_id`, `employee_name`, `employee_email`, `employee_password`, `employee_contact`, `employee_address`, `employee_image`) VALUES
-(1, 'employee', 'employee@gmail.com', 'employee', '03001234567', 'A 563, Main Shahrah-e-Usman, Sector 11-A, Karachi, Sindh', 'employee.png');
+INSERT INTO `employees` (`employee_id`, `employee_name`, `employee_email`, `employee_password`, `employee_contact`, `employee_address`, `employee_image`, `timestamp`) VALUES
+(1, 'employee', 'employee@gmail.com', 'employee', '03001234567', 'A 563, Main Shahrah-e-Usman, Sector 11-A, Karachi, Sindh', 'employee.png', '2023-11-24 10:31:09');
 
 -- --------------------------------------------------------
 
@@ -207,7 +209,8 @@ CREATE TABLE `orders` (
   `order_price` decimal(65,2) NOT NULL,
   `order_quantity` int(10) NOT NULL,
   `order_status_id` int(10) NOT NULL DEFAULT 2,
-  `order_total` decimal(65,2) NOT NULL
+  `order_total` decimal(65,2) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -445,14 +448,6 @@ CREATE TABLE `wishlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `wishlist`
---
-
-INSERT INTO `wishlist` (`wishlist_id`, `customer_id`, `product_id`) VALUES
-(26, 1, 5),
-(27, 1, 11);
-
---
 -- Indexes for dumped tables
 --
 
@@ -495,7 +490,8 @@ ALTER TABLE `customers`
 -- Indexes for table `customer_details`
 --
 ALTER TABLE `customer_details`
-  ADD PRIMARY KEY (`customer_detail_id`);
+  ADD PRIMARY KEY (`customer_detail_id`),
+  ADD KEY `fk customer detail customer_id` (`customer_id`);
 
 --
 -- Indexes for table `employees`
@@ -543,7 +539,9 @@ ALTER TABLE `reviews`
 -- Indexes for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD PRIMARY KEY (`wishlist_id`);
+  ADD PRIMARY KEY (`wishlist_id`),
+  ADD KEY `fk wishlist customer_id` (`customer_id`),
+  ADD KEY `fk wishlist product_id` (`product_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -583,7 +581,7 @@ ALTER TABLE `customer_details`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `employee_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `employee_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `newsletter`
@@ -595,7 +593,7 @@ ALTER TABLE `newsletter`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -607,7 +605,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -629,37 +627,50 @@ ALTER TABLE `wishlist`
 -- Constraints for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  ADD CONSTRAINT `fk cart_items customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
-  ADD CONSTRAINT `fk cart_items product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `fk cart_items customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk cart_items product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `completed_orders`
 --
 ALTER TABLE `completed_orders`
-  ADD CONSTRAINT `fk completed_orders customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
-  ADD CONSTRAINT `fk completed_orders order_status_id` FOREIGN KEY (`order_status_id`) REFERENCES `order_status` (`order_status_id`),
-  ADD CONSTRAINT `fk completed_orders product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `fk completed_orders customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk completed_orders order_status_id` FOREIGN KEY (`order_status_id`) REFERENCES `order_status` (`order_status_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk completed_orders product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `customer_details`
+--
+ALTER TABLE `customer_details`
+  ADD CONSTRAINT `fk customer detail customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `fk orders customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
-  ADD CONSTRAINT `fk orders order_status_id` FOREIGN KEY (`order_status_id`) REFERENCES `order_status` (`order_status_id`),
-  ADD CONSTRAINT `fk orders product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `fk orders customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk orders order_status_id` FOREIGN KEY (`order_status_id`) REFERENCES `order_status` (`order_status_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk orders product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `fk product category` FOREIGN KEY (`product_category`) REFERENCES `categories` (`category_name`);
+  ADD CONSTRAINT `fk product category` FOREIGN KEY (`product_category`) REFERENCES `categories` (`category_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD CONSTRAINT `fk reviews customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
-  ADD CONSTRAINT `fk reviews product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `fk reviews customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk reviews product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `fk wishlist customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk wishlist product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -58,11 +58,11 @@ include "include/head.php";
                                                     <input type="text" class="form-control" id="ecommerce-product-name" placeholder="Product title" name="product_name" aria-label="Product title" maxlength="100" required>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <div class="col">
+                                                    <div class="col-12 col-sm-6 mb-3 mb-sm-0">
                                                         <label class="form-label" for="Price">Price</label>
                                                         <input type="number" class="form-control" id="Price" placeholder="Price" name="product_price" min="1" step="0.01" maxlength="65" required>
                                                     </div>
-                                                    <div class="col">
+                                                    <div class="col-12 col-sm-6">
                                                         <label class="form-label" for="Category">Category</label>
                                                         <select name="product_category" id="Category" class="form-control" required>
                                                             <option value="Accessories">Accessories</option>

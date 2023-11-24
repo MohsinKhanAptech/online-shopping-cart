@@ -38,14 +38,14 @@ include "include/head.php";
                                     <div class="d-flex flex-sm-row flex-column align-items-center gap-3">
                                         <input name="search" type="search" value="" class="form-control w-100" placeholder="Search Product" autocomplete="off" onkeyup="productView(this.value);">
                                         <button class="dt-button add-new btn btn-primary flex-shrink-0 flex-grow-0">
-                                            <span><i class="bx bxs-binoculars me-1"></i><span>View Product</span></span>
+                                            <span><i class="bx bx-search-alt me-1"></i><span>Search Product</span></span>
                                         </button>
                                         <div id="productViewSearch"></div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <?php if (isset($_GET["product_id"])) {
+                        <?php if (!empty($_GET["product_id"])) {
                             $product_id = $_GET["product_id"];
                             $sql = "SELECT * FROM `products` WHERE `product_id` = $product_id";
                             $row = mysqli_fetch_assoc(mysqli_query($connect, $sql)); ?>
@@ -106,6 +106,17 @@ include "include/head.php";
                                             <span>Description:</span>
                                             <span class="fs-6 mx-2 mx-sm-3 mt-sm-2 mt-1"><?php echo $row["product_description"] ?></span>
                                         </p>
+                                    </div>
+                                    <div class="row flex-column flex-sm-row flex-grow-1 p-0 m-0">
+                                        <button onclick="location.href='../../public/product.php?product_id=<?php echo $row['product_id'] ?>'" class="dt-button btn btn-light flex-grow-1 w-auto my-4 mx-sm-5" type="button">
+                                            <span><i class="bx bx-link me-1"></i><span>Open Page</span></span>
+                                        </button>
+                                        <button onclick="location.href='productDelete.php?product_id=<?php echo $product_id ?>'" class="dt-button btn btn-danger flex-grow-1 w-auto my-4 mx-sm-5" type="button">
+                                            <span><i class="bx bx-trash me-1"></i><span>Delete Product</span></span>
+                                        </button>
+                                        <button onclick="location.href='productEdit.php?product_id=<?php echo $row['product_id'] ?>'" class="dt-button btn btn-secondary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
+                                            <span><i class="bx bx-edit me-1"></i><span>Edit Product</span></span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

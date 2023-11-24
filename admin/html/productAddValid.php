@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
 
     $product_id = mysqli_fetch_column(mysqli_query($connect, "SELECT `product_id` FROM `products` WHERE `product_name` = '$product_name'"));
 
-    list($width, $height) = getimagesize($employee_image_tmp);
+    list($width, $height) = getimagesize($product_image_tmp);
 
     if ($width != $height) {
         alert("Image is not square");

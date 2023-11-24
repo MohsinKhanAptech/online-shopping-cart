@@ -131,7 +131,6 @@ include "include/head.php";
                                                             <td class="d-md-table-cell d-none"><span><?php echo $row["timestamp"] ?></span></td>
                                                             <td>
                                                                 <div class="d-inline-block text-nowrap">
-                                                                    <a href="customerEdit.php?customer_id=<?php echo $row["customer_id"] ?>"><button type="button" class="btn btn-sm btn-icon"><i class="bx bx-edit"></i></button></a>
                                                                     <button type="button" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>
                                                                     <div class="dropdown-menu dropdown-menu-end m-0">
                                                                         <a href="customerView.php?customer_id=<?php echo $row["customer_id"] ?>" class="dropdown-item">View</a>

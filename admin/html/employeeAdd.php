@@ -53,16 +53,22 @@ include "include/head.php";
                                                 <h5 class="card-tile mb-0">Employee information</h5>
                                             </div>
                                             <div class="card-body">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="ecommerce-product-name">Name</label>
-                                                    <input type="text" class="form-control" id="ecommerce-product-name" placeholder="Employee title" name="employee_name" aria-label="Employee title" maxlength="100" required>
+                                                <div class="row mb-3">
+                                                    <div class="col-12 col-sm-6 mb-3 mb-sm-0">
+                                                        <label class="form-label" for="ecommerce-product-name">Name</label>
+                                                        <input type="text" class="form-control" id="ecommerce-product-name" placeholder="Employee Name" name="employee_name" aria-label="Employee title" maxlength="100" required>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <label class="form-label" for="employee_contact">Contact</label>
+                                                        <input type="number" class="form-control" id="employee_contact" placeholder="Employee Phone" name="employee_contact" aria-label="Employee title" maxlength="50" required>
+                                                    </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <div class="col">
+                                                    <div class="col-12 col-sm-6 mb-3 mb-sm-0">
                                                         <label class="form-label" for="Email">Email</label>
                                                         <input type="text" class="form-control" id="Email" placeholder="Email" name="employee_email" min="1" step="0.01" maxlength="255" required>
                                                     </div>
-                                                    <div class="col">
+                                                    <div class="col-12 col-sm-6">
                                                         <label class="form-label" for="Password">Password</label>
                                                         <input type="password" class="form-control" id="Password" placeholder="Password" name="employee_password" min="1" step="0.01" maxlength="255" required>
                                                     </div>
