@@ -15,7 +15,12 @@ if (isset($_POST["submit"])) {
 
     $product_id = mysqli_fetch_column(mysqli_query($connect, "SELECT `product_id` FROM `products` WHERE `product_name` = '$product_name'"));
 
-    if (mysqli_query($connect, $querry)) {
+    list($width, $height) = getimagesize($employee_image_tmp);
+
+    if ($width != $height) {
+        alert("Image is not square");
+        historyGo();
+    } elseif (mysqli_query($connect, $querry)) {
         move_uploaded_file($product_image_tmp, "../../public/uploads/products/" . $product_image);
         location("productView.php?product_id=$product_id");
     } else {

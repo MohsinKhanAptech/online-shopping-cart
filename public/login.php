@@ -16,13 +16,8 @@ if (isset($_POST["submit"])) {
         $_SESSION["user_id"] = $customer_querry_fetch["customer_id"];
         $_SESSION["user_type"] = "customer";
         location('index.php');
-    } elseif ($user_email == "employee" && $user_password == "employee") {
-        location('employeePanel.php');
-    } elseif ($user_email == "admin" && $user_password == "admin") {
-        // $_SESSION["user"] = $admin_querry_fetch["admin_name"];
-        // $_SESSION["user_id"] = $admin_querry_fetch["admin_id"];
-        // $_SESSION["user_type"] = "admin";
-        location('../admin/html/index.php');
+    } elseif (($user_email == "employee" && $user_password == "employee") || ($user_email == "admin" && $user_password == "admin")) {
+        location('../admin/html/login.php');
     } else {
         alert('login information invalid');
         location('account.php');

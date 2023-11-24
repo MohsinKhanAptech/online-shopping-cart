@@ -78,7 +78,7 @@ include "include/head.php";
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="py-3 mb-4">Product List</h4>
+                        <h4 class="py-3 mb-4 text-capitalize"><span class="text-muted fw-light">Products /</span><span> Product List</span></h4>
                         <!-- Product List Table -->
                         <form action="productList.php" method="get" id="productListForm">
                             <div class="card">
@@ -119,7 +119,8 @@ include "include/head.php";
                                             <div class="me-sm-5 me-3 ms-md-n2 pe-md-5 flex-grow-1">
                                                 <div id="DataTables_Table_0_filter" class="dataTables_filter">
                                                     <label class="w-100">
-                                                        <input name="search" type="search" value="<?php echo $get_search ?>" class="form-control w-100" placeholder="Search Product" aria-controls="DataTables_Table_0" autocomplete="off">
+                                                        <input name="search" type="search" value="<?php echo $get_search ?>" onkeyup="productView(this.value);" class="form-control w-100" placeholder="Search Product" aria-controls="DataTables_Table_0" autocomplete="off">
+                                                        <div id="productListSearch"></div>
                                                     </label>
                                                 </div>
                                             </div>
@@ -224,7 +225,7 @@ include "include/head.php";
                                                             <td>
                                                                 <div class="d-inline-block text-nowrap">
                                                                     <a href="productEdit.php?product_id=<?php echo $row["product_id"] ?>"><button type="button" class="btn btn-sm btn-icon"><i class="bx bx-edit"></i></button></a>
-                                                                    <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>
+                                                                    <button type="button" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>
                                                                     <div class="dropdown-menu dropdown-menu-end m-0">
                                                                         <a href="productView.php?product_id=<?php echo $row["product_id"] ?>" class="dropdown-item">View</a>
                                                                         <a href="productDelete.php?product_id=<?php echo $row["product_id"] ?>" class="dropdown-item">Remove</a>
@@ -314,3 +315,21 @@ include "include/head.php";
 </body>
 
 </html>
+<script>
+    function productView(search, type = "list") {
+        if (search.length == 0) {
+            document.getElementById("productListSearch").innerHTML = "";
+            document.getElementById("productListSearch").classList.remove("searchResult");
+            return;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("productListSearch").innerHTML = this.responseText;
+                document.getElementById("productListSearch").classList.add("searchResult");
+            }
+        }
+        xmlhttp.open("GET", "productSearch.php?search=" + search + "&type=" + type, true);
+        xmlhttp.send();
+    }
+</script>

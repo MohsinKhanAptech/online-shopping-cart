@@ -13,7 +13,7 @@ if ($type == "products") {
         while ($row = mysqli_fetch_assoc($search_product_name)) {
             echo "<a href='productView.php?product_id={$row["product_id"]}'><span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]} in {$row["product_category"]}</a>";
         }
-        echo "<a href='productList.php' class='viewAll'>View All</a>";
+        echo "<a href='productList.php?search=$search' class='viewAll'>View All</a>";
     } else {
         echo "no result found";
     }
@@ -24,7 +24,7 @@ if ($type == "products") {
         while ($row = mysqli_fetch_assoc($search_product_name)) {
             echo "<a href='userView.php?customer_id={$row["customer_id"]}'><span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}</a>";
         }
-        echo "<a href='userList.php' class='viewAll'>View All</a>";
+        echo "<a href='userList.php?search=$search' class='viewAll'>View All</a>";
     } else {
         echo "no result found";
     }
@@ -35,7 +35,7 @@ if ($type == "products") {
         while ($row = mysqli_fetch_assoc($search_product_name)) {
             echo "<a href='employeeView.php?employee_id={$row["employee_id"]}'><span class='col_id'>{$row["employee_id"]}</span>. {$row["employee_name"]}</a>";
         }
-        echo "<a href='employeeList.php' class='viewAll'>View All</a>";
+        echo "<a href='employeeList.php?search=$search' class='viewAll'>View All</a>";
     } else {
         echo "no result found";
     }

@@ -60,7 +60,7 @@
             </ul>
         </li>
         <!-- Product Pages -->
-        <li class="menu-item <?php echo $currentPage == "productView" || $currentPage == "productList" || $currentPage == "productAdd" || $currentPage == "productEdit" || $currentPage == "productDelete" ? "active open" : ""; ?>">
+        <li class="menu-item <?php echo str_contains($currentPage, "product") ? "active open" : ""; ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div data-i18n="Front Pages">Products</div>
@@ -95,7 +95,7 @@
         </li>
         <!-- / Product Pages -->
         <!-- Employees -->
-        <li class="menu-item" <?php echo $currentPage == "employeeView" || $currentPage == "employeeList" || $currentPage == "employeeAdd" || $currentPage == "employeeEdit" || $currentPage == "employeeDelete" ? "active open" : ""; ?>>
+        <li class="menu-item <?php echo str_contains($currentPage, "employee") ? "active open" : ""; ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="bx bx-hard-hat me-1"></i>
                 <div data-i18n="Layouts">Employees</div>
@@ -130,13 +130,13 @@
         </li>
         <!-- / Employees -->
         <!-- Customers -->
-        <li class="menu-item" <?php echo $currentPage == "customerView" || $currentPage == "customerList" || $currentPage == "customerDelete" ? "active open" : ""; ?>>
+        <li class="menu-item <?php echo str_contains($currentPage, "customer") ? "active open" : ""; ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="bx bx-user me-1"></i>
                 <div data-i18n="Layouts">Customers</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item" <?php echo $currentPage == "customerList" ? "active" : ""; ?>>
+                <li class="menu-item <?php echo $currentPage == "customerList" ? "active" : ""; ?>">
                     <a href="customerList.php" class="menu-link">
                         <div>Customer List</div>
                     </a>

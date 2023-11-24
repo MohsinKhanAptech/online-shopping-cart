@@ -1,6 +1,7 @@
 <style>
     #livesearch,
-    #productViewSearch {
+    #productViewSearch,
+    #productListSearch {
         display: none;
         position: absolute;
         z-index: 500;
@@ -20,8 +21,11 @@
         top: 7rem;
     }
 
+    /* #productListSearch {} */
+
     #livesearch.searchResult,
-    #productViewSearch.searchResult {
+    #productViewSearch.searchResult,
+    #productListSearch.searchResult {
         display: block;
         padding: 8px 16px;
     }

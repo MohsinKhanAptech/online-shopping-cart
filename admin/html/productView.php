@@ -30,7 +30,7 @@ include "include/head.php";
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="py-3 mb-4">Product View</h4>
+                        <h4 class="py-3 mb-4 text-capitalize"><span class="text-muted fw-light">Products /</span><span> Product View</span></h4>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <p class="card-title">Search the product name or id you want to view.</p>

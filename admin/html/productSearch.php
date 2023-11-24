@@ -13,7 +13,11 @@ $sql = "SELECT `product_id`,`product_name`,`product_category` FROM `products` WH
 $search_product_name = mysqli_query($connect, $sql);
 
 if (mysqli_num_rows($search_product_name) > 0) {
-    if ($type == "view") {
+    if ($type == "list") {
+        while ($row = mysqli_fetch_assoc($search_product_name)) {
+            echo "<a href='productList.php?search={$row["product_id"]}'><span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]} in {$row["product_category"]}</a>";
+        }
+    } elseif ($type == "view") {
         while ($row = mysqli_fetch_assoc($search_product_name)) {
             echo "<a href='productView.php?product_id={$row["product_id"]}'><span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]} in {$row["product_category"]}</a>";
         }
@@ -26,7 +30,7 @@ if (mysqli_num_rows($search_product_name) > 0) {
             echo "<a href='productDelete.php?product_id={$row["product_id"]}'><span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]} in {$row["product_category"]}</a>";
         }
     }
-    echo "<a href='productList.php' class='viewAll'>View All</a>";
+    echo "<a href='productList.php?search=$get_search' class='viewAll'>View All</a>";
 } else {
     echo "no result found";
 }

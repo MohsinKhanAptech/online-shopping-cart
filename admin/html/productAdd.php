@@ -31,17 +31,17 @@ include "include/head.php";
                     <!-- Content -->
                     <form action="productAddValid.php" method="post" enctype="multipart/form-data" autocomplete="off">
                         <div class="container-xxl flex-grow-1 container-p-y">
-                            <h4 class="py-3 mb-4">Product Add</h4>
+                            <h4 class="py-3 mb-4 text-capitalize"><span class="text-muted fw-light">Products /</span><span> Product Add</span></h4>
                             <div class="app-ecommerce">
                                 <!-- Add Product -->
                                 <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
                                     <div class="d-flex flex-column justify-content-center">
                                         <h4 class="mb-1 mt-3">Add a new Product</h4>
-                                        <p class="text-muted">Orders placed across your store</p>
+                                        <p class="text-muted"></p>
                                     </div>
                                     <div class="d-flex align-content-center flex-wrap gap-3">
                                         <button onclick="location.href='productList.php'" type="button" class="btn btn-label-secondary">Discard</button>
-                                        <button type="submit" name="submit" class="btn btn-primary">Publish product</button>
+                                        <button type="submit" name="submit" class="btn btn-primary">Publish Product</button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -76,9 +76,7 @@ include "include/head.php";
                                                 <!-- Description -->
                                                 <div>
                                                     <label class="form-label">Description</label>
-                                                    <div class="form-control p-2">
-                                                        <textarea name="product_description" id="" rows="8" class="ql-editor ql-blank" maxlength="1000" style="border: none;resize: none;width: 100%;height: 100%;" placeholder="Product Description" required></textarea>
-                                                    </div>
+                                                    <textarea name="product_description" id="" rows="8" class="ql-editor ql-blank form-control" maxlength="1000" placeholder="Product Description" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
