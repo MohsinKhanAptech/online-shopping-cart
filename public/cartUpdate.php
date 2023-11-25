@@ -3,7 +3,7 @@ session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
 
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["customer"])) {
     if (isset($_POST["submit"])) {
         $cart_id = $_POST["cart_id"];
         $cart_quantity = $_POST["cart_quantity"];

@@ -2,10 +2,10 @@
 session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
-$customer_id = $_SESSION["user_id"];
+$customer_id = $_SESSION["customer_id"];
 $cart_check = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(cart_id) FROM `cart_items` WHERE `customer_id` = '$customer_id'"));
 
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["customer"])) {
     if ($cart_check > 0) {
 ?>
         <!DOCTYPE html>
@@ -107,7 +107,7 @@ if (isset($_SESSION["user"])) {
                                     <div class="row">
                                         <!-- Billing-&-Shipping-Details -->
                                         <?php
-                                        $detail_select = mysqli_query($connect, "SELECT * FROM `customer_details` WHERE `customer_id` = {$_SESSION["user_id"]}");
+                                        $detail_select = mysqli_query($connect, "SELECT * FROM `customer_details` WHERE `customer_id` = {$_SESSION["customer_id"]}");
                                         if (mysqli_num_rows($detail_select) > 0) {
                                             $detail = mysqli_fetch_assoc($detail_select) ?>
                                             <div class="col-lg-6">
@@ -341,9 +341,9 @@ if (isset($_SESSION["user"])) {
                                                             "SELECT products.product_name,cart_items.cart_quantity,cart_items.cart_total
                                                             FROM `cart_items`
                                                             INNER JOIN `products`
-                                                            ON cart_items.product_id = products.product_id AND cart_items.customer_id = {$_SESSION["user_id"]};"
+                                                            ON cart_items.product_id = products.product_id AND cart_items.customer_id = {$_SESSION["customer_id"]};"
                                                         );
-                                                        $cart_total_sum = mysqli_fetch_column(mysqli_query($connect, "SELECT SUM(cart_total) FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}"));
+                                                        $cart_total_sum = mysqli_fetch_column(mysqli_query($connect, "SELECT SUM(cart_total) FROM `cart_items` WHERE `customer_id` = {$_SESSION["customer_id"]}"));
 
                                                         if (mysqli_num_rows($checkout_querry) > 0) {
                                                             while ($row = mysqli_fetch_assoc($checkout_querry)) {
@@ -394,11 +394,11 @@ if (isset($_SESSION["user"])) {
                                                     </tbody>
                                                 </table>
                                                 <div class="u-s-m-b-13">
-                                                    <input type="radio" class="radio-box" name="payment-method" id="cash-on-delivery" required>
+                                                    <input type="radio" class="radio-box" name="payment-method" id="cash-on-delivery" checked required>
                                                     <label class="label-text" for="cash-on-delivery">Cash on Delivery</label>
                                                 </div>
                                                 <div class="u-s-m-b-13">
-                                                    <input type="checkbox" class="check-box" id="accept" required>
+                                                    <input type="checkbox" class="check-box" id="accept" checked required>
                                                     <label class="label-text no-color" for="accept">I’ve read and accept the
                                                         <a href="termsAndConditions.php" class="u-c-brand">terms & conditions</a>
                                                     </label>

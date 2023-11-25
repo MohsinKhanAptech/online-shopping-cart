@@ -2,7 +2,7 @@
 session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["customer"])) {
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -58,9 +58,9 @@ if (isset($_SESSION["user"])) {
                                             "SELECT cart_items.cart_id,cart_items.product_id,products.product_image,products.product_name,products.product_price,cart_items.cart_quantity,cart_items.cart_total
                                             FROM `cart_items`
                                             INNER JOIN `products`
-                                            ON cart_items.product_id = products.product_id AND cart_items.customer_id = '{$_SESSION["user_id"]}';"
+                                            ON cart_items.product_id = products.product_id AND cart_items.customer_id = '{$_SESSION["customer_id"]}';"
                                         );
-                                        $cart_total_sum = mysqli_fetch_column(mysqli_query($connect, "SELECT SUM(cart_total) FROM `cart_items` WHERE `customer_id` = {$_SESSION["user_id"]}"));
+                                        $cart_total_sum = mysqli_fetch_column(mysqli_query($connect, "SELECT SUM(cart_total) FROM `cart_items` WHERE `customer_id` = {$_SESSION["customer_id"]}"));
 
                                         if (mysqli_num_rows($select_cart_items) > 0) {
                                             while ($cart_item = mysqli_fetch_assoc($select_cart_items)) { ?>
@@ -107,14 +107,6 @@ if (isset($_SESSION["user"])) {
                             <!-- Products-List-Wrapper /- -->
                             <!-- Coupon -->
                             <div class="coupon-continue-checkout u-s-m-b-60">
-                                <div class="coupon-area">
-                                    <h6>Enter your coupon code if you have one.</h6>
-                                    <div class="coupon-field">
-                                        <label class="sr-only" for="coupon-code">Apply Coupon</label>
-                                        <input id="coupon-code" type="text" class="text-field" placeholder="Coupon Code" />
-                                        <button type="button" onclick="alert('Cupon Invalid')" class="button">Apply Coupon</button>
-                                    </div>
-                                </div>
                                 <div class="button-area">
                                     <a href="shop.php" class="continue">Continue Shopping</a>
                                     <a href="checkout.php" class="checkout">Proceed to Checkout</a>

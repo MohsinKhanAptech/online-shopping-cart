@@ -12,9 +12,9 @@ if (isset($_POST["submit"])) {
     $customer_querry_fetch = mysqli_fetch_assoc($customer_querry_run);
 
     if (mysqli_num_rows($customer_querry_run) > 0) {
-        $_SESSION["user"] = $customer_querry_fetch["customer_name"];
-        $_SESSION["user_id"] = $customer_querry_fetch["customer_id"];
-        $_SESSION["user_type"] = "customer";
+        $_SESSION["customer"] = $customer_querry_fetch["customer_name"];
+        $_SESSION["customer_id"] = $customer_querry_fetch["customer_id"];
+        $_SESSION["customer_type"] = "customer";
         location('index.php');
     } elseif (($user_email == "employee" && $user_password == "employee") || ($user_email == "admin" && $user_password == "admin")) {
         location('../admin/html/login.php');

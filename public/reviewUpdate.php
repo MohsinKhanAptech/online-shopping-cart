@@ -3,9 +3,9 @@ session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
 
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["customer"])) {
     $review_id = $_POST["review_id"];
-    $customer_id = $_SESSION["user_id"];
+    $customer_id = $_SESSION["customer_id"];
     $product_id = $_POST["product_id"];
     $rating = $_POST["rating"];
     $review_title = $_POST["review_title"];

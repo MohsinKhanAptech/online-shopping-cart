@@ -2,7 +2,7 @@
 session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
-if (isset($_SESSION["user"])) { ?>
+if (isset($_SESSION["customer"])) { ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -57,7 +57,7 @@ if (isset($_SESSION["user"])) { ?>
                                             "SELECT wishlist.wishlist_id,products.product_id,products.product_image,products.product_name,products.product_price,products.product_stock
                                             FROM `wishlist`
                                             INNER JOIN `products`
-                                            ON wishlist.product_id = products.product_id AND wishlist.customer_id = {$_SESSION["user_id"]};"
+                                            ON wishlist.product_id = products.product_id AND wishlist.customer_id = {$_SESSION["customer_id"]};"
                                         );
 
                                         if (mysqli_num_rows($select_wishlist_items) > 0) {

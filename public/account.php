@@ -9,7 +9,7 @@ include "include/functions.php";
 <?php
 $page_title = "Log-in / Sign-up | OSC - OnlineShoppingCart";
 include "include/head.php";
-if (!isset($_SESSION["user"])) {
+if (!isset($_SESSION["customer"])) {
 ?>
 
 

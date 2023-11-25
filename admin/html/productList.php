@@ -122,7 +122,7 @@ include "include/head.php";
                                 </div>
                                 <div class="card-datatable table-responsive">
                                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-                                        <div class="card-header d-flex border-top rounded-0 flex-wrap py-md-0">
+                                        <div class="card-header d-flex flex-column flex-sm-row border-top rounded-0 py-md-0">
                                             <div class="me-sm-5 me-3 ms-md-n2 pe-md-5 flex-grow-1">
                                                 <div id="DataTables_Table_0_filter" class="dataTables_filter">
                                                     <label class="w-100">
@@ -143,8 +143,8 @@ include "include/head.php";
                                                             </select>
                                                         </label>
                                                     </div>
-                                                    <div class="dt-buttons d-flex flex-wrap">
-                                                        <button onclick="location.href='productAdd.php'" class="dt-button add-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="bx bx-plus me-0 me-sm-1"></i><span class="d-none d-sm-inline-block">Add Product</span></span></button>
+                                                    <div class="dt-buttons d-flex">
+                                                        <button onclick="location.href='productAdd.php'" class="dt-button add-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="bx bx-plus me-0 me-sm-1"></i><span class="d-none d-md-inline-block">Add Product</span></span></button>
                                                     </div>
                                                 </div>
                                             </div>

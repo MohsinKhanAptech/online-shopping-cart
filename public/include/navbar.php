@@ -1,8 +1,8 @@
 <?php
-if (isset($_SESSION["user"])) {
-    $user_name = $_SESSION["user"];
-    $cart_number = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`cart_id`) AS num FROM `cart_items` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
-    $wishlist_number = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`wishlist_id`) AS num FROM `wishlist` WHERE `customer_id` = '{$_SESSION["user_id"]}'"));
+if (isset($_SESSION["customer"])) {
+    $user_name = $_SESSION["customer"];
+    $cart_number = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`cart_id`) AS num FROM `cart_items` WHERE `customer_id` = '{$_SESSION["customer_id"]}'"));
+    $wishlist_number = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`wishlist_id`) AS num FROM `wishlist` WHERE `customer_id` = '{$_SESSION["customer_id"]}'"));
 } else {
     $cart_number = 0;
     $wishlist_number = 0;
@@ -46,7 +46,7 @@ if (isset($_SESSION["user"])) {
                                     My Wishlist</a>
                             </li>
                             <li>
-                                <?php if (!isset($_SESSION["user"])) { ?>
+                                <?php if (!isset($_SESSION["customer"])) { ?>
                                     <a href="account.php">
                                         <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
                                         Login / Signup</a>

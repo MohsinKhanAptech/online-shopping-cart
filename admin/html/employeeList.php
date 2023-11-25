@@ -42,7 +42,7 @@ switch ($orderby) {
         break;
 }
 $employee_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(employee_id)", $orderquerry);
-$employee_count_querry = preg_replace("/ ORDER BY `timestamp` DESC LIMIT $limit OFFSET $offset/i", "", $employee_count_querry);
+$employee_count_querry = preg_replace("/ORDER BY (`timestamp` DESC|`timestamp`) LIMIT $limit OFFSET $offset/i", "", $employee_count_querry);
 $employee_count = mysqli_fetch_column(mysqli_query($connect, $employee_count_querry));
 
 $title = "employee List";
@@ -83,7 +83,7 @@ include "include/head.php";
                                 </div>
                                 <div class="card-datatable table-responsive">
                                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-                                        <div class="card-header d-flex border-top rounded-0 flex-wrap py-md-0">
+                                        <div class="card-header d-flex flex-column flex-sm-row border-top rounded-0 py-md-0">
                                             <div class="me-sm-5 me-3 ms-md-n2 pe-md-5 flex-grow-1">
                                                 <div id="DataTables_Table_0_filter" class="dataTables_filter">
                                                     <label class="w-100">
@@ -104,8 +104,8 @@ include "include/head.php";
                                                             </select>
                                                         </label>
                                                     </div>
-                                                    <div class="dt-buttons d-flex flex-wrap">
-                                                        <button onclick="location.href='employeeAdd.php'" class="dt-button add-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="bx bx-plus me-0 me-sm-1"></i><span class="d-none d-sm-inline-block">Add Employee</span></span></button>
+                                                    <div class="dt-buttons d-flex">
+                                                        <button onclick="location.href='employeeAdd.php'" class="dt-button add-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="bx bx-plus me-0 me-sm-1"></i><span class="d-none d-md-inline-block">Add Employee</span></span></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,8 +115,8 @@ include "include/head.php";
                                                 <tr>
                                                     <th class="d-lg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
                                                     <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="product: activate to sort column descending" aria-sort="ascending">employee</th>
-                                                    <th class="d-lg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="category: activate to sort column ascending">email</th>
-                                                    <th class="d-sm-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="price: activate to sort column ascending">contact</th>
+                                                    <th class="d-sm-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="category: activate to sort column ascending">email</th>
+                                                    <th class="d-md-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="price: activate to sort column ascending">contact</th>
                                                     <th class="d-md-table-cell d-none" class="sorting_disabled" rowspan="1" colspan="1" aria-label="stock">added</th>
                                                     <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Actions">Actions</th>
                                                 </tr>

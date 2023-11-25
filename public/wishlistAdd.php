@@ -3,8 +3,8 @@ session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
 
-if (isset($_SESSION["user"])) {
-    $customer_id = $_SESSION["user_id"];
+if (isset($_SESSION["customer"])) {
+    $customer_id = $_SESSION["customer_id"];
     $product_id = $_GET["product_id"];
 
     $wishlistExists = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM `wishlist` WHERE `product_id` = '$product_id' AND `customer_id` = '$customer_id'"));

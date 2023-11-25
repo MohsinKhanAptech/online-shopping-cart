@@ -2,10 +2,10 @@
 session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
-$customer_id = $_SESSION["user_id"];
+$customer_id = $_SESSION["customer_id"];
 $cart_check = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(cart_id) FROM `cart_items` WHERE `customer_id` = '$customer_id'"));
 
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["customer"])) {
     if (isset($_POST["submit"])) {
         if ($cart_check > 0) {
             $first_name = $_POST["first_name"];
