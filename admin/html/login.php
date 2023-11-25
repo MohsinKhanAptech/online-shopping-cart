@@ -2,7 +2,11 @@
 session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
-?>
+
+if (isset($_SESSION["user"])) {
+    alert("An account is already logged-in");
+    historyGo();
+} ?>
 
 <!DOCTYPE html>
 

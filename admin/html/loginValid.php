@@ -3,6 +3,11 @@ session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
 
+if (isset($_SESSION["user"])) {
+    alert("An account is already logged-in");
+    historyGo();
+}
+
 if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -20,6 +25,7 @@ if (isset($_POST["submit"])) {
         $_SESSION["user"] = $employee_querry_fetch["employee_name"];
         $_SESSION["user_id"] = $employee_querry_fetch["employee_id"];
         $_SESSION["user_type"] = "employee";
+        location("productList.php");
     } elseif (mysqli_num_rows($admin_querry_run) > 0) {
         $_SESSION["user"] = $admin_querry_fetch["admin_name"];
         $_SESSION["user_id"] = $admin_querry_fetch["admin_id"];

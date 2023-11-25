@@ -1,6 +1,15 @@
 <?php
+session_start();
 include "include/dbconfig.php";
 include "include/functions.php";
+
+if (!isset($_SESSION["user"])) {
+    alert("Please log-in to gain access");
+    location("login.php");
+} elseif ($_SESSION["user_type"] != "admin") {
+    alert("Only admin can access this page");
+    historyGo();
+}
 
 if (isset($_POST["submit"])) {
     $employee_id = $_POST["employee_id"];
