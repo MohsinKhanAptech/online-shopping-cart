@@ -87,7 +87,7 @@ include "include/head.php";
                                             <div class="me-sm-5 me-3 ms-md-n2 pe-md-5 flex-grow-1">
                                                 <div id="DataTables_Table_0_filter" class="dataTables_filter">
                                                     <label class="w-100">
-                                                        <input name="search" type="search" value="<?php echo $get_search ?>" onkeyup="customerView(this.value);" class="form-control w-100" placeholder="Search Product" aria-controls="DataTables_Table_0" autocomplete="off">
+                                                        <input name="search" type="search" value="<?php echo $get_search ?>" onkeyup="customerView(this.value);" class="form-control w-100" placeholder="Search Customer" aria-controls="DataTables_Table_0" autocomplete="off">
                                                         <div id="productListSearch"></div>
                                                     </label>
                                                 </div>

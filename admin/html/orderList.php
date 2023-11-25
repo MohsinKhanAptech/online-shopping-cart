@@ -112,8 +112,8 @@ include "include/head.php";
                                             <div class="me-sm-5 ms-md-n2 pe-md-5 flex-grow-1">
                                                 <div id="DataTables_Table_0_filter" class="dataTables_filter">
                                                     <label class="d-flex flex-column flex-sm-row gap-3">
-                                                        <input name="search" type="search" value="<?php echo $get_search ?>" onkeyup="orderView(this.value);" class="form-control flex-grow-1 w-auto m-0" placeholder="Search Product" aria-controls="DataTables_Table_0" autocomplete="off">
-                                                        <select class="form-control flex-grow-0 w-auto m-0" name="type" id="">
+                                                        <input name="search" type="search" id="orderSearch" value="<?php echo $get_search ?>" onkeyup="orderView(this.value,document.getElementById('filter').value)" class="form-control flex-grow-1 w-auto m-0" placeholder="Search Product" aria-controls="DataTables_Table_0" autocomplete="off">
+                                                        <select onchange="orderView(document.getElementById('orderSearch').value,this.value)" class="form-control flex-grow-0 w-auto m-0" name="filter" id="filter">
                                                             <option value="order">Order Id</option>
                                                             <option value="product">Product</option>
                                                             <option value="customer">Customer</option>
@@ -264,7 +264,7 @@ include "include/head.php";
 
 </html>
 <script>
-    function orderView(search, type = "list") {
+    function orderView(search, filter) {
         if (search.length == 0) {
             document.getElementById("productListSearch").innerHTML = "";
             document.getElementById("productListSearch").classList.remove("searchResult");
@@ -277,7 +277,7 @@ include "include/head.php";
                 document.getElementById("productListSearch").classList.add("searchResult");
             }
         }
-        xmlhttp.open("GET", "orderSearch.php?search=" + search + "&type=" + type, true);
+        xmlhttp.open("GET", "orderSearch.php?search=" + search + "&type=list&filter=" + filter, true);
         xmlhttp.send();
     }
 </script>

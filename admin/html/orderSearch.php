@@ -11,9 +11,26 @@ if (!isset($_SESSION["user"])) {
     historyGo();
 }
 
+$filter = $_GET["filter"];
 $get_search = $_GET["search"];
-$search = "`order_id` LIKE '%$get_search%'";
 $type = $_GET["type"];
+switch ($filter) {
+    case 'order':
+        $search = "orders.order_id LIKE '%$get_search%'";
+        break;
+
+    case 'product':
+        $search = "products.product_id LIKE '%$get_search%' OR products.product_name LIKE '%$get_search%'";
+        break;
+
+    case 'customer':
+        $search = "customers.customer_id LIKE '%$get_search%' OR customers.customer_name LIKE '%$get_search%'";
+        break;
+
+    default:
+        $search = "orders.order_id LIKE '%$get_search%'";
+        break;
+}
 
 location("orderList.php?search=$get_search");
 
@@ -27,16 +44,16 @@ $sql =
     WHERE $search
     LIMIT 20;
 ";
-$search_order_name = mysqli_query($connect, $sql);
+$search_order_querry = mysqli_query($connect, $sql);
 
-if (mysqli_num_rows($search_order_name) > 0) {
+if (mysqli_num_rows($search_order_querry) > 0) {
     if ($type == "list") {
-        while ($row = mysqli_fetch_assoc($search_order_name)) {
-            echo "<a href='orderList.php?search={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. {$row["order_name"]}</a>";
+        while ($row = mysqli_fetch_assoc($search_order_querry)) {
+            echo "<a href='orderList.php?search={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. <span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}: <span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]}</a>";
         }
     } elseif ($type == "delete") {
-        while ($row = mysqli_fetch_assoc($search_order_name)) {
-            echo "<a href='orderDelete.php?order_id={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. {$row["order_name"]}</a>";
+        while ($row = mysqli_fetch_assoc($search_order_querry)) {
+            echo "<a href='orderDelete.php?order_id={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. <span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}: <span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]}</a>";
         }
     }
     echo "<a href='orderList.php?search=$get_search' class='viewAll'>View All</a>";
