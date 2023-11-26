@@ -15,7 +15,7 @@ if (!isset($_SESSION["user"])) {
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <?php
-$title = "employee Add";
+$title = "Employee Add";
 $currentPage = "employeeAdd";
 include "include/head.php";
 ?>
@@ -90,7 +90,7 @@ include "include/head.php";
                                         <!-- Media -->
                                         <div class="card mb-4">
                                             <div class="card-header d-flex justify-content-between align-items-center">
-                                                <h5 class="mb-0 card-title">Media</h5>
+                                                <h5 class="mb-0 card-title">Image</h5>
                                             </div>
                                             <div class="card-body">
                                                 <img id="uploadPreview" class="w-px-150 h-px-150 d-none rounded" />
