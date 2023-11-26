@@ -6,4 +6,4 @@ mainly focused on backend batabase and php.
 
 make a online shopping store 😊 that sells stationary and other items.
 
-## Completed 😭 #### filnally
+## Completed 😭 filnally
