@@ -4,4 +4,6 @@ mainly focused on backend batabase and php.
 
 #### objective:
 
-make a online shopping store 😊 that sells stationary and otehr items.
+make a online shopping store 😊 that sells stationary and other items.
+
+[x]- completed
