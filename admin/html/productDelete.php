@@ -62,8 +62,8 @@ include "include/head.php";
                                         <button onclick="location.href='../../public/product.php?product_id=<?php echo $row['product_id'] ?>'" class="dt-button btn btn-light" type="button">
                                             <span><i class="bx bx-link me-1"></i><span>Open Page</span></span>
                                         </button>
-                                        <button onclick="location.href='productDelete.php'" class="dt-button btn btn-secondary" type="button">
-                                            <span><i class="bx bx-x-circle me-1"></i><span>Discard</span></span>
+                                        <button onclick="location.href='productDelete.php'" class="dt-button btn btn-primary" type="button">
+                                            <span><i class="bx bx-x-circle me-1"></i><span>Cancel</span></span>
                                         </button>
                                         <form action="productDeleteValid.php" method="post">
                                             <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
@@ -121,8 +121,8 @@ include "include/head.php";
                                         <form action="productDeleteValid.php" method="post">
                                             <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
                                             <div class="row flex-column flex-sm-row flex-grow-1 p-0 m-0">
-                                                <button onclick="location.href='productEdit.php'" class="dt-button btn btn-secondary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
-                                                    <span><i class="bx bx-x-circle me-1"></i><span>Discard</span></span>
+                                                <button onclick="location.href='productEdit.php'" class="dt-button btn btn-primary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
+                                                    <span><i class="bx bx-x-circle me-1"></i><span>Cancel</span></span>
                                                 </button>
                                                 <button onclick="location.href='productDelete.php?product_id=<?php echo $product_id ?>'" class="dt-button btn btn-danger flex-grow-1 w-auto my-4 mx-sm-5" type="button">
                                                     <span><i class="bx bx-trash me-1"></i><span>Delete Product</span></span>

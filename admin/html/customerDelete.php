@@ -61,8 +61,8 @@ include "include/head.php";
                                     <form action="customerDeleteValid.php" method="post">
                                         <input type="hidden" name="customer_id" value="<?php echo $customer_id ?>">
                                         <div class="flex-shrink-0 flex-grow-0 d-flex flex-column flex-sm-row gap-2">
-                                            <button onclick="location.href='customerDelete.php'" class="dt-button btn btn-secondary" type="button">
-                                                <span><i class="bx bx-x-circle me-1"></i><span>Discard</span></span>
+                                            <button onclick="location.href='customerDelete.php'" class="dt-button btn btn-primary" type="button">
+                                                <span><i class="bx bx-x-circle me-1"></i><span>Cancel</span></span>
                                             </button>
                                             <button onclick="location.href='customerDelete.php?customer_id=<?php echo $customer_id ?>'" class="dt-button btn btn-danger" type="submit" name="submit">
                                                 <span><i class="bx bx-trash me-1"></i><span>Delete Customer</span></span>
@@ -149,8 +149,8 @@ include "include/head.php";
                                         <form action="customerDeleteValid.php" method="post">
                                             <input type="hidden" name="customer_id" value="<?php echo $customer_id ?>">
                                             <div class="row flex-column flex-sm-row flex-grow-1 p-0 m-0">
-                                                <button onclick="location.href='customerDelete.php'" class="dt-button btn btn-secondary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
-                                                    <span><i class="bx bx-x-circle me-1"></i><span>Discard</span></span>
+                                                <button onclick="location.href='customerDelete.php'" class="dt-button btn btn-primary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
+                                                    <span><i class="bx bx-x-circle me-1"></i><span>Cancel</span></span>
                                                 </button>
                                                 <button class="dt-button btn btn-danger flex-grow-1 w-auto my-4 mx-sm-5" type="submit" name="submit">
                                                     <span><i class="bx bx-trash me-1"></i><span>Delete Customer</span></span>

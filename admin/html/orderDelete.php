@@ -74,8 +74,8 @@ include "include/head.php";
                                     <form action="orderDeleteValid.php" method="post">
                                         <input type="hidden" name="order_id" value="<?php echo $order_id ?>">
                                         <div class="flex-shrink-0 flex-grow-0 d-flex flex-column flex-sm-row gap-2">
-                                            <button onclick="location.href='orderDelete.php'" class="dt-button btn btn-secondary" type="button">
-                                                <span><i class="bx bx-x-circle me-1"></i><span>Discard</span></span>
+                                            <button onclick="location.href='orderDelete.php'" class="dt-button btn btn-primary" type="button">
+                                                <span><i class="bx bx-x-circle me-1"></i><span>Cancel</span></span>
                                             </button>
                                             <button onclick="location.href='orderDelete.php?order_id=<?php echo $order_id ?>'" class="dt-button btn btn-danger" type="submit" name="submit">
                                                 <span><i class="bx bx-trash me-1"></i><span>Delete Order</span></span>
@@ -249,8 +249,8 @@ include "include/head.php";
                                     <form action="orderDeleteValid.php" method="post">
                                         <div class="row flex-column flex-sm-row flex-grow-1 p-0 m-0">
                                             <input type="hidden" name="order_id" value="<?php echo $order_id ?>">
-                                            <button onclick="location.href='orderDelete.php'" class="dt-button btn btn-secondary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
-                                                <span><i class="bx bx-edit me-1"></i><span>Discard</span></span>
+                                            <button onclick="location.href='orderDelete.php'" class="dt-button btn btn-primary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
+                                                <span><i class="bx bx-x-circle me-1"></i><span>Cancel</span></span>
                                             </button>
                                             <button class="dt-button btn btn-danger flex-grow-1 w-auto my-4 mx-sm-5" type="submit" name="submit">
                                                 <span><i class="bx bx-trash me-1"></i><span>Delete Order</span></span>
@@ -278,7 +278,7 @@ include "include/head.php";
 
 </html>
 <script>
-    function orderView(search, type = "delete") {
+    function orderView(search, filter, type = "delete") {
         if (search.length == 0) {
             document.getElementById("productViewSearch").innerHTML = "";
             document.getElementById("productViewSearch").classList.remove("searchResult");
@@ -291,7 +291,7 @@ include "include/head.php";
                 document.getElementById("productViewSearch").classList.add("searchResult");
             }
         }
-        xmlhttp.open("GET", "orderSearch.php?search=" + search + "&type=" + type, true);
+        xmlhttp.open("GET", "orderSearch.php?search=" + search + "&type=" + type + "&filter=" + filter, true);
         xmlhttp.send();
     }
 </script>
