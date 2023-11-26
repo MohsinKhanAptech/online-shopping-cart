@@ -19,8 +19,6 @@ if (isset($_POST["submit"])) {
 
     $querry = "INSERT INTO `admins`( `admin_name`, `admin_email`, `admin_password`, `admin_image`) VALUES ('$admin_name','$admin_email','$admin_password','$admin_image')";
 
-    $admin_id = mysqli_fetch_column(mysqli_query($connect, "SELECT `admin_id` FROM `admins` WHERE `admin_name` = '$admin_name'"));
-
     $dupcheck = mysqli_query($connect, "SELECT `admin_id` FROM `admins` WHERE `admin_name` = '$admin_name' OR `admin_email` = '$admin_email'");
 
     list($width, $height) = getimagesize($admin_image_tmp);
@@ -33,6 +31,7 @@ if (isset($_POST["submit"])) {
         historyGo();
     } else {
         if (mysqli_query($connect, $querry)) {
+            $admin_id = mysqli_fetch_column(mysqli_query($connect, "SELECT `admin_id` FROM `admins` WHERE `admin_name` = '$admin_name'"));
             move_uploaded_file($admin_image_tmp, "uploads/admins/" . $admin_image);
             location("adminView.php?admin_id=$admin_id");
         } else {

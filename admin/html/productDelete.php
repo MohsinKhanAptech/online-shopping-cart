@@ -124,7 +124,7 @@ include "include/head.php";
                                                 <button onclick="location.href='productEdit.php'" class="dt-button btn btn-primary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
                                                     <span><i class="bx bx-x-circle me-1"></i><span>Cancel</span></span>
                                                 </button>
-                                                <button onclick="location.href='productDelete.php?product_id=<?php echo $product_id ?>'" class="dt-button btn btn-danger flex-grow-1 w-auto my-4 mx-sm-5" type="button">
+                                                <button class="dt-button btn btn-danger flex-grow-1 w-auto my-4 mx-sm-5" type="submit" name="submit">
                                                     <span><i class="bx bx-trash me-1"></i><span>Delete Product</span></span>
                                                 </button>
                                             </div>

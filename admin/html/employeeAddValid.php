@@ -21,8 +21,6 @@ if (isset($_POST["submit"])) {
 
     $querry = "INSERT INTO `employees`( `employee_name`, `employee_email`, `employee_password`, `employee_contact`, `employee_address`, `employee_image`) VALUES ('$employee_name','$employee_email','$employee_password','$employee_contact','$employee_address','$employee_image')";
 
-    $employee_id = mysqli_fetch_column(mysqli_query($connect, "SELECT `employee_id` FROM `employees` WHERE `employee_name` = '$employee_name'"));
-
     $dupcheck = mysqli_query($connect, "SELECT `employee_id` FROM `employees` WHERE `employee_name` = '$employee_name' OR `employee_email` = '$employee_email'");
 
     list($width, $height) = getimagesize($employee_image_tmp);
@@ -35,6 +33,7 @@ if (isset($_POST["submit"])) {
         historyGo();
     } else {
         if (mysqli_query($connect, $querry)) {
+            $employee_id = mysqli_fetch_column(mysqli_query($connect, "SELECT `employee_id` FROM `employees` WHERE `employee_name` = '$employee_name'"));
             move_uploaded_file($employee_image_tmp, "uploads/employees/" . $employee_image);
             location("employeeView.php?employee_id=$employee_id");
         } else {

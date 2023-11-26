@@ -66,6 +66,7 @@ include "include/head.php";
                                             <button class="dt-button btn btn-primary" type="submit" name="submit">
                                                 <span><i class="bx bx-check-circle me-1"></i><span>Save Changes</span></span>
                                             </button>
+                                            <input type="hidden" name="admin_id" value="<?php echo $admin_id ?>">
                                         </div>
                                     </div>
                                     <div class="card-body">

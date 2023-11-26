@@ -134,9 +134,6 @@ include "include/head.php";
                                                             </select>
                                                         </label>
                                                     </div>
-                                                    <div class="dt-buttons d-flex">
-                                                        <button onclick="location.href='orderAdd.php'" class="dt-button add-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="bx bx-plus me-0 me-sm-1"></i><span class="d-none d-md-inline-block">Add order</span></span></button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
