@@ -70,7 +70,7 @@ include "include/head.php";
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <label class="form-label" for="Category">Category</label>
-                                                        <select name="product_category" id="Category" class="form-control" required>
+                                                        <select name="product_category" id="Category" class="form-select" required>
                                                             <option value="Accessories">Accessories</option>
                                                             <option value="Fragrances">Fragrances</option>
                                                             <option value="Stationaries">Stationaries</option>

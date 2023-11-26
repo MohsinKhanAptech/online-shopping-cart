@@ -89,7 +89,7 @@ include "include/head.php";
                                                     </p>
                                                     <p class="m-0 my-1 p-0 fs-5 text-capitalize">
                                                         <span style="display: inline-block; width: 6em;">Category:</span>
-                                                        <select name="product_category" id="product_category" class="d-block d-sm-inline-block fs-6 mx-2 mx-sm-0 form-control w-auto" required>
+                                                        <select name="product_category" id="product_category" class="d-block d-sm-inline-block fs-6 mx-2 mx-sm-0 form-select w-auto" required>
                                                             <option <?php echo $row["product_category"] == "Accessories" ? "selected" : ""; ?> value="Accessories">Accessories</option>
                                                             <option <?php echo $row["product_category"] == "Fragrances" ? "selected" : ""; ?> value="Fragrances">Fragrances</option>
                                                             <option <?php echo $row["product_category"] == "Stationaries" ? "selected" : ""; ?> value="Stationaries">Stationaries</option>

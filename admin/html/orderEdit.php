@@ -41,7 +41,7 @@ include "include/head.php";
                                 <form action="orderSearch.php" method="get">
                                     <div class="d-flex flex-sm-row flex-column align-items-center gap-3">
                                         <input name="search" type="search" value="" id="orderSearch" class="form-control w-100" placeholder="Search Order" autocomplete="off" onkeyup="orderView(this.value,document.getElementById('filter').value);">
-                                        <select onchange="orderView(document.getElementById('orderSearch').value,this.value)" class="form-control flex-grow-0 w-auto m-0" name="filter" id="filter">
+                                        <select onchange="orderView(document.getElementById('orderSearch').value,this.value)" class="form-select flex-grow-0 w-auto m-0" name="filter" id="filter">
                                             <option value="order">Order Id</option>
                                             <option value="product">Product</option>
                                             <option value="customer">Customer</option>
@@ -115,7 +115,7 @@ include "include/head.php";
                                             </p>
                                             <p class="m-0 my-1 p-0 fs-5 text-capitalize">
                                                 <span style="display: inline-block; width: 6em;">Status:</span>
-                                                <select name="order_status" id="order_status" class="form-control d-block d-sm-inline-block w-auto fs-6 mx-2 mx-sm-0">
+                                                <select name="order_status" id="order_status" class="form-select d-block d-sm-inline-block w-auto fs-6 mx-2 mx-sm-0">
                                                     <option <?php echo $row["order_status"] == "Backorder" ? "selected" : ""; ?> value="Backorder">Backorder</option>
                                                     <option <?php echo $row["order_status"] == "Completed" ? "selected" : ""; ?> value="Completed">Completed</option>
                                                     <option <?php echo $row["order_status"] == "On Hold" ? "selected" : ""; ?> value="On Hold">On Hold</option>

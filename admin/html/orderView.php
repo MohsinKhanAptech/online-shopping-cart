@@ -41,7 +41,7 @@ include "include/head.php";
                                 <form action="orderSearch.php" method="get">
                                     <div class="d-flex flex-sm-row flex-column align-items-center gap-3">
                                         <input name="search" type="search" value="" id="orderSearch" class="form-control w-100" placeholder="Search Order" autocomplete="off" onkeyup="orderView(this.value,document.getElementById('filter').value);">
-                                        <select onchange="orderView(document.getElementById('orderSearch').value,this.value)" class="form-control flex-grow-0 w-auto m-0" name="filter" id="filter">
+                                        <select onchange="orderView(document.getElementById('orderSearch').value,this.value)" class="form-select flex-grow-0 w-auto m-0" name="filter" id="filter">
                                             <option value="order">Order Id</option>
                                             <option value="product">Product</option>
                                             <option value="customer">Customer</option>

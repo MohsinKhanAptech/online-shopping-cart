@@ -155,8 +155,8 @@ include "include/head.php";
                                                     <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="product: activate to sort column descending" aria-sort="ascending">product</th>
                                                     <th class="d-lg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="category: activate to sort column ascending">category</th>
                                                     <th class="d-sm-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="price: activate to sort column ascending">price</th>
-                                                    <th class="d-md-table-cell d-none" class="sorting_disabled" rowspan="1" colspan="1" aria-label="stock">stock</th>
-                                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Actions">Actions</th>
+                                                    <th class="d-md-table-cell d-none" rowspan="1" colspan="1" aria-label="stock">stock</th>
+                                                    <th rowspan="1" colspan="1" aria-label="Actions">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

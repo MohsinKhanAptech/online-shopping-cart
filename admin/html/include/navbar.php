@@ -83,7 +83,7 @@ if (isset($_SESSION["user"]) && $_SESSION["user_type"] == "admin") {
             <div class="nav-item d-flex flex-row justify-content-start align-items-center flex-grow-1 gap-2 searchContainer">
                 <i class="bx bx-search fs-4 lh-0 align-self-center w-auto"></i>
                 <input type="text" name="search" id="searchBar" onkeyup="showResult(this.value,document.getElementById('searchTypeSelect').value);" class="form-control border-0 flex-grow-1 shadow-none ps-1 ps-sm-2 w-100" placeholder="Search..." aria-label="Search..." autocomplete="off" />
-                <select name="searchType" id="searchTypeSelect" class="form-control w-auto" onchange="showResult(document.getElementById('searchBar').value,this.value);">
+                <select name="searchType" id="searchTypeSelect" class="form-select w-auto" onchange="showResult(document.getElementById('searchBar').value,this.value);">
                     <option value="products">Products</option>
                     <option value="users">Users</option>
                     <option value="employees">Employees</option>

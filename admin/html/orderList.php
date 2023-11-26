@@ -20,10 +20,12 @@ $limit =  isset($_GET["limit"]) ? $_GET["limit"] : 8;
 $page = isset($_GET["page"]) ? $_GET["page"] : 0;
 $offset = $limit * $page;
 
+$get_status = isset($_GET["status"]) ? $_GET["status"] : "All";
+$status = $get_status == "All" ? "`order_status` LIKE '%%'" : "`order_status` = '$get_status'";
 $get_search = isset($_GET["search"]) ? $_GET["search"] : "";
 $search = "(orders.order_id LIKE '%$get_search%' OR products.product_name LIKE '%$get_search%' OR products.product_id LIKE '%$get_search%' OR customers.customer_name LIKE '%$get_search%' OR customers.customer_id LIKE '%$get_search%')";
 
-$where = "$search";
+$where = "$status AND $search";
 
 switch ($orderby) {
     case 'Newest':
@@ -97,11 +99,22 @@ include "include/head.php";
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title">Filter</h5>
-                                    <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
-                                        <div class="product_stock">
+                                    <div class="d-flex flex-row align-items-center py-3 gap-3">
+                                        <div class="flex-grow-1">
                                             <select name="orderby" onchange="document.getElementById('orderListForm').submit()" id="ProductStock" class="form-select text-capitalize">
                                                 <option <?php echo $orderby == "Newest" ? "selected" : ""; ?> value="Newest">Newest</option>
                                                 <option <?php echo $orderby == "Oldest" ? "selected" : ""; ?> value="Oldest">Oldest</option>
+                                            </select>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <select name="status" onchange="document.getElementById('orderListForm').submit()" id="ProductStock" class="form-select text-capitalize">
+                                                <option <?php echo $get_status == "All" ? "selected" : ""; ?> value="All">Status</option>
+                                                <option <?php echo $get_status == "Backorder" ? "selected" : ""; ?> value="Backorder">Backorder</option>
+                                                <option <?php echo $get_status == "Completed" ? "selected" : ""; ?> value="Completed">Completed</option>
+                                                <option <?php echo $get_status == "On Hold" ? "selected" : ""; ?> value="On Hold">On Hold</option>
+                                                <option <?php echo $get_status == "Pending" ? "selected" : ""; ?> value="Pending">Pending</option>
+                                                <option <?php echo $get_status == "Processing" ? "selected" : ""; ?> value="Processing">Processing</option>
+                                                <option <?php echo $get_status == "Shipped" ? "selected" : ""; ?> value="Shipped">Shipped</option>
                                             </select>
                                         </div>
                                     </div>
@@ -113,7 +126,7 @@ include "include/head.php";
                                                 <div id="DataTables_Table_0_filter" class="dataTables_filter">
                                                     <label class="d-flex flex-column flex-sm-row gap-3">
                                                         <input name="search" type="search" id="orderSearch" value="<?php echo $get_search ?>" onkeyup="orderView(this.value,document.getElementById('filter').value)" class="form-control flex-grow-1 w-auto m-0" placeholder="Search Product" aria-controls="DataTables_Table_0" autocomplete="off">
-                                                        <select onchange="orderView(document.getElementById('orderSearch').value,this.value)" class="form-control flex-grow-0 w-auto m-0" name="filter" id="filter">
+                                                        <select onchange="orderView(document.getElementById('orderSearch').value,this.value)" class="form-select flex-grow-0 w-auto m-0" name="filter" id="filter">
                                                             <option value="order">Order Id</option>
                                                             <option value="product">Product</option>
                                                             <option value="customer">Customer</option>
@@ -142,13 +155,14 @@ include "include/head.php";
                                                 <tr>
                                                     <th class="d-lg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
                                                     <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="customer: activate to sort column descending" aria-sort="ascending">customer</th>
-                                                    <th class="d-lg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
-                                                    <th class="d-sm-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="product: activate to sort column descending" aria-sort="ascending">product</th>
-                                                    <th class="d-lg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
+                                                    <th class="d-xlg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
+                                                    <th class="d-md-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="product: activate to sort column descending" aria-sort="ascending">product</th>
+                                                    <th class="d-xlg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
                                                     <th class="d-md-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="category: activate to sort column ascending">price</th>
-                                                    <th class="d-md-table-cell d-none" class="sorting_disabled" rowspan="1" colspan="1" aria-label="stock">qty</th>
-                                                    <th class="d-xlg-table-cell d-none" class="sorting_disabled" rowspan="1" colspan="1" aria-label="stock">timestamp</th>
-                                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Actions">Actions</th>
+                                                    <th class="d-lg-table-cell d-none" rowspan="1" colspan="1" aria-label="stock">qty</th>
+                                                    <th rowspan="1" colspan="1" aria-label="stock">total</th>
+                                                    <th class="d-xlg-table-cell d-none" rowspan="1" colspan="1" aria-label="stock">timestamp</th>
+                                                    <th rowspan="1" colspan="1" aria-label="Actions">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -161,13 +175,14 @@ include "include/head.php";
                                                             <td>
                                                                 <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["customer_name"] ?></h6>
                                                             </td>
-                                                            <td class="d-lg-table-cell d-none"><span><?php echo $row["customer_id"] ?></span></td>
-                                                            <td class="d-sm-table-cell d-none">
+                                                            <td class="d-xlg-table-cell d-none"><span><?php echo $row["customer_id"] ?></span></td>
+                                                            <td class="d-md-table-cell d-none">
                                                                 <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["product_name"] ?></h6>
                                                             </td>
-                                                            <td class="d-lg-table-cell d-none"><span><?php echo $row["product_id"] ?></span></td>
+                                                            <td class="d-xlg-table-cell d-none"><span><?php echo $row["product_id"] ?></span></td>
                                                             <td class="d-md-table-cell d-none"><span><?php echo $row["order_price"] ?></span></td>
-                                                            <td class="d-md-table-cell d-none"><span><?php echo $row["order_quantity"] ?></span></td>
+                                                            <td class="d-lg-table-cell d-none"><span><?php echo $row["order_quantity"] ?></span></td>
+                                                            <td><span><?php echo $row["order_total"] ?></span></td>
                                                             <td class="d-xlg-table-cell d-none"><span><?php echo $row["order_timestamp"] ?></span></td>
                                                             <td>
                                                                 <div class="d-inline-block text-nowrap">
