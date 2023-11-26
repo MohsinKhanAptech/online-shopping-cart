@@ -124,7 +124,9 @@ include "include/head.php";
                                                         <tr>
                                                             <td class="d-lg-table-cell d-none"><span><?php echo $row["customer_id"] ?></span></td>
                                                             <td class="sorting_1">
-                                                                <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["customer_name"] ?></h6>
+                                                                <a href="customerView.php?customer_id=<?php echo $row["customer_id"] ?>">
+                                                                    <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["customer_name"] ?></h6>
+                                                                </a>
                                                             </td>
                                                             <td class="d-sm-table-cell d-none"><span><?php echo $row["customer_email"] ?></span></td>
                                                             <td class="d-md-table-cell d-none"><span><?php echo $row["customer_timestamp"] ?></span></td>

@@ -127,16 +127,18 @@ include "include/head.php";
                                                         <tr>
                                                             <td class="d-md-table-cell d-none"><span><?php echo $row["admin_id"] ?></span></td>
                                                             <td class="sorting_1">
-                                                                <div class="d-flex justify-content-start align-items-center admin-name">
-                                                                    <div class="avatar-wrapper">
-                                                                        <div class="avatar avatar me-2 rounded-2 bg-label-secondary">
-                                                                            <img src="uploads/admins/<?php echo $row["admin_image"] ?>" alt="admin-9" class="rounded-2">
+                                                                <a href="adminView.php?admin_id=<?php echo $row["admin_id"] ?>">
+                                                                    <div class="d-flex justify-content-start align-items-center admin-name">
+                                                                        <div class="avatar-wrapper">
+                                                                            <div class="avatar avatar me-2 rounded-2 bg-label-secondary">
+                                                                                <img src="uploads/admins/<?php echo $row["admin_image"] ?>" alt="admin-9" class="rounded-2">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-flex flex-column">
+                                                                            <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["admin_name"] ?></h6>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="d-flex flex-column">
-                                                                        <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["admin_name"] ?></h6>
-                                                                    </div>
-                                                                </div>
+                                                                </a>
                                                             </td>
                                                             <td class="d-sm-table-cell d-none"><span><?php echo $row["admin_email"] ?></span></td>
                                                             <td class="d-md-table-cell d-none"><span><?php echo $row["admin_timestamp"] ?></span></td>

@@ -128,16 +128,18 @@ include "include/head.php";
                                                         <tr>
                                                             <td class="d-lg-table-cell d-none"><span><?php echo $row["employee_id"] ?></span></td>
                                                             <td class="sorting_1">
-                                                                <div class="d-flex justify-content-start align-items-center employee-name">
-                                                                    <div class="avatar-wrapper">
-                                                                        <div class="avatar avatar me-2 rounded-2 bg-label-secondary">
-                                                                            <img src="uploads/employees/<?php echo $row["employee_image"] ?>" alt="employee-9" class="rounded-2">
+                                                                <a href="employeeView.php?employee_id=<?php echo $row["employee_id"] ?>">
+                                                                    <div class="d-flex justify-content-start align-items-center employee-name">
+                                                                        <div class="avatar-wrapper">
+                                                                            <div class="avatar avatar me-2 rounded-2 bg-label-secondary">
+                                                                                <img src="uploads/employees/<?php echo $row["employee_image"] ?>" alt="employee-9" class="rounded-2">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-flex flex-column">
+                                                                            <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["employee_name"] ?></h6>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="d-flex flex-column">
-                                                                        <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["employee_name"] ?></h6>
-                                                                    </div>
-                                                                </div>
+                                                                </a>
                                                             </td>
                                                             <td class="d-sm-table-cell d-none"><span><?php echo $row["employee_email"] ?></span></td>
                                                             <td class="d-md-table-cell d-none"><span><?php echo $row["employee_contact"] ?></span></td>

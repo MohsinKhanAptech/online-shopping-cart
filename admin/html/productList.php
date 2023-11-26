@@ -167,62 +167,74 @@ include "include/head.php";
                                                         <tr>
                                                             <td class="d-lg-table-cell d-none"><span><?php echo $row["product_id"] ?></span></td>
                                                             <td class="sorting_1">
-                                                                <div class="d-flex justify-content-start align-items-center product-name">
-                                                                    <div class="avatar-wrapper">
-                                                                        <div class="avatar avatar me-2 rounded-2 bg-label-secondary">
-                                                                            <img src="../../public/uploads/products/<?php echo $row["product_image"] ?>" alt="Product-9" class="rounded-2">
+                                                                <a href="productView.php?product_id=<?php echo $row["product_id"] ?>">
+                                                                    <div class="d-flex justify-content-start align-items-center product-name">
+                                                                        <div class="avatar-wrapper">
+                                                                            <div class="avatar avatar me-2 rounded-2 bg-label-secondary">
+                                                                                <img src="../../public/uploads/products/<?php echo $row["product_image"] ?>" alt="Product-9" class="rounded-2">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-flex flex-column">
+                                                                            <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["product_name"] ?></h6>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="d-flex flex-column">
-                                                                        <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["product_name"] ?></h6>
-                                                                    </div>
-                                                                </div>
+                                                                </a>
                                                             </td>
                                                             <?php
                                                             if ($row["product_category"] == "Accessories") {
                                                                 echo
                                                                 "<td class='d-lg-table-cell d-none'>
-                                                                    <span class='text-truncate d-flex align-items-center'>
-                                                                        <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-dark me-2'>
-                                                                            <i class='bx bxs-watch'></i>
-                                                                        </span>Accessories
-                                                                    </span>
+                                                                    <a href='productList.php?category=Accessories'>
+                                                                        <span class='text-truncate text-body d-flex align-items-center'>
+                                                                            <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-dark me-2'>
+                                                                                <i class='bx bxs-watch'></i>
+                                                                            </span>Accessories
+                                                                        </span>
+                                                                    </a>
                                                                 </td>";
                                                             } elseif ($row["product_category"] == "Fragrances") {
                                                                 echo
                                                                 "<td class='d-lg-table-cell d-none'>
-                                                                    <span class='text-truncate d-flex align-items-center'>
-                                                                        <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-primary me-2'>
-                                                                            <i class='bx bxs-spray-can'></i>
-                                                                        </span>Fragrances
-                                                                    </span>
+                                                                    <a href='productList.php?category=Fragrances'>
+                                                                        <span class='text-truncate text-body d-flex align-items-center'>
+                                                                            <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-primary me-2'>
+                                                                                <i class='bx bxs-spray-can'></i>
+                                                                            </span>Fragrances
+                                                                        </span>
+                                                                    </a>
                                                                 </td>";
                                                             } elseif ($row["product_category"] == "Stationaries") {
                                                                 echo
                                                                 "<td class='d-lg-table-cell d-none'>
-                                                                    <span class='text-truncate d-flex align-items-center'>
-                                                                        <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-warning me-2'>
-                                                                            <i class='bx bxs-pencil'></i>
-                                                                        </span>Stationaries
-                                                                    </span>
+                                                                    <a href='productList.php?category=Stationaries'>
+                                                                        <span class='text-truncate text-body d-flex align-items-center'>
+                                                                            <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-warning me-2'>
+                                                                                <i class='bx bxs-pencil'></i>
+                                                                            </span>Stationaries
+                                                                        </span>
+                                                                    </a>
                                                                 </td>";
                                                             } elseif ($row["product_category"] == "Sweets") {
                                                                 echo
                                                                 "<td class='d-lg-table-cell d-none'>
-                                                                    <span class='text-truncate d-flex align-items-center'>
-                                                                        <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-danger me-2'>
-                                                                            <i class='bx bxs-cake'></i>
-                                                                        </span>Sweets
-                                                                    </span>
+                                                                    <a href='productList.php?category=Sweets'>
+                                                                        <span class='text-truncate text-body d-flex align-items-center'>
+                                                                            <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-danger me-2'>
+                                                                                <i class='bx bxs-cake'></i>
+                                                                            </span>Sweets
+                                                                        </span>
+                                                                    </a>
                                                                 </td>";
                                                             } elseif ($row["product_category"] == "Toys") {
                                                                 echo
                                                                 "<td class='d-lg-table-cell d-none'>
-                                                                    <span class='text-truncate d-flex align-items-center'>
-                                                                        <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-info me-2'>
-                                                                            <i class='bx bxs-bot'></i>
-                                                                        </span>Toys
-                                                                    </span>
+                                                                    <a href='productList.php?category=Toys'>
+                                                                        <span class='text-truncate text-body d-flex align-items-center'>
+                                                                            <span class='avatar-sm rounded-circle d-flex justify-content-center align-items-center bg-label-info me-2'>
+                                                                                <i class='bx bxs-bot'></i>
+                                                                            </span>Toys
+                                                                        </span>
+                                                                    </a>
                                                                 </td>";
                                                             }
                                                             ?>

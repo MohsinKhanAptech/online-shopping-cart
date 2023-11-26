@@ -173,7 +173,9 @@ include "include/head.php";
                                                         <tr>
                                                             <td class="d-lg-table-cell d-none"><span><?php echo $row["order_id"] ?></span></td>
                                                             <td>
-                                                                <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["customer_name"] ?></h6>
+                                                                <a href="orderView.php?order_id=<?php echo $row["order_id"] ?>">
+                                                                    <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["customer_name"] ?></h6>
+                                                                </a>
                                                             </td>
                                                             <td class="d-xlg-table-cell d-none"><span><?php echo $row["customer_id"] ?></span></td>
                                                             <td class="d-md-table-cell d-none">
