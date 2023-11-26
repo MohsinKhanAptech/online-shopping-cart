@@ -15,12 +15,12 @@
             <li class="menu-item  <?php echo $currentPage == "index" ? "active open" : ""; ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                    <div data-i18n="Dashboards">Dashboards</div>
+                    <div>Dashboards</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item <?php echo $currentPage == "index" ? "active" : ""; ?>">
                         <a href="index.php" class="menu-link">
-                            <div data-i18n="Home">Home</div>
+                            <div>Home</div>
                         </a>
                     </li>
                 </ul>
@@ -29,7 +29,7 @@
             <li class="menu-item <?php echo str_contains($currentPage, "product") ? "active open" : ""; ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-store"></i>
-                    <div data-i18n="Front Pages">Products</div>
+                    <div>Products</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item <?php echo $currentPage == "productList" ? "active" : ""; ?>">
@@ -64,7 +64,7 @@
             <li class="menu-item <?php echo str_contains($currentPage, "order") ? "active open" : ""; ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-package"></i>
-                    <div data-i18n="Front Pages">Orders</div>
+                    <div>Orders</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item <?php echo $currentPage == "orderList" ? "active" : ""; ?>">
@@ -94,7 +94,7 @@
             <li class="menu-item <?php echo str_contains($currentPage, "admin") ? "active open" : ""; ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="bx bx-wrench me-1"></i>
-                    <div data-i18n="Layouts">Admin</div>
+                    <div>Admin</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item <?php echo $currentPage == "adminList" ? "active" : ""; ?>">
@@ -129,7 +129,7 @@
             <li class="menu-item <?php echo str_contains($currentPage, "employee") ? "active open" : ""; ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="bx bx-hard-hat me-1"></i>
-                    <div data-i18n="Layouts">Employees</div>
+                    <div>Employees</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item <?php echo $currentPage == "employeeList" ? "active" : ""; ?>">
@@ -164,7 +164,7 @@
             <li class="menu-item <?php echo str_contains($currentPage, "customer") ? "active open" : ""; ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="bx bx-user me-1"></i>
-                    <div data-i18n="Layouts">Customers</div>
+                    <div>Customers</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item <?php echo $currentPage == "customerList" ? "active" : ""; ?>">
@@ -185,12 +185,23 @@
                 </ul>
             </li>
             <!-- / Customers -->
+            <!-- Misc -->
+            <li class="menu-header small text-uppercase <?php echo $currentPage == "newsletter" ? "active open" : ""; ?>">
+                <span class="menu-header-text">Misc</span>
+            </li>
+            <li class="menu-item <?php echo $currentPage == "newsletter" ? "active" : ""; ?>">
+                <a href="newsletter.php" class="menu-link">
+                    <i class="bx bx-news me-2"></i>
+                    <div>Newsletter</div>
+                </a>
+            </li>
+            <!-- / Misc -->
         <?php } elseif ($_SESSION["user_type"] == "employee") { ?>
             <!-- Order Pages -->
             <li class="menu-item <?php echo str_contains($currentPage, "order") ? "active open" : ""; ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-package"></i>
-                    <div data-i18n="Front Pages">Orders</div>
+                    <div>Orders</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item <?php echo $currentPage == "orderList" ? "active" : ""; ?>">
@@ -224,7 +235,7 @@
         <li class="menu-item <?php echo str_contains($currentPage, "account") ? "active open" : ""; ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="bx bx-cog me-1"></i>
-                <div data-i18n="Layouts">Account</div>
+                <div>Account</div>
             </a>
             <?php if ($_SESSION["user_type"] == "admin") { ?>
                 <ul class="menu-sub">
@@ -272,7 +283,7 @@
         <li class="menu-item">
             <a href="logout.php" class="menu-link">
                 <i class="bx bx-power-off me-2"></i>
-                <div data-i18n="Kanban">Log Out</div>
+                <div>Log Out</div>
             </a>
         </li>
         <!-- / Log-out -->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2023 at 09:36 PM
+-- Generation Time: Nov 26, 2023 at 04:24 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,15 +32,16 @@ CREATE TABLE `admins` (
   `admin_name` varchar(100) NOT NULL,
   `admin_email` varchar(255) NOT NULL,
   `admin_password` varchar(255) NOT NULL,
-  `admin_image` varchar(255) NOT NULL
+  `admin_image` varchar(255) NOT NULL,
+  `admin_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_password`, `admin_image`) VALUES
-(1, 'admin', 'admin@gmail.com', 'admin', 'admin.png');
+INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_password`, `admin_image`, `admin_timestamp`) VALUES
+(1, 'admin', 'admin@gmail.com', 'admin', 'admin.png', '2023-11-26 10:52:49');
 
 -- --------------------------------------------------------
 
@@ -81,21 +82,6 @@ INSERT INTO `categories` (`category_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `completed_orders`
---
-
-CREATE TABLE `completed_orders` (
-  `order_id` int(10) NOT NULL,
-  `customer_id` int(10) NOT NULL,
-  `product_id` int(10) NOT NULL,
-  `order_quantity` int(10) NOT NULL,
-  `order_status_id` int(10) NOT NULL,
-  `order_total` decimal(65,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `customers`
 --
 
@@ -104,14 +90,14 @@ CREATE TABLE `customers` (
   `customer_name` varchar(100) NOT NULL,
   `customer_email` varchar(255) NOT NULL,
   `customer_password` varchar(255) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+  `customer_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `timestamp`) VALUES
+INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_password`, `customer_timestamp`) VALUES
 (1, 'asad', 'asad@gmail.com', 'asad', '2023-11-24 11:13:57'),
 (10, 'ahmed', 'ahmed@gmail.com', 'ahmed', '2023-11-24 11:13:57'),
 (11, 'ali', 'ali@gmail.com', 'ali', '2023-11-24 11:13:57'),
@@ -159,7 +145,7 @@ CREATE TABLE `customer_details` (
 --
 
 INSERT INTO `customer_details` (`customer_detail_id`, `customer_id`, `first_name`, `last_name`, `country`, `street_address`, `town`, `state`, `postcode`, `email`, `phone`) VALUES
-(2, 1, 'asd', 'asda', 'Pakistan', 'asd', 'asd', 'Sindh', 'asd', 'asd@asd', '03001234567');
+(2, 1, 'asad', 'khan', 'Pakistan', 'Lunda Street, Sector 2-Z', 'new karachi', 'Sindh', '75850', 'asad@gmail.com', '03001234567');
 
 -- --------------------------------------------------------
 
@@ -175,14 +161,14 @@ CREATE TABLE `employees` (
   `employee_contact` varchar(50) NOT NULL,
   `employee_address` varchar(500) NOT NULL,
   `employee_image` varchar(255) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+  `employee_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`employee_id`, `employee_name`, `employee_email`, `employee_password`, `employee_contact`, `employee_address`, `employee_image`, `timestamp`) VALUES
+INSERT INTO `employees` (`employee_id`, `employee_name`, `employee_email`, `employee_password`, `employee_contact`, `employee_address`, `employee_image`, `employee_timestamp`) VALUES
 (1, 'employee', 'employee@gmail.com', 'employee', '03001234567', 'A 563, Main Shahrah-e-Usman, Sector 11-A, Karachi, Sindh', 'employee.png', '2023-11-24 10:31:09');
 
 -- --------------------------------------------------------
@@ -193,8 +179,29 @@ INSERT INTO `employees` (`employee_id`, `employee_name`, `employee_email`, `empl
 
 CREATE TABLE `newsletter` (
   `newsletter_id` int(10) NOT NULL,
-  `newsletter_email` varchar(255) NOT NULL
+  `newsletter_email` varchar(255) NOT NULL,
+  `newsletter_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `newsletter`
+--
+
+INSERT INTO `newsletter` (`newsletter_id`, `newsletter_email`, `newsletter_timestamp`) VALUES
+(2, 'aqsa@gmail.com', '2023-11-26 14:35:56'),
+(3, 'kashif@gmail.com', '2023-11-26 14:36:03'),
+(4, 'kashaf@gmail.com', '2023-11-26 14:36:08'),
+(5, 'munawar@gmail.com', '2023-11-26 14:36:18'),
+(6, 'mamta@gmail.com', '2023-11-26 14:36:22'),
+(7, 'motu@gmail.com', '2023-11-26 14:36:26'),
+(8, 'halwai@gmail.com', '2023-11-26 14:36:33'),
+(9, 'doremon@gmail.com', '2023-11-26 14:36:38'),
+(10, 'muntaha@gmail.com', '2023-11-26 14:36:50'),
+(11, 'taha@gmail.com', '2023-11-26 14:36:55'),
+(12, 'tahaKiBehn@gmail.com', '2023-11-26 14:37:04'),
+(13, 'taklu@gmail.com', '2023-11-26 14:37:07'),
+(14, 'tandoorWala@gmail.com', '2023-11-26 14:37:18'),
+(15, 'mamu@gmail.com', '2023-11-26 14:37:26');
 
 -- --------------------------------------------------------
 
@@ -208,9 +215,9 @@ CREATE TABLE `orders` (
   `product_id` int(10) NOT NULL,
   `order_price` decimal(65,2) NOT NULL,
   `order_quantity` int(10) NOT NULL,
-  `order_status_id` int(10) NOT NULL DEFAULT 2,
+  `order_status` varchar(50) NOT NULL DEFAULT 'Processing',
   `order_total` decimal(65,2) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+  `order_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -220,7 +227,6 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `order_status` (
-  `order_status_id` int(10) NOT NULL,
   `order_status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -228,13 +234,13 @@ CREATE TABLE `order_status` (
 -- Dumping data for table `order_status`
 --
 
-INSERT INTO `order_status` (`order_status_id`, `order_status`) VALUES
-(1, 'Pending'),
-(2, 'Processing'),
-(3, 'Shipped'),
-(4, 'Backorder'),
-(5, 'On Hold'),
-(6, 'Completed');
+INSERT INTO `order_status` (`order_status`) VALUES
+('Backorder'),
+('Completed'),
+('On Hold'),
+('Pending'),
+('Processing'),
+('Shipped');
 
 -- --------------------------------------------------------
 
@@ -253,14 +259,14 @@ CREATE TABLE `products` (
   `product_stock` int(10) NOT NULL DEFAULT 1,
   `product_sold` int(10) NOT NULL DEFAULT 0,
   `product_image` varchar(255) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+  `product_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_rating`, `product_review_count`, `product_price`, `product_stock`, `product_sold`, `product_image`, `timestamp`) VALUES
+INSERT INTO `products` (`product_id`, `product_name`, `product_description`, `product_category`, `product_rating`, `product_review_count`, `product_price`, `product_stock`, `product_sold`, `product_image`, `product_timestamp`) VALUES
 (34, 'louis vuitton Belt', 'Louis Vuitton is a French luxury fashion house and company founded in 1854 by Louis Vuitton. The house is known for its high-quality leather goods, its iconic LV monogram, and its collaborations with famous artists and designers.Louis Vuitton is a French luxury fashion house and company founded in 1854 by Louis Vuitton. The house is known for its high-quality leather goods, its iconic LV monogram, and its collaborations with famous artists and designers.\n', 'Accessories', 0.00, 0, 249.99, 40, 22, 'louis-vuitton-grey-leather-belt.jpg', '2023-11-21 05:38:01'),
 (35, 'crystal braclet', 'A crystal bracelet is a piece of jewelry made with crystal beads or stones that are strung together on an elastic or wire cord. Crystal bracelets are often worn because they are beautiful and because they are believed to have healing properties.\n', 'Accessories', 4.00, 6, 269.99, 45, 30, 'crystal braclet.jpg', '2023-11-21 05:38:53'),
 (36, 'gucci sunglasses', 'Gucci sunglasses are a symbol of luxury and style, and they have been worn by some of the most famous people in the world. They are known for their high quality, their bold designs, and their intricate details.Gucci sunglasses are a symbol of luxury and style, and they have been worn by some of the most famous people in the world. They are known for their high quality, their bold designs, and their intricate details.\n', 'Accessories', 0.00, 0, 358.00, 50, 25, 'gucci sunglasses.jpg', '2023-11-21 05:39:54'),
@@ -472,15 +478,6 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_name`);
 
 --
--- Indexes for table `completed_orders`
---
-ALTER TABLE `completed_orders`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `fk completed_orders customer_id` (`customer_id`),
-  ADD KEY `fk completed_orders product_id` (`product_id`),
-  ADD KEY `fk completed_orders order_status_id` (`order_status_id`);
-
---
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -511,14 +508,14 @@ ALTER TABLE `newsletter`
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `fk orders customer_id` (`customer_id`),
-  ADD KEY `fk orders order_status_id` (`order_status_id`),
+  ADD KEY `fk orders order_status_id` (`order_status`),
   ADD KEY `fk orders product_id` (`product_id`);
 
 --
 -- Indexes for table `order_status`
 --
 ALTER TABLE `order_status`
-  ADD PRIMARY KEY (`order_status_id`);
+  ADD PRIMARY KEY (`order_status`);
 
 --
 -- Indexes for table `products`
@@ -551,25 +548,19 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
-
---
--- AUTO_INCREMENT for table `completed_orders`
---
-ALTER TABLE `completed_orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `customer_details`
@@ -581,31 +572,25 @@ ALTER TABLE `customer_details`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `employee_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `employee_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `newsletter`
 --
 ALTER TABLE `newsletter`
-  MODIFY `newsletter_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `newsletter_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
---
--- AUTO_INCREMENT for table `order_status`
---
-ALTER TABLE `order_status`
-  MODIFY `order_status_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -631,14 +616,6 @@ ALTER TABLE `cart_items`
   ADD CONSTRAINT `fk cart_items product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `completed_orders`
---
-ALTER TABLE `completed_orders`
-  ADD CONSTRAINT `fk completed_orders customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk completed_orders order_status_id` FOREIGN KEY (`order_status_id`) REFERENCES `order_status` (`order_status_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk completed_orders product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `customer_details`
 --
 ALTER TABLE `customer_details`
@@ -648,8 +625,8 @@ ALTER TABLE `customer_details`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
+  ADD CONSTRAINT `fk order_status` FOREIGN KEY (`order_status`) REFERENCES `order_status` (`order_status`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk orders customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk orders order_status_id` FOREIGN KEY (`order_status_id`) REFERENCES `order_status` (`order_status_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk orders product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

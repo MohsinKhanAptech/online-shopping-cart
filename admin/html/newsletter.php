@@ -16,36 +16,36 @@ if (!isset($_SESSION["user"])) {
 
 <?php
 
-$all_admin_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`admin_id`) FROM `admins`"));
+$all_newsletter_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`newsletter_id`) FROM `newsletter`"));
 $orderby = isset($_GET["orderby"]) ? $_GET["orderby"] : "Newest";
 $limit =  isset($_GET["limit"]) ? $_GET["limit"] : 8;
 $page = isset($_GET["page"]) ? $_GET["page"] : 0;
 $offset = $limit * $page;
 
 $get_search = isset($_GET["search"]) ? $_GET["search"] : "";
-$search = "(`admin_name` LIKE '%$get_search%' OR `admin_id` LIKE '%$get_search%')";
+$search = "(`newsletter_email` LIKE '%$get_search%' OR `newsletter_id` LIKE '%$get_search%')";
 
 $where = "$search";
 
 switch ($orderby) {
     case 'Newest':
-        $orderquerry = "SELECT * FROM `admins` WHERE $where ORDER BY `admin_timestamp` DESC LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `newsletter` WHERE $where ORDER BY `newsletter_timestamp` DESC LIMIT $limit OFFSET $offset;";
         break;
 
     case 'Oldest':
-        $orderquerry = "SELECT * FROM `admins` WHERE $where ORDER BY `admin_timestamp` LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `newsletter` WHERE $where ORDER BY `newsletter_timestamp` LIMIT $limit OFFSET $offset;";
         break;
 
     default:
-        $orderquerry = "SELECT * FROM `admins` WHERE $where ORDER BY `admin_timestamp` DESC LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `newsletter` WHERE $where ORDER BY `newsletter_timestamp` DESC LIMIT $limit OFFSET $offset;";
         break;
 }
-$admin_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(admin_id)", $orderquerry);
-$admin_count_querry = preg_replace("/ORDER BY (`admin_timestamp` DESC|`admin_timestamp`) LIMIT $limit OFFSET $offset/i", "", $admin_count_querry);
-$admin_count = mysqli_fetch_column(mysqli_query($connect, $admin_count_querry));
+$newsletter_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(newsletter_id)", $orderquerry);
+$newsletter_count_querry = preg_replace("/ORDER BY (`newsletter_timestamp` DESC|`newsletter_timestamp`) LIMIT $limit OFFSET $offset/i", "", $newsletter_count_querry);
+$newsletter_count = mysqli_fetch_column(mysqli_query($connect, $newsletter_count_querry));
 
-$title = "admin List";
-$currentPage = "adminList";
+$title = "newsletter";
+$currentPage = "newsletter";
 include "include/head.php";
 ?>
 
@@ -65,15 +65,15 @@ include "include/head.php";
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="py-3 mb-4 text-capitalize"><span class="text-muted fw-light">Admins /</span><span> Admin List</span></h4>
+                        <h4 class="py-3 mb-4 text-capitalize"><span class="text-muted fw-light">newsletter /</span><span> newsletter List</span></h4>
                         <!-- Product List Table -->
-                        <form action="adminList.php" method="get" id="adminListForm">
+                        <form action="newsletter.php" method="get" id="newsletterForm">
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title">Filter</h5>
                                     <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
                                         <div class="product_stock">
-                                            <select name="orderby" onchange="document.getElementById('adminListForm').submit()" id="ProductStock" class="form-select text-capitalize">
+                                            <select name="orderby" onchange="document.getElementById('newsletterForm').submit()" id="ProductStock" class="form-select text-capitalize">
                                                 <option <?php echo $orderby == "Newest" ? "selected" : ""; ?> value="Newest">Newest</option>
                                                 <option <?php echo $orderby == "Oldest" ? "selected" : ""; ?> value="Oldest">Oldest</option>
                                             </select>
@@ -86,7 +86,7 @@ include "include/head.php";
                                             <div class="me-sm-5 me-3 ms-md-n2 pe-md-5 flex-grow-1">
                                                 <div id="DataTables_Table_0_filter" class="dataTables_filter">
                                                     <label class="w-100">
-                                                        <input name="search" type="search" value="<?php echo $get_search ?>" onkeyup="adminView(this.value);" class="form-control w-100" placeholder="Search Admin" aria-controls="DataTables_Table_0" autocomplete="off">
+                                                        <input name="search" type="search" value="<?php echo $get_search ?>" onkeyup="newsletterView(this.value);" class="form-control w-100" placeholder="Search Newsletter" aria-controls="DataTables_Table_0" autocomplete="off">
                                                         <div id="productListSearch"></div>
                                                     </label>
                                                 </div>
@@ -95,7 +95,7 @@ include "include/head.php";
                                                 <div class="dt-action-buttons d-flex align-items-start align-items-md-center justify-content-sm-center mb-3 mb-sm-0">
                                                     <div class="dataTables_length mt-0 mt-md-3 me-3" id="DataTables_Table_0_length">
                                                         <label>
-                                                            <select onchange="document.getElementById('adminListForm').submit()" name="limit" aria-controls="DataTables_Table_0" class="form-select">
+                                                            <select onchange="document.getElementById('newsletterForm').submit()" name="limit" aria-controls="DataTables_Table_0" class="form-select">
                                                                 <option <?php echo $limit == 8 ? "selected" : ""; ?> value="8">8</option>
                                                                 <option <?php echo $limit == 16 ? "selected" : ""; ?> value="16">16</option>
                                                                 <option <?php echo $limit == 24 ? "selected" : ""; ?> value="24">24</option>
@@ -103,51 +103,32 @@ include "include/head.php";
                                                             </select>
                                                         </label>
                                                     </div>
-                                                    <div class="dt-buttons d-flex">
-                                                        <button onclick="location.href='adminAdd.php'" class="dt-button add-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button"><span><i class="bx bx-plus me-0 me-sm-1"></i><span class="d-none d-md-inline-block">Add Admin</span></span></button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <table class="datatables-products table border-top dataTable no-footer dtr-column" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
                                             <thead>
                                                 <tr>
-                                                    <th class="d-md-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
-                                                    <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="product: activate to sort column descending" aria-sort="ascending">admin</th>
-                                                    <th class="d-sm-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="product: activate to sort column descending" aria-sort="ascending">email</th>
-                                                    <th class="d-md-table-cell d-none" class="sorting_disabled" rowspan="1" colspan="1" aria-label="stock">added</th>
+                                                    <th class="d-sm-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
+                                                    <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="category: activate to sort column ascending">email</th>
+                                                    <th class="d-sm-table-cell d-none" class="sorting_disabled" rowspan="1" colspan="1" aria-label="stock">signed-up</th>
                                                     <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Actions">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $admin_select = mysqli_query($connect, $orderquerry);
-                                                if (mysqli_num_rows($admin_select) > 0) {
-                                                    while ($row = mysqli_fetch_assoc($admin_select)) { ?>
+                                                $newsletter_select = mysqli_query($connect, $orderquerry);
+                                                if (mysqli_num_rows($newsletter_select) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($newsletter_select)) { ?>
                                                         <tr>
-                                                            <td class="d-md-table-cell d-none"><span><?php echo $row["admin_id"] ?></span></td>
+                                                            <td class="d-lg-table-cell d-none"><span><?php echo $row["newsletter_id"] ?></span></td>
                                                             <td class="sorting_1">
-                                                                <div class="d-flex justify-content-start align-items-center admin-name">
-                                                                    <div class="avatar-wrapper">
-                                                                        <div class="avatar avatar me-2 rounded-2 bg-label-secondary">
-                                                                            <img src="uploads/admins/<?php echo $row["admin_image"] ?>" alt="admin-9" class="rounded-2">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="d-flex flex-column">
-                                                                        <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["admin_name"] ?></h6>
-                                                                    </div>
-                                                                </div>
+                                                                <h6 class="text-body text-nowrap mb-0"><?php echo $row["newsletter_email"] ?></h6>
                                                             </td>
-                                                            <td class="d-sm-table-cell d-none"><span><?php echo $row["admin_email"] ?></span></td>
-                                                            <td class="d-md-table-cell d-none"><span><?php echo $row["admin_timestamp"] ?></span></td>
+                                                            <td class="d-md-table-cell d-none"><span><?php echo $row["newsletter_timestamp"] ?></span></td>
                                                             <td>
                                                                 <div class="d-inline-block text-nowrap">
-                                                                    <a href="adminEdit.php?admin_id=<?php echo $row["admin_id"] ?>"><button type="button" class="btn btn-sm btn-icon"><i class="bx bx-edit"></i></button></a>
-                                                                    <button type="button" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>
-                                                                    <div class="dropdown-menu dropdown-menu-end m-0">
-                                                                        <a href="adminView.php?admin_id=<?php echo $row["admin_id"] ?>" class="dropdown-item">View</a>
-                                                                        <a href="adminDelete.php?admin_id=<?php echo $row["admin_id"] ?>" class="dropdown-item">Remove</a>
-                                                                    </div>
+                                                                    <a href="newsletterDelete.php?newsletter_id=<?php echo $row["newsletter_id"] ?>"><button type="button" class="btn btn-sm btn-icon"><i class="bx bx-trash"></i></button></a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -173,37 +154,37 @@ include "include/head.php";
                                                     <?php
                                                     $pg = $offset + 1;
                                                     $pgofc = $limit * ($page + 1);
-                                                    $pgof = $pgofc > $admin_count ? $admin_count : $pgofc;
-                                                    echo "Displaying $pg to $pgof of  $admin_count entries" ?>
+                                                    $pgof = $pgofc > $newsletter_count ? $newsletter_count : $pgofc;
+                                                    echo "Displaying $pg to $pgof of  $newsletter_count entries" ?>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
                                                     <ul class="pagination">
                                                         <?php
-                                                        $admin_pages = ceil($admin_count / $limit);
+                                                        $newsletter_pages = ceil($newsletter_count / $limit);
                                                         $str = trim($_SERVER['QUERY_STRING'], "&page=$page");
                                                         if ($page > 0) {
                                                             $page--;
                                                             echo
                                                             "<li class='paginate_button page-item previous disabled' id='DataTables_Table_0_previous'>
-                                                                <a href='adminList.php?$str&page=$page' aria-controls='DataTables_Table_0' aria-disabled='true' role='link' data-dt-idx='previous' tabindex='0' class='page-link'>Previous</a>
+                                                                <a href='newsletter.php?$str&page=$page' aria-controls='DataTables_Table_0' aria-disabled='true' role='link' data-dt-idx='previous' tabindex='0' class='page-link'>Previous</a>
                                                             </li>";
                                                             $page++;
                                                         }
-                                                        for ($i = 0; $i < $admin_pages; $i++) {
+                                                        for ($i = 0; $i < $newsletter_pages; $i++) {
                                                             $c = ($page == $i ? "active" : "");
                                                             $p = $i + 1;
                                                             echo
                                                             "<li class='paginate_button page-item $c'>
-                                                                <a href='adminList.php?$str&page=$i' aria-controls='DataTables_Table_0' role='link' aria-current='page' data-dt-idx='0' tabindex='0' class='page-link'>$p</a>
+                                                                <a href='newsletter.php?$str&page=$i' aria-controls='DataTables_Table_0' role='link' aria-current='page' data-dt-idx='0' tabindex='0' class='page-link'>$p</a>
                                                             </li>";
                                                         }
-                                                        if ($page < $admin_pages - 1) {
+                                                        if ($page < $newsletter_pages - 1) {
                                                             $page++;
                                                             echo
                                                             "<li class='paginate_button page-item next' id='DataTables_Table_0_next'>
-                                                                <a href='adminList.php?$str&page=$page' aria-controls='DataTables_Table_0' role='link' data-dt-idx='next' tabindex='0' class='page-link'>Next</a>
+                                                                <a href='newsletter.php?$str&page=$page' aria-controls='DataTables_Table_0' role='link' data-dt-idx='next' tabindex='0' class='page-link'>Next</a>
                                                             </li>";
                                                             $page--;
                                                         } ?>
@@ -234,7 +215,7 @@ include "include/head.php";
 
 </html>
 <script>
-    function adminView(search, type = "list") {
+    function newsletterView(search, type = "list") {
         if (search.length == 0) {
             document.getElementById("productListSearch").innerHTML = "";
             document.getElementById("productListSearch").classList.remove("searchResult");
@@ -247,7 +228,7 @@ include "include/head.php";
                 document.getElementById("productListSearch").classList.add("searchResult");
             }
         }
-        xmlhttp.open("GET", "adminSearch.php?search=" + search + "&type=" + type, true);
+        xmlhttp.open("GET", "newsletterearch.php?search=" + search + "&type=" + type, true);
         xmlhttp.send();
     }
 </script>
