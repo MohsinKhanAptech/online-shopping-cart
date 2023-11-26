@@ -6,9 +6,6 @@ include "include/functions.php";
 if (!isset($_SESSION["user"])) {
     alert("Please log-in to gain access");
     location("login.php");
-} elseif ($_SESSION["user_type"] != "admin") {
-    alert("Only admin can access this page");
-    historyGo();
 }
 
 $filter = $_GET["filter"];
@@ -54,6 +51,10 @@ if (mysqli_num_rows($search_order_querry) > 0) {
     } elseif ($type == "view") {
         while ($row = mysqli_fetch_assoc($search_order_querry)) {
             echo "<a href='orderView.php?order_id={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. <span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}: <span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]}</a>";
+        }
+    } elseif ($type == "edit") {
+        while ($row = mysqli_fetch_assoc($search_order_querry)) {
+            echo "<a href='orderEdit.php?order_id={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. <span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}: <span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]}</a>";
         }
     } elseif ($type == "delete") {
         while ($row = mysqli_fetch_assoc($search_order_querry)) {

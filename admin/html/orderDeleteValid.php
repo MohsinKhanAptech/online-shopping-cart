@@ -6,17 +6,15 @@ include "include/functions.php";
 if (!isset($_SESSION["user"])) {
     alert("Please log-in to gain access");
     location("login.php");
-} elseif ($_SESSION["user_type"] != "admin") {
-    location("404.php");
 }
 
 if (isset($_POST["submit"])) {
-    $customer_id = $_POST["customer_id"];
+    $order_id = $_POST["order_id"];
 
-    $querry = "DELETE FROM `customers` WHERE `customer_id` = '$customer_id'";
+    $querry = "DELETE FROM `orders` WHERE `order_id` = '$order_id'";
 
     if (mysqli_query($connect, $querry)) {
-        location("customerList.php");
+        location("orderList.php");
     } else {
         alert("something went wrong");
         location("somethingWentWrong.php");

@@ -90,6 +90,41 @@
                 </ul>
             </li>
             <!-- / Order Pages -->
+            <!-- Admin -->
+            <li class="menu-item <?php echo str_contains($currentPage, "admin") ? "active open" : ""; ?>">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="bx bx-wrench me-1"></i>
+                    <div data-i18n="Layouts">Admin</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item <?php echo $currentPage == "adminList" ? "active" : ""; ?>">
+                        <a href="adminList.php" class="menu-link">
+                            <div>Admin List</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php echo $currentPage == "adminAdd" ? "active" : ""; ?>">
+                        <a href="adminAdd.php" class="menu-link">
+                            <div>Admin Add</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php echo $currentPage == "adminView" ? "active" : ""; ?>">
+                        <a href="adminView.php" class="menu-link">
+                            <div>Admin View</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php echo $currentPage == "adminEdit" ? "active" : ""; ?>">
+                        <a href="adminEdit.php" class="menu-link">
+                            <div>Admin Edit</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php echo $currentPage == "adminDelete" ? "active" : ""; ?>">
+                        <a href="adminDelete.php" class="menu-link">
+                            <div>Admin Remove</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- / Admin -->
             <!-- Employees -->
             <li class="menu-item <?php echo str_contains($currentPage, "employee") ? "active open" : ""; ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -150,17 +185,6 @@
                 </ul>
             </li>
             <!-- / Customers -->
-            <!-- Pages -->
-            <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Pages</span>
-            </li>
-            <li class="menu-item">
-                <a href="" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-envelope"></i>
-                    <div data-i18n="Email">Email</div>
-                </a>
-            </li>
-            <!-- / Pages -->
         <?php } elseif ($_SESSION["user_type"] == "employee") { ?>
             <!-- Order Pages -->
             <li class="menu-item <?php echo str_contains($currentPage, "order") ? "active open" : ""; ?>">
@@ -193,6 +217,54 @@
             </li>
             <!-- / Order Pages -->
         <?php } ?>
+        <!-- Account -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Account</span>
+        </li>
+        <li class="menu-item <?php echo str_contains($currentPage, "account") ? "active open" : ""; ?>">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="bx bx-cog me-1"></i>
+                <div data-i18n="Layouts">Account</div>
+            </a>
+            <?php if ($_SESSION["user_type"] == "admin") { ?>
+                <ul class="menu-sub">
+                    <li class="menu-item <?php echo $currentPage == "accountView" ? "active" : ""; ?>">
+                        <a href="accountView-admin.php" class="menu-link">
+                            <div>Account View</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php echo $currentPage == "accountEdit" ? "active" : ""; ?>">
+                        <a href="accountEdit-admin.php" class="menu-link">
+                            <div>Account Edit</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php echo $currentPage == "accountDelete" ? "active" : ""; ?>">
+                        <a href="accountDelete-admin.php" class="menu-link">
+                            <div>Account Delete</div>
+                        </a>
+                    </li>
+                </ul>
+            <?php } elseif ($_SESSION["user_type"] == "employee") { ?>
+                <ul class="menu-sub">
+                    <li class="menu-item <?php echo $currentPage == "accountView" ? "active" : ""; ?>">
+                        <a href="accountView-employee.php" class="menu-link">
+                            <div>Account View</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php echo $currentPage == "accountEdit" ? "active" : ""; ?>">
+                        <a href="accountEdit-employee.php" class="menu-link">
+                            <div>Account Edit</div>
+                        </a>
+                    </li>
+                    <li class="menu-item <?php echo $currentPage == "accountDelete" ? "active" : ""; ?>">
+                        <a href="accountDelete-employee.php" class="menu-link">
+                            <div>Account Delete</div>
+                        </a>
+                    </li>
+                </ul>
+            <?php } ?>
+        </li>
+        <!-- / Account -->
         <!-- Log-out -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Log Out</span>

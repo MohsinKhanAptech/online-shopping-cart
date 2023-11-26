@@ -1,0 +1,80 @@
+<?php
+session_start();
+include "include/dbconfig.php";
+include "include/functions.php";
+
+if (!isset($_SESSION["user"])) {
+    alert("Please log-in to gain access");
+    location("login.php");
+} elseif ($_SESSION["user_type"] == "admin") {
+    if (isset($_POST["submit"])) {
+        $admin_id = $_SESSION["user_id"];
+        $admin_name = $_POST["admin_name"];
+        $admin_email = $_POST["admin_email"];
+        $admin_password = $_POST["admin_password"];
+        $admin_image = $_FILES["admin_image"]["name"];
+        $admin_image_size = $_FILES["admin_image"]["size"];
+        $admin_image_tmp = $_FILES["admin_image"]["tmp_name"];
+
+        $admin_image_old = mysqli_fetch_column(mysqli_query($connect, "SELECT `admin_image` FROM `admins` WHERE `admin_id` = '$admin_id'"));
+
+        if ($admin_image_size > 0) {
+            $querry = "UPDATE `admins` SET `admin_name`='$admin_name',`admin_email`='$admin_email',`admin_password`='$admin_password',`admin_image`='$admin_image' WHERE `admin_id` = $admin_id";
+        } else {
+            $querry = "UPDATE `admins` SET `admin_name`='$admin_name',`admin_email`='$admin_email',`admin_password`='$admin_password' WHERE `admin_id` = $admin_id";
+        }
+        if (mysqli_query($connect, $querry)) {
+            if ($admin_image_size > 0) {
+                list($width, $height) = getimagesize($admin_image_tmp);
+                if ($width != $height) {
+                    alert("Image is not square");
+                    historyGo();
+                } else {
+                    unlink("uploads/admins/$admin_image_old");
+                    move_uploaded_file($admin_image_tmp, "uploads/admins/" . $admin_image);
+                }
+            };
+            location("accountView-admin.php");
+        } else {
+            alert("something went wrong");
+            historyGo();
+        }
+    }
+} elseif ($_SESSION["user_type"] == "employee") {
+
+    if (isset($_POST["submit"])) {
+        $employee_id = $_SESSION["user_id"];
+        $employee_name = $_POST["employee_name"];
+        $employee_email = $_POST["employee_email"];
+        $employee_password = $_POST["employee_password"];
+        $employee_contact = $_POST["employee_contact"];
+        $employee_address = $_POST["employee_address"];
+        $employee_image = $_FILES["employee_image"]["name"];
+        $employee_image_size = $_FILES["employee_image"]["size"];
+        $employee_image_tmp = $_FILES["employee_image"]["tmp_name"];
+
+        $employee_image_old = mysqli_fetch_column(mysqli_query($connect, "SELECT `employee_image` FROM `employees` WHERE `employee_id` = '$employee_id'"));
+
+        if ($employee_image_size > 0) {
+            $querry = "UPDATE `employees` SET `employee_name`='$employee_name',`employee_email`='$employee_email',`employee_password`='$employee_password',`employee_contact`='$employee_contact',`employee_address`='$employee_address',`employee_image`='$employee_image' WHERE `employee_id` = $employee_id";
+        } else {
+            $querry = "UPDATE `employees` SET `employee_name`='$employee_name',`employee_email`='$employee_email',`employee_password`='$employee_password',`employee_contact`='$employee_contact',`employee_address`='$employee_address' WHERE `employee_id` = $employee_id";
+        }
+        if (mysqli_query($connect, $querry)) {
+            if ($employee_image_size > 0) {
+                list($width, $height) = getimagesize($employee_image_tmp);
+                if ($width != $height) {
+                    alert("Image is not square");
+                    historyGo();
+                } else {
+                    unlink("uploads/employees/$employee_image_old");
+                    move_uploaded_file($employee_image_tmp, "uploads/employees/" . $employee_image);
+                }
+            };
+            location("accountView-employee.php");
+        } else {
+            alert("something went wrong");
+            historyGo();
+        }
+    }
+}

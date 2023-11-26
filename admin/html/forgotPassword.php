@@ -5,7 +5,7 @@ include "include/functions.php";
 
 if (isset($_SESSION["user"])) {
     alert("An account is already logged-in");
-    historyGo();
+    location("index.php");
 } ?>
 
 <!DOCTYPE html>

@@ -1,3 +1,14 @@
+<?php
+include "include/dbconfig.php";
+if (isset($_SESSION["user"]) && $_SESSION["user_type"] == "admin") {
+    $adminSQL = "SELECT * FROM `admins` WHERE `admin_id` = {$_SESSION["user_id"]}";
+    $admin = mysqli_fetch_assoc(mysqli_query($connect, $adminSQL));
+    $imgSRC = "uploads/admins/" . $admin["admin_image"];
+} elseif (isset($_SESSION["user"]) && $_SESSION["user_type"] == "employee") {
+    $employeeSQL = "SELECT * FROM `employees` WHERE `employee_id` = {$_SESSION["user_id"]}";
+    $employee = mysqli_fetch_assoc(mysqli_query($connect, $employeeSQL));
+    $imgSRC = "uploads/employees/" . $employee["employee_image"];
+} ?>
 <style>
     #livesearch,
     #productViewSearch,
@@ -86,21 +97,21 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                        <img src="<?php echo $imgSRC ?>" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="<?php echo $_SESSION["user_type"] == "admin" ? "accountView-admin.php" : "accountView-employee.php"; ?>">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                        <img src="<?php echo $imgSRC ?>" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-medium d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                    <span class="fw-medium d-block"><?php echo $_SESSION["user"] ?></span>
+                                    <small class="text-muted text-capitalize"><?php echo $_SESSION["user_type"] ?></small>
                                 </div>
                             </div>
                         </a>

@@ -6,7 +6,7 @@ include "include/functions.php";
 if (!isset($_SESSION["user"])) {
     alert("Please log-in to gain access");
     location("login.php");
-} elseif ($_SESSION["user_type"] != "admin") {
+} elseif ($_SESSION["user_type"] != "employee") {
     location("404.php");
 } ?>
 
@@ -15,8 +15,8 @@ if (!isset($_SESSION["user"])) {
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <?php
-$title = "Employee Remove";
-$currentPage = "employeeDelete";
+$title = "Account Delete";
+$currentPage = "accountDelete";
 include "include/head.php";
 ?>
 
@@ -36,39 +36,24 @@ include "include/head.php";
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="py-3 mb-4 text-capitalize"><span class="text-muted fw-light">Employees /</span><span> Employee Remove</span></h4>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <p class="card-title">Search the employee name or id you want to delete.</p>
-                                <form action="employeeSearch.php" method="get">
-                                    <div class="d-flex flex-sm-row flex-column align-items-center gap-3">
-                                        <input name="search" type="search" value="" class="form-control w-100" placeholder="Search Employee" autocomplete="off" onkeyup="employeeView(this.value);">
-                                        <button class="dt-button add-new btn btn-primary flex-shrink-0 flex-grow-0">
-                                            <span><i class="bx bx-search-alt me-1"></i><span>Search Employee</span></span>
-                                        </button>
-                                        <div id="productViewSearch"></div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <?php if (!empty($_GET["employee_id"])) {
-                            $employee_id = $_GET["employee_id"];
-                            $sql = "SELECT * FROM `employees` WHERE `employee_id` = $employee_id";
-                            $row = mysqli_fetch_assoc(mysqli_query($connect, $sql)); ?>
+                        <h4 class="py-3 mb-4 text-capitalize"><span class="text-muted fw-light">Accounts /</span><span> Account Edit</span></h4>
+                        <?php
+                        $account_id = $_SESSION["user_id"];
+                        $account_type = $_SESSION["user_type"];
+                        $sql = "SELECT * FROM `employees` WHERE `employee_id` = $account_id";
+                        $row = mysqli_fetch_assoc(mysqli_query($connect, $sql)); ?>
+                        <form action="accountDeleteValid.php" method="post" id="accountDeleteForm" enctype="multipart/form-data" autocomplete="off">
                             <div class="card mb-4">
-                                <div class="card-header d-flex flex-sm-row flex-column align-items-center justify-content-between gap-4">
+                                <div class="card-header d-flex flex-sm-row flex-column align-items-center justify-content-between gap-3">
                                     <h5 class="card-title text-capitalize m-0"><?php echo $row["employee_id"] . ". " . $row["employee_name"] ?></h5>
-                                    <form action="employeeDeleteValid.php" method="post">
-                                        <div class="flex-shrink-0 flex-grow-0 d-flex flex-column flex-sm-row gap-2">
-                                            <input type="hidden" name="employee_id" value="<?php echo $employee_id ?>">
-                                            <button onclick="location.href='employeeDelete.php'" class="dt-button btn btn-secondary" type="button">
-                                                <span><i class="bx bx-x-circle me-1"></i><span>Discard</span></span>
-                                            </button>
-                                            <button class="dt-button btn btn-danger" type="submit" name="submit">
-                                                <span><i class="bx bx-trash me-1"></i><span>Delete Employee</span></span>
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <div class="flex-shrink-1 flex-grow-0 flex-wrap d-flex flex-column flex-sm-row gap-2">
+                                        <button onclick="location.href='accountView-employee.php'" class="dt-button btn btn-primary" type="button">
+                                            <span><i class="bx bx-x-circle me-1"></i><span>Cancel</span></span>
+                                        </button>
+                                        <button class="dt-button btn btn-danger" type="submit" name="submit">
+                                            <span><i class="bx bx-trash me-1"></i><span>Delete Account</span></span>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="row mx-sm-4 my-sm-4 align-items-center">
@@ -110,52 +95,34 @@ include "include/head.php";
                                             <span class="fs-6 mx-2 mx-sm-3 mt-sm-2 mt-1"><?php echo $row["employee_address"] ?></span>
                                         </p>
                                     </div>
-                                    <form action="employeeDeleteValid.php" method="post">
-                                        <input type="hidden" name="employee_id" value="<?php echo $employee_id ?>">
-                                        <div class="row flex-column flex-sm-row flex-grow-1 p-0 m-0">
-                                            <button onclick="location.href='employeeDelete.php'" class="dt-button btn btn-secondary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
-                                                <span><i class="bx bx-x-circle me-1"></i><span>Discard</span></span>
-                                            </button>
-                                            <button class="dt-button btn btn-danger flex-grow-1 w-auto my-4 mx-sm-5" type="submit" name="submit">
-                                                <span><i class="bx bx-trash me-1"></i><span>Delete Employee</span></span>
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <div class="row flex-column flex-sm-row flex-grow-1 p-0 m-0">
+                                        <button onclick="location.href='accountView-employee.php'" class="dt-button btn btn-primary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
+                                            <span><i class="bx bx-x-circle me-1"></i><span>Cancel</span></span>
+                                        </button>
+                                        <button onclick="location.href='accountEdit-employee.php'" class="dt-button btn btn-secondary flex-grow-1 w-auto my-4 mx-sm-5" type="button">
+                                            <span><i class="bx bx-edit me-1"></i><span>Edit Account</span></span>
+                                        </button>
+                                        <button class="dt-button btn btn-danger flex-grow-1 w-auto my-4 mx-sm-5" type="submit" name="submit">
+                                            <span><i class="bx bx-trash me-1"></i><span>Delete Account</span></span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        <?php
-                        } ?>
                     </div>
-                    <!-- / Content -->
-                    <div class="content-backdrop fade"></div>
+                    </form>
                 </div>
-                <!-- Content wrapper -->
+                <!-- / Content -->
+                <div class="content-backdrop fade"></div>
             </div>
-            <!-- / Layout page -->
+            <!-- Content wrapper -->
         </div>
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
+        <!-- / Layout page -->
+    </div>
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
     <?php include "include/script.php"; ?>
 </body>
 
 </html>
-<script>
-    function employeeView(search, type = "delete") {
-        if (search.length == 0) {
-            document.getElementById("productViewSearch").innerHTML = "";
-            document.getElementById("productViewSearch").classList.remove("searchResult");
-            return;
-        }
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("productViewSearch").innerHTML = this.responseText;
-                document.getElementById("productViewSearch").classList.add("searchResult");
-            }
-        }
-        xmlhttp.open("GET", "employeeSearch.php?search=" + search + "&type=" + type, true);
-        xmlhttp.send();
-    }
-</script>

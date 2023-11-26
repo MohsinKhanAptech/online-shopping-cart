@@ -7,8 +7,7 @@ if (!isset($_SESSION["user"])) {
     alert("Please log-in to gain access");
     location("login.php");
 } elseif ($_SESSION["user_type"] != "admin") {
-    alert("Only admin can access this page");
-    historyGo();
+    location("404.php");
 } ?>
 
 <!DOCTYPE html>
@@ -60,11 +59,11 @@ include "include/head.php";
                                 <div class="card-header d-flex flex-sm-row flex-column align-items-center justify-content-between gap-3">
                                     <h5 class="card-title text-capitalize m-0"><?php echo $row["product_id"] . ". " . $row["product_name"] ?></h5>
                                     <div class="flex-shrink-1 flex-grow-0 flex-wrap d-flex flex-column flex-sm-row gap-2">
-                                        <button onclick="location.href='productDelete.php'" class="dt-button btn btn-light" type="button">
-                                            <span><i class="bx bx-x-circle me-1"></i><span>Discard</span></span>
-                                        </button>
                                         <button onclick="location.href='../../public/product.php?product_id=<?php echo $row['product_id'] ?>'" class="dt-button btn btn-light" type="button">
                                             <span><i class="bx bx-link me-1"></i><span>Open Page</span></span>
+                                        </button>
+                                        <button onclick="location.href='productDelete.php'" class="dt-button btn btn-secondary" type="button">
+                                            <span><i class="bx bx-x-circle me-1"></i><span>Discard</span></span>
                                         </button>
                                         <form action="productDeleteValid.php" method="post">
                                             <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
