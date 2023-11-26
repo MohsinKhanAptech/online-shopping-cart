@@ -92,7 +92,7 @@ include "include/head.php";
                                         </p>
                                         <p class="m-0 my-1 p-0 fs-5 text-capitalize">
                                             <span style="display: inline-block; width: 6em;">Time Added:</span>
-                                            <span class="d-block d-sm-inline-block fs-6 mx-2 mx-sm-0"><?php echo $row["timestamp"] ?></span>
+                                            <span class="d-block d-sm-inline-block fs-6 mx-2 mx-sm-0"><?php echo $row["customer_timestamp"] ?></span>
                                         </p>
                                     </div>
                                 </div>

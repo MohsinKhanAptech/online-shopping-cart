@@ -35,7 +35,7 @@ switch ($orderby) {
             INNER JOIN `products`
             ON Orders.product_id = products.product_id)
             WHERE $where
-            ORDER BY `timestamp` DESC LIMIT $limit OFFSET $offset;
+            ORDER BY `order_timestamp` DESC LIMIT $limit OFFSET $offset;
         ";
         break;
 
@@ -48,7 +48,7 @@ switch ($orderby) {
             INNER JOIN `products`
             ON Orders.product_id = products.product_id)
             WHERE $where
-            ORDER BY `timestamp` LIMIT $limit OFFSET $offset;
+            ORDER BY `order_timestamp` LIMIT $limit OFFSET $offset;
         ";
         break;
 
@@ -61,13 +61,13 @@ switch ($orderby) {
             INNER JOIN `products`
             ON orders.product_id = products.product_id)
             WHERE $where
-            ORDER BY `timestamp` DESC LIMIT $limit OFFSET $offset;
+            ORDER BY `order_timestamp` DESC LIMIT $limit OFFSET $offset;
         ";
         break;
 }
 
 $order_count_querry = preg_replace("/SELECT orders.\*,customers.customer_name,products.product_name/i", "SELECT COUNT(order_id)", $orderquerry);
-$order_count_querry = preg_replace("/ORDER BY (`timestamp` DESC| `timestamp`) LIMIT $limit OFFSET $offset/i", "", $order_count_querry);
+$order_count_querry = preg_replace("/ORDER BY (`order_timestamp` DESC| `order_timestamp`) LIMIT $limit OFFSET $offset/i", "", $order_count_querry);
 $order_count = mysqli_fetch_column(mysqli_query($connect, $order_count_querry));
 
 $title = "order List";
@@ -171,7 +171,7 @@ include "include/head.php";
                                                             <td class="d-lg-table-cell d-none"><span><?php echo $row["product_id"] ?></span></td>
                                                             <td class="d-md-table-cell d-none"><span><?php echo $row["order_price"] ?></span></td>
                                                             <td class="d-md-table-cell d-none"><span><?php echo $row["order_quantity"] ?></span></td>
-                                                            <td class="d-xlg-table-cell d-none"><span><?php echo $row["timestamp"] ?></span></td>
+                                                            <td class="d-xlg-table-cell d-none"><span><?php echo $row["order_timestamp"] ?></span></td>
                                                             <td>
                                                                 <div class="d-inline-block text-nowrap">
                                                                     <button type="button" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>

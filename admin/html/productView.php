@@ -103,7 +103,7 @@ include "include/head.php";
                                     <div class="row mx-1 mx-sm-5 mt-2">
                                         <p class="row m-0 my-1 p-0 fs-5">
                                             <span>Time Added:</span>
-                                            <span class="fs-6 mx-2 mx-sm-3 mt-sm-2 mt-1"><?php echo $row["timestamp"] ?></span>
+                                            <span class="fs-6 mx-2 mx-sm-3 mt-sm-2 mt-1"><?php echo $row["product_timestamp"] ?></span>
                                         </p>
                                         <p class="row m-0 my-1 p-0 fs-5">
                                             <span>Rating:</span>

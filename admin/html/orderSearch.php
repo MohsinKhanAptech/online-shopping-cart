@@ -51,6 +51,10 @@ if (mysqli_num_rows($search_order_querry) > 0) {
         while ($row = mysqli_fetch_assoc($search_order_querry)) {
             echo "<a href='orderList.php?search={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. <span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}: <span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]}</a>";
         }
+    } elseif ($type == "view") {
+        while ($row = mysqli_fetch_assoc($search_order_querry)) {
+            echo "<a href='orderView.php?order_id={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. <span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}: <span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]}</a>";
+        }
     } elseif ($type == "delete") {
         while ($row = mysqli_fetch_assoc($search_order_querry)) {
             echo "<a href='orderDelete.php?order_id={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. <span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}: <span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]}</a>";

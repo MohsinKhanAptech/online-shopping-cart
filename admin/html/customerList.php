@@ -30,19 +30,19 @@ $where = "$search";
 
 switch ($orderby) {
     case 'Newest':
-        $orderquerry = "SELECT * FROM `customers` WHERE $where ORDER BY `timestamp` DESC LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `customers` WHERE $where ORDER BY `customer_timestamp` DESC LIMIT $limit OFFSET $offset;";
         break;
 
     case 'Oldest':
-        $orderquerry = "SELECT * FROM `customers` WHERE $where ORDER BY `timestamp` LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `customers` WHERE $where ORDER BY `customer_timestamp` LIMIT $limit OFFSET $offset;";
         break;
 
     default:
-        $orderquerry = "SELECT * FROM `customers` WHERE $where ORDER BY `timestamp` DESC LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `customers` WHERE $where ORDER BY `customer_timestamp` DESC LIMIT $limit OFFSET $offset;";
         break;
 }
 $customer_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(customer_id)", $orderquerry);
-$customer_count_querry = preg_replace("/ORDER BY (`timestamp` DESC|`timestamp`) LIMIT $limit OFFSET $offset/i", "", $customer_count_querry);
+$customer_count_querry = preg_replace("/ORDER BY (`customer_timestamp` DESC|`customer_timestamp`) LIMIT $limit OFFSET $offset/i", "", $customer_count_querry);
 $customer_count = mysqli_fetch_column(mysqli_query($connect, $customer_count_querry));
 
 $title = "customer List";
@@ -131,7 +131,7 @@ include "include/head.php";
                                                                 <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["customer_name"] ?></h6>
                                                             </td>
                                                             <td class="d-sm-table-cell d-none"><span><?php echo $row["customer_email"] ?></span></td>
-                                                            <td class="d-md-table-cell d-none"><span><?php echo $row["timestamp"] ?></span></td>
+                                                            <td class="d-md-table-cell d-none"><span><?php echo $row["customer_timestamp"] ?></span></td>
                                                             <td>
                                                                 <div class="d-inline-block text-nowrap">
                                                                     <button type="button" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>
