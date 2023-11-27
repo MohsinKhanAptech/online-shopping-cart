@@ -37,7 +37,7 @@ if (isset($_SESSION["customer"])) {
                         <ul class="g-dropdown" style="width:200px">
                             <li>
                                 <a href="cart.php">
-                                    <i class="fas fa-cog u-s-m-r-9"></i>
+                                    <i class="fas fa-shopping-cart u-s-m-r-9"></i>
                                     My Cart</a>
                             </li>
                             <li>

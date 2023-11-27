@@ -1,3 +1,8 @@
+<?php
+session_start();
+include "include/dbconfig.php";
+include "include/functions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 

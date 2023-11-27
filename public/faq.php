@@ -1,3 +1,8 @@
+<?php
+session_start();
+include "include/dbconfig.php";
+include "include/functions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +40,6 @@ include "include/head.php";
                 <div class="faq u-s-m-b-50">
                     <h1>FREQUENTLY QUESTIONS</h1>
                     <h1>Below are frequently asked questions, you may find the answer for yourself.</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id erat sagittis, faucibus metus malesuada, eleifend turpis. Mauris semper augue id nisl aliquet, a porta lectus mattis. Nulla at tortor augue. In eget enim diam. Donec gravida tortor sem, ac fermentum nibh rutrum sit amet. Nulla convallis mauris vitae congue consequat. Donec interdum nunc purus, vitae vulputate arcu fringilla quis. Vivamus iaculis euismod dui.</p>
                 </div>
                 <div class="u-s-m-b-50">
                     <div class="f-a-q u-s-m-b-30">
