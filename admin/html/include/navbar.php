@@ -84,9 +84,10 @@ if (isset($_SESSION["user"]) && $_SESSION["user_type"] == "admin") {
                 <i class="bx bx-search fs-4 lh-0 align-self-center w-auto"></i>
                 <input type="text" name="search" id="searchBar" onkeyup="showResult(this.value,document.getElementById('searchTypeSelect').value);" class="form-control border-0 flex-grow-1 shadow-none ps-1 ps-sm-2 w-100" placeholder="Search..." aria-label="Search..." autocomplete="off" />
                 <select name="searchType" id="searchTypeSelect" class="form-select w-auto" onchange="showResult(document.getElementById('searchBar').value,this.value);">
-                    <option value="products">Products</option>
-                    <option value="users">Users</option>
-                    <option value="employees">Employees</option>
+                    <option <?php echo $_SESSION["user_type"] == "employee" ? "hidden" : ""; ?> value="products">Products</option>
+                    <option <?php echo $_SESSION["user_type"] == "employee" ? "hidden" : ""; ?> value="users">Users</option>
+                    <option <?php echo $_SESSION["user_type"] == "employee" ? "hidden" : ""; ?> value="employees">Employees</option>
+                    <option <?php echo $_SESSION["user_type"] == "employee" ? "selected" : ""; ?> value="orders">Orders</option>
                 </select>
                 <div id="livesearch"></div>
             </div>

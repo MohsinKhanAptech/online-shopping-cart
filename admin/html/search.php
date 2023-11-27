@@ -27,9 +27,9 @@ if ($type == "products") {
     $search_product_name = mysqli_query($connect, $sql);
     if (mysqli_num_rows($search_product_name) > 0) {
         while ($row = mysqli_fetch_assoc($search_product_name)) {
-            echo "<a href='userView.php?customer_id={$row["customer_id"]}'><span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}</a>";
+            echo "<a href='customerView.php?customer_id={$row["customer_id"]}'><span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}</a>";
         }
-        echo "<a href='userList.php?search=$search' class='viewAll'>View All</a>";
+        echo "<a href='customerList.php?search=$search' class='viewAll'>View All</a>";
     } else {
         echo "no result found";
     }
@@ -41,6 +41,26 @@ if ($type == "products") {
             echo "<a href='employeeView.php?employee_id={$row["employee_id"]}'><span class='col_id'>{$row["employee_id"]}</span>. {$row["employee_name"]}</a>";
         }
         echo "<a href='employeeList.php?search=$search' class='viewAll'>View All</a>";
+    } else {
+        echo "no result found";
+    }
+} elseif ($type == "orders") {
+    $sql =
+        "SELECT orders.order_id,customers.customer_name,customers.customer_id,products.product_name,products.product_id
+        FROM ((`orders`
+        INNER JOIN `customers`
+        ON orders.customer_id = customers.customer_id)
+        INNER JOIN `products`
+        ON orders.product_id = products.product_id)
+        WHERE (orders.order_id LIKE '%$search%' OR products.product_id LIKE '%$search%' OR products.product_name LIKE '%$search%' OR customers.customer_id LIKE '%$search%' OR customers.customer_name LIKE '%$search%')
+        LIMIT 20;
+    ";
+    $search_product_name = mysqli_query($connect, $sql);
+    if (mysqli_num_rows($search_product_name) > 0) {
+        while ($row = mysqli_fetch_assoc($search_product_name)) {
+            echo "<a href='orderView.php?order_id={$row["order_id"]}'><span class='col_id'>{$row["order_id"]}</span>. <span class='col_id'>{$row["customer_id"]}</span>. {$row["customer_name"]}: <span class='col_id'>{$row["product_id"]}</span>. {$row["product_name"]}</a>";
+        }
+        echo "<a href='orderList.php?search=$search' class='viewAll'>View All</a>";
     } else {
         echo "no result found";
     }

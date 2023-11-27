@@ -38,7 +38,7 @@ include "include/head.php";
                             <a href="logoutValid.php"><button class="btn btn-secondary d-grid w-100" type="button">Log Out</button></a>
                         </div>
                         <div class="mb-3">
-                            <button onclick="history.back" class="btn btn-primary d-grid w-100" type="button">Go Back</button>
+                            <button onclick="history.back()" class="btn btn-primary d-grid w-100" type="button">Go Back</button>
                         </div>
                     </div>
                 </div>
