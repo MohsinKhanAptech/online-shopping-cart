@@ -29,7 +29,7 @@ $where = "$category AND $price AND $rating AND $search";
 
 switch ($orderby) {
     case 'Latest':
-        $orderquerry = "SELECT * FROM `products` WHERE $where ORDER BY `timestamp` DESC LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `products` WHERE $where ORDER BY `product_timestamp` DESC LIMIT $limit OFFSET $offset;";
         break;
 
     case 'Best Selling':
@@ -49,7 +49,7 @@ switch ($orderby) {
         break;
 
     default:
-        $orderquerry = "SELECT * FROM `products` WHERE $where ORDER BY `timestamp` DESC LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `products` WHERE $where ORDER BY `product_timestamp` DESC LIMIT $limit OFFSET $offset;";
         break;
 }
 switch ($orderby) {
@@ -87,7 +87,7 @@ $two_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COU
 $one_star_reviews_count = mysqli_fetch_column(mysqli_query($connect, "SELECT COUNT(`product_id`) FROM `products` WHERE $category AND `product_rating` >= 1"));
 
 $product_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(product_id)", $orderquerry);
-$product_count_querry = preg_replace("/ ORDER BY (`timestamp`|`product_sold`|'product_score'|`product_price`) DESC LIMIT $limit OFFSET $offset/i", "", $product_count_querry);
+$product_count_querry = preg_replace("/ ORDER BY (`product_timestamp`|`product_sold`|'product_score'|`product_price`) DESC LIMIT $limit OFFSET $offset/i", "", $product_count_querry);
 $product_count = mysqli_fetch_column(mysqli_query($connect, $product_count_querry));
 
 include "include/head.php";

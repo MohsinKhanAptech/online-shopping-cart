@@ -16,7 +16,7 @@ $offset = $limit * $page;
 
 switch ($orderby) {
     case 'Latest':
-        $orderquerry = "SELECT * FROM `products` ORDER BY `timestamp` DESC LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `products` ORDER BY `product_timestamp` DESC LIMIT $limit OFFSET $offset;";
         break;
 
     case 'Best Selling':
@@ -36,7 +36,7 @@ switch ($orderby) {
         break;
 
     default:
-        $orderquerry = "SELECT * FROM `products` ORDER BY `timestamp` DESC LIMIT $limit OFFSET $offset;";
+        $orderquerry = "SELECT * FROM `products` ORDER BY `product_timestamp` DESC LIMIT $limit OFFSET $offset;";
         break;
 }
 switch ($orderby) {
