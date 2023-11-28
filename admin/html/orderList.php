@@ -155,13 +155,11 @@ include "include/head.php";
                                                 <tr>
                                                     <th class="d-lg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
                                                     <th tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="customer: activate to sort column descending" aria-sort="ascending">customer</th>
-                                                    <th class="d-xlg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
                                                     <th class="d-md-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="product: activate to sort column descending" aria-sort="ascending">product</th>
-                                                    <th class="d-xlg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="id: activate to sort column ascending">id</th>
-                                                    <th class="d-md-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="category: activate to sort column ascending">price</th>
-                                                    <th class="d-lg-table-cell d-none" rowspan="1" colspan="1" aria-label="stock">qty</th>
-                                                    <th rowspan="1" colspan="1" aria-label="stock">total</th>
-                                                    <th class="d-xlg-table-cell d-none" rowspan="1" colspan="1" aria-label="stock">timestamp</th>
+                                                    <th rowspan="1" colspan="1">status</th>
+                                                    <th class="d-lg-table-cell d-none" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="category: activate to sort column ascending">price</th>
+                                                    <th class="d-lg-table-cell d-none" rowspan="1" colspan="1">qty</th>
+                                                    <th rowspan="1" colspan="1">total</th>
                                                     <th rowspan="1" colspan="1" aria-label="Actions">Actions</th>
                                                 </tr>
                                             </thead>
@@ -171,21 +169,51 @@ include "include/head.php";
                                                 if (mysqli_num_rows($order_select) > 0) {
                                                     while ($row = mysqli_fetch_assoc($order_select)) { ?>
                                                         <tr>
-                                                            <td class="d-lg-table-cell d-none"><span><?php echo $row["order_id"] ?></span></td>
-                                                            <td>
+                                                            <td class="d-lg-table-cell d-none">
                                                                 <a href="orderView.php?order_id=<?php echo $row["order_id"] ?>">
+                                                                    <span class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["order_id"] ?></span>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="customerView.php?customer_id=<?php echo $row["customer_id"] ?>">
                                                                     <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["customer_name"] ?></h6>
                                                                 </a>
                                                             </td>
-                                                            <td class="d-xlg-table-cell d-none"><span><?php echo $row["customer_id"] ?></span></td>
                                                             <td class="d-md-table-cell d-none">
-                                                                <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["product_name"] ?></h6>
+                                                                <a href="productView.php?product_id=<?php echo $row["product_id"] ?>">
+                                                                    <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["product_name"] ?></h6>
+                                                                </a>
                                                             </td>
-                                                            <td class="d-xlg-table-cell d-none"><span><?php echo $row["product_id"] ?></span></td>
-                                                            <td class="d-md-table-cell d-none">$<span><?php echo $row["order_price"] ?></span></td>
+                                                            <td>
+                                                                <?php if ($row["order_status"] == "Backorder") { ?>
+                                                                    <a href="orderList.php?status=Backorder">
+                                                                        <span class="bg-label-danger p-2 rounded"><?php echo $row["order_status"] ?></span>
+                                                                    </a>
+                                                                <?php } elseif ($row["order_status"] == "Completed") { ?>
+                                                                    <a href="orderList.php?status=Completed">
+                                                                        <span class="bg-label-success p-2 rounded"><?php echo $row["order_status"] ?></span>
+                                                                    </a>
+                                                                <?php } elseif ($row["order_status"] == "On Hold") { ?>
+                                                                    <a href="orderList.php?status=On+Hold">
+                                                                        <span class="bg-label-warning p-2 rounded"><?php echo $row["order_status"] ?></span>
+                                                                    </a>
+                                                                <?php } elseif ($row["order_status"] == "Pending") { ?>
+                                                                    <a href="orderList.php?status=Pending">
+                                                                        <span class="bg-label-secondary p-2 rounded"><?php echo $row["order_status"] ?></span>
+                                                                    </a>
+                                                                <?php } elseif ($row["order_status"] == "Processing") { ?>
+                                                                    <a href="orderList.php?status=Processing">
+                                                                        <span class="bg-label-primary p-2 rounded"><?php echo $row["order_status"] ?></span>
+                                                                    </a>
+                                                                <?php } elseif ($row["order_status"] == "Shipped") { ?>
+                                                                    <a href="orderList.php?status=Shipped">
+                                                                        <span class="bg-label-success p-2 rounded"><?php echo $row["order_status"] ?></span>
+                                                                    </a>
+                                                                <?php } ?>
+                                                            </td>
+                                                            <td class="d-lg-table-cell d-none">$<span><?php echo $row["order_price"] ?></span></td>
                                                             <td class="d-lg-table-cell d-none"><span><?php echo $row["order_quantity"] ?></span></td>
                                                             <td>$<span><?php echo $row["order_total"] ?></span></td>
-                                                            <td class="d-xlg-table-cell d-none"><span><?php echo $row["order_timestamp"] ?></span></td>
                                                             <td>
                                                                 <div class="d-inline-block text-nowrap">
                                                                     <a href="orderEdit.php?order_id=<?php echo $row["order_id"] ?>"><button type="button" class="btn btn-sm btn-icon"><i class="bx bx-edit"></i></button></a>
