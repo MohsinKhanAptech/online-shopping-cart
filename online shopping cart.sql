@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 02:52 AM
+-- Generation Time: Nov 28, 2023 at 02:15 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -236,11 +236,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `customer_id`, `product_id`, `order_price`, `order_quantity`, `order_status`, `order_total`, `order_timestamp`) VALUES
-(50, 1, 48, 459.99, 1, 'Processing', 459.99, '2023-11-28 01:48:33'),
-(51, 1, 78, 299.99, 1, 'Processing', 299.99, '2023-11-28 01:48:33'),
-(52, 1, 74, 2.99, 1, 'Processing', 2.99, '2023-11-28 01:48:33'),
-(53, 1, 89, 69.99, 1, 'Processing', 69.99, '2023-11-28 01:48:33'),
-(54, 1, 43, 159.99, 1, 'Processing', 159.99, '2023-11-28 01:48:33'),
+(50, 1, 48, 459.99, 1, 'Completed', 459.99, '2023-11-28 01:48:33'),
+(51, 1, 78, 299.99, 1, 'Backorder', 299.99, '2023-11-28 01:48:33'),
+(52, 1, 74, 2.99, 1, 'On Hold', 2.99, '2023-11-28 01:48:33'),
+(53, 1, 89, 69.99, 1, 'Pending', 69.99, '2023-11-28 01:48:33'),
+(54, 1, 43, 159.99, 1, 'Shipped', 159.99, '2023-11-28 01:48:33'),
 (55, 1, 73, 12.99, 1, 'Processing', 12.99, '2023-11-28 01:48:33');
 
 -- --------------------------------------------------------
@@ -616,7 +616,7 @@ ALTER TABLE `newsletter`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `products`
