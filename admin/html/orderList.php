@@ -182,9 +182,9 @@ include "include/head.php";
                                                                 <h6 class="text-body text-nowrap mb-0 text-capitalize"><?php echo $row["product_name"] ?></h6>
                                                             </td>
                                                             <td class="d-xlg-table-cell d-none"><span><?php echo $row["product_id"] ?></span></td>
-                                                            <td class="d-md-table-cell d-none"><span><?php echo $row["order_price"] ?></span></td>
+                                                            <td class="d-md-table-cell d-none">$<span><?php echo $row["order_price"] ?></span></td>
                                                             <td class="d-lg-table-cell d-none"><span><?php echo $row["order_quantity"] ?></span></td>
-                                                            <td><span><?php echo $row["order_total"] ?></span></td>
+                                                            <td>$<span><?php echo $row["order_total"] ?></span></td>
                                                             <td class="d-xlg-table-cell d-none"><span><?php echo $row["order_timestamp"] ?></span></td>
                                                             <td>
                                                                 <div class="d-inline-block text-nowrap">
