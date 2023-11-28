@@ -160,7 +160,7 @@ include "include/head.php";
                                                     <a href="shop.php">Shop</a>
                                                 </li>
                                                 <li>
-                                                    <a href="shop-v2-sub-category.html"><?php echo $row["product_category"] ?></a>
+                                                    <a href="shop.php?category=<?php echo $row["product_category"] ?>"><?php echo $row["product_category"] ?></a>
                                                 </li>
                                             </ul>
                                             <h6 class="item-title">
@@ -227,41 +227,34 @@ include "include/head.php";
                         <ul>
                             <?php
                             $product_pages = ceil($product_count / $limit);
-                            $str = trim($_SERVER['QUERY_STRING'], "&page=$page");
-                            if ($product_pages == 1) {
+                            $str = preg_replace("/&page=$page/", "", $_SERVER['QUERY_STRING']);
+                            if ($page > 0) {
+                                $page--;
                                 echo
-                                "<li class='active'>
-                                <a href='#'>1</a>
+                                "<li>
+                                    <a href='deals.php?$str&page=$page' title='Previous'>
+                                        <i class='fa fa-angle-left'></i>
+                                    </a>
                                 </li>";
-                            } else {
-                                if ($page > 0) {
-                                    $page--;
-                                    echo
-                                    "<li>
-                                        <a href='deals.php?$str&page=$page' title='Previous'>
-                                            <i class='fa fa-angle-left'></i>
-                                        </a>
-                                    </li>";
-                                    $page++;
-                                }
-                                for ($i = 0; $i < $product_pages; $i++) {
-                                    $c = ($page == $i ? "class='active'" : "");
-                                    $p = $i + 1;
-                                    echo
-                                    "<li $c>
-                                        <a href='deals.php?$str&page=$i'>$p</a>
-                                    </li>";
-                                }
-                                if ($page < $product_pages - 1) {
-                                    $page++;
-                                    echo
-                                    "<li>
-                                        <a href='deals.php?$str&page=$page' title='Next'>
-                                            <i class='fa fa-angle-right'></i>
-                                        </a>
-                                    </li>";
-                                    $page--;
-                                }
+                                $page++;
+                            }
+                            for ($i = 0; $i < $product_pages; $i++) {
+                                $c = ($page == $i ? "class='active'" : "");
+                                $p = $i + 1;
+                                echo
+                                "<li $c>
+                                    <a href='deals.php?$str&page=$i'>$p</a>
+                                </li>";
+                            }
+                            if ($page < $product_pages - 1) {
+                                $page++;
+                                echo
+                                "<li>
+                                    <a href='deals.php?$str&page=$page' title='Next'>
+                                        <i class='fa fa-angle-right'></i>
+                                    </a>
+                                </li>";
+                                $page--;
                             } ?>
                         </ul>
                     </div>

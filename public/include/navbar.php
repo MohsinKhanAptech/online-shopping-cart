@@ -193,12 +193,12 @@ if (isset($_SESSION["customer"])) {
                             </a>
                         </li>
                         <li>
-                            <a href="deals.php?orderby=Best Selling">Best Selling
+                            <a href="deals.php?orderby=Best+Selling">Best Selling
                                 <span class="superscript-label-hot">HOT</span>
                             </a>
                         </li>
                         <li>
-                            <a href="deals.php?orderby=Best Rating">Best Rating
+                            <a href="deals.php?orderby=Best+Rating">Best Rating
                             </a>
                         </li>
                         <li class="mega-position">
@@ -224,7 +224,7 @@ if (isset($_SESSION["customer"])) {
                                         <a href="termsAndConditions.php">Terms & Conditions</a>
                                     </li>
                                     <li>
-                                        <a href="404.html">404</a>
+                                        <a href="404.php">404</a>
                                     </li>
                                     <li class="menu-title">Single Product Page</li>
                                     <li>
@@ -272,7 +272,7 @@ if (isset($_SESSION["customer"])) {
                                     </li>
                                     <li class="menu-title">Checkout Variation</li>
                                     <li>
-                                        <a href="confirmation.html">Checkout Confirmation</a>
+                                        <a href="checkoutConfirmation.php">Checkout Confirmation</a>
                                     </li>
                                 </ul>
                             </div>

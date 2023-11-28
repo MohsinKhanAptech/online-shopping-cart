@@ -65,7 +65,7 @@ if (isset($_SESSION["customer"])) { ?>
                                                 <tr class="x4grid">
                                                     <td>
                                                         <div class="cart-anchor-image">
-                                                            <a href="single-product.html">
+                                                            <a href="product.php?product_id=<?php echo $wishlist_item["product_id"] ?>">
                                                                 <img src="uploads/products/<?php echo $wishlist_item["product_image"] ?>" alt="Product" />
                                                                 <h6><?php echo $wishlist_item["product_name"] ?></h6>
                                                             </a>

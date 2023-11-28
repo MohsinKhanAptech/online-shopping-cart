@@ -324,7 +324,7 @@ include "include/head.php";
                                                             <a href="shop.php">Shop</a>
                                                         </li>
                                                         <li>
-                                                            <a href="shop-v2-sub-category.html"><?php echo $row["product_category"] ?></a>
+                                                            <a href="shop.php?category=<?php echo $row["product_category"] ?>"><?php echo $row["product_category"] ?></a>
                                                         </li>
                                                     </ul>
                                                     <h6 class="item-title">

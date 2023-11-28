@@ -67,7 +67,7 @@ if (!isset($_SESSION["customer"])) {
                                         </div>
                                         <div class="group-2 text-right">
                                             <div class="page-anchor">
-                                                <a href="lost-password.html">
+                                                <a href="lostPassword.php">
                                                     <i class="fas fa-circle-o-notch u-s-m-r-9"></i>Lost
                                                     your password?</a>
                                             </div>
