@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2023 at 04:24 PM
+-- Generation Time: Nov 28, 2023 at 02:52 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -57,6 +57,17 @@ CREATE TABLE `cart_items` (
   `cart_quantity` int(10) NOT NULL,
   `cart_total` decimal(65,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart_items`
+--
+
+INSERT INTO `cart_items` (`cart_id`, `customer_id`, `product_id`, `product_price`, `cart_quantity`, `cart_total`) VALUES
+(63, 1, 42, 259.99, 1, 259.99),
+(64, 1, 45, 359.99, 1, 359.99),
+(65, 1, 40, 129.99, 1, 129.99),
+(66, 1, 69, 2.99, 1, 2.99),
+(67, 1, 34, 249.99, 1, 249.99);
 
 -- --------------------------------------------------------
 
@@ -219,6 +230,18 @@ CREATE TABLE `orders` (
   `order_total` decimal(65,2) NOT NULL,
   `order_timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `customer_id`, `product_id`, `order_price`, `order_quantity`, `order_status`, `order_total`, `order_timestamp`) VALUES
+(50, 1, 48, 459.99, 1, 'Processing', 459.99, '2023-11-28 01:48:33'),
+(51, 1, 78, 299.99, 1, 'Processing', 299.99, '2023-11-28 01:48:33'),
+(52, 1, 74, 2.99, 1, 'Processing', 2.99, '2023-11-28 01:48:33'),
+(53, 1, 89, 69.99, 1, 'Processing', 69.99, '2023-11-28 01:48:33'),
+(54, 1, 43, 159.99, 1, 'Processing', 159.99, '2023-11-28 01:48:33'),
+(55, 1, 73, 12.99, 1, 'Processing', 12.99, '2023-11-28 01:48:33');
 
 -- --------------------------------------------------------
 
@@ -454,6 +477,15 @@ CREATE TABLE `wishlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`wishlist_id`, `customer_id`, `product_id`) VALUES
+(28, 1, 87),
+(29, 1, 86),
+(30, 1, 85);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -554,7 +586,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `cart_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -584,7 +616,7 @@ ALTER TABLE `newsletter`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -602,7 +634,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `wishlist_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
