@@ -9,7 +9,7 @@ include "include/functions.php";
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <?php
-$title = "ERROR 404";
+$title = "ERROR 404 | Admin Panel | OSC";
 include "include/head.php";
 ?>
 

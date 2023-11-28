@@ -44,7 +44,7 @@ $customer_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(customer_id)
 $customer_count_querry = preg_replace("/ORDER BY (`customer_timestamp` DESC|`customer_timestamp`) LIMIT $limit OFFSET $offset/i", "", $customer_count_querry);
 $customer_count = mysqli_fetch_column(mysqli_query($connect, $customer_count_querry));
 
-$title = "customer List";
+$title = "customer List | Admin Panel | OSC";
 $currentPage = "customerList";
 include "include/head.php";
 ?>

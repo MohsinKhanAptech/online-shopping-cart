@@ -44,7 +44,7 @@ $admin_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(admin_id)", $or
 $admin_count_querry = preg_replace("/ORDER BY (`admin_timestamp` DESC|`admin_timestamp`) LIMIT $limit OFFSET $offset/i", "", $admin_count_querry);
 $admin_count = mysqli_fetch_column(mysqli_query($connect, $admin_count_querry));
 
-$title = "admin List";
+$title = "admin List | Admin Panel | OSC";
 $currentPage = "adminList";
 include "include/head.php";
 ?>

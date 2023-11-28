@@ -72,7 +72,7 @@ $order_count_querry = preg_replace("/SELECT orders.\*,customers.customer_name,pr
 $order_count_querry = preg_replace("/ORDER BY (`order_timestamp` DESC| `order_timestamp`) LIMIT $limit OFFSET $offset/i", "", $order_count_querry);
 $order_count = mysqli_fetch_column(mysqli_query($connect, $order_count_querry));
 
-$title = "order List";
+$title = "order List | Admin Panel | OSC";
 $currentPage = "orderList";
 include "include/head.php";
 ?>

@@ -15,7 +15,7 @@ if (!isset($_SESSION["user"])) {
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <?php
-$title = "Product Remove";
+$title = "Product Remove | Admin Panel | OSC";
 $currentPage = "productDelete";
 include "include/head.php";
 ?>

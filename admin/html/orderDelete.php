@@ -13,7 +13,7 @@ if (!isset($_SESSION["user"])) {
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <?php
-$title = "Order Remove";
+$title = "Order Remove | Admin Panel | OSC";
 $currentPage = "orderDelete";
 include "include/head.php";
 ?>

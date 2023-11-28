@@ -44,7 +44,7 @@ $employee_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(employee_id)
 $employee_count_querry = preg_replace("/ORDER BY (`employee_timestamp` DESC|`employee_timestamp`) LIMIT $limit OFFSET $offset/i", "", $employee_count_querry);
 $employee_count = mysqli_fetch_column(mysqli_query($connect, $employee_count_querry));
 
-$title = "employee List";
+$title = "employee List | Admin Panel | OSC";
 $currentPage = "employeeList";
 include "include/head.php";
 ?>

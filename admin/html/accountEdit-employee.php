@@ -15,7 +15,7 @@ if (!isset($_SESSION["user"])) {
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <?php
-$title = "Account Edit";
+$title = "Account Edit | Admin Panel | OSC";
 $currentPage = "accountEdit";
 include "include/head.php";
 ?>

@@ -63,7 +63,7 @@ switch ($orderby) {
 $product_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(product_id)", $orderquerry);
 $product_count_querry = preg_replace("/ ORDER BY (`product_timestamp`|`product_sold`|'product_score'|`product_price`) DESC LIMIT $limit OFFSET $offset/i", "", $product_count_querry);
 $product_count = mysqli_fetch_column(mysqli_query($connect, $product_count_querry));
-$title = "Product List";
+$title = "Product List | Admin Panel | OSC";
 $currentPage = "productList";
 include "include/head.php";
 ?>

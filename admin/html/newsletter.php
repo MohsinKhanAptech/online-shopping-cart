@@ -44,7 +44,7 @@ $newsletter_count_querry = preg_replace("/SELECT \*/i", "SELECT COUNT(newsletter
 $newsletter_count_querry = preg_replace("/ORDER BY (`newsletter_timestamp` DESC|`newsletter_timestamp`) LIMIT $limit OFFSET $offset/i", "", $newsletter_count_querry);
 $newsletter_count = mysqli_fetch_column(mysqli_query($connect, $newsletter_count_querry));
 
-$title = "newsletter";
+$title = "newsletter | Admin Panel | OSC";
 $currentPage = "newsletter";
 include "include/head.php";
 ?>
