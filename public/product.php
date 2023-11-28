@@ -265,8 +265,9 @@ include "include/head.php";
                                         </div>
                                         <?php
                                         $review_check = isset($_SESSION["customer_id"]) ? mysqli_query($connect, "SELECT * FROM `reviews` WHERE `customer_id` = '{$_SESSION["customer_id"]}' AND `product_id` = '$product_id'") : 0;
+                                        $order_check = isset($_SESSION["customer_id"]) ? mysqli_query($connect, "SELECT * FROM `orders` WHERE `customer_id` = '{$_SESSION["customer_id"]}' AND `product_id` = '$product_id' AND (`order_status` = 'Shipped' OR `order_status` = 'Completed')") : 0;
 
-                                        if (isset($_SESSION["customer"]) && !mysqli_num_rows($review_check) > 0) { ?>
+                                        if (isset($_SESSION["customer"]) && !mysqli_num_rows($review_check) > 0 && mysqli_num_rows($order_check) > 0) { ?>
                                             <div class="row r-2 u-s-m-b-26 u-s-p-b-22">
                                                 <div class="col-lg-12">
                                                     <div class="your-rating-wrapper">
@@ -302,7 +303,7 @@ include "include/head.php";
                                                 </div>
                                             </div>
                                         <?php
-                                        } elseif (isset($_SESSION["customer"])) {
+                                        } elseif (isset($_SESSION["customer"]) && mysqli_num_rows($review_check) > 0) {
                                             $select_reviews = mysqli_query(
                                                 $connect,
                                                 "SELECT customers.customer_name,reviews.*
