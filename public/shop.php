@@ -398,10 +398,10 @@ include "include/head.php";
                                     $page--;
                                     echo
                                     "<li>
-                                            <a href='shop.php?$str&page=$page' title='Previous'>
-                                                <i class='fa fa-angle-left'></i>
-                                            </a>
-                                        </li>";
+                                        <a href='shop.php?$str&page=$page' title='Previous'>
+                                            <i class='fa fa-angle-left'></i>
+                                        </a>
+                                    </li>";
                                     $page++;
                                 }
                                 for ($i = 0; $i < $product_pages; $i++) {
@@ -409,17 +409,17 @@ include "include/head.php";
                                     $p = $i + 1;
                                     echo
                                     "<li $c>
-                                            <a href='shop.php?$str&page=$i'>$p</a>
-                                        </li>";
+                                        <a href='shop.php?$str&page=$i'>$p</a>
+                                    </li>";
                                 }
                                 if ($page < $product_pages - 1) {
                                     $page++;
                                     echo
                                     "<li>
-                                            <a href='shop.php?$str&page=$page' title='Next'>
-                                                <i class='fa fa-angle-right'></i>
-                                            </a>
-                                        </li>";
+                                        <a href='shop.php?$str&page=$page' title='Next'>
+                                            <i class='fa fa-angle-right'></i>
+                                        </a>
+                                    </li>";
                                     $page--;
                                 } ?>
                             </ul>

@@ -392,59 +392,38 @@ include "include/head.php";
                                                         <span> (<?php echo $product["product_review_count"] ?>) </span>
                                                     </h6>
                                                 </div>
-                                                <!-- <div class="review-option-box">
+                                                <div class="review-option-box">
                                                     <div class="select-box-wrapper">
-                                                        <label class="sr-only" for="review-sort">Review Sorter</label>
-                                                        <select class="select-box" id="review-sort">
-                                                            <option value="">Sort by: Best Rating</option>
-                                                            <option value="">Sort by: Worst Rating</option>
+                                                        <label class="sr-only" for="sort-rating">Review Rating Sorter</label>
+                                                        <select class="select-box" id="sort-rating" onchange="reviewGet()">
+                                                            <option value="rating">All</option>
+                                                            <option value="5">5 stars</option>
+                                                            <option value="4">4 stars</option>
+                                                            <option value="3">3 stars</option>
+                                                            <option value="2">2 stars</option>
+                                                            <option value="1">1 stars</option>
                                                         </select>
                                                     </div>
-                                                </div> -->
+                                                    <div class="select-box-wrapper">
+                                                        <label class="sr-only" for="sort-order">Review Sorter</label>
+                                                        <select class="select-box" id="sort-order" onchange="reviewGet()">
+                                                            <option value="Latest">Sort by: Latest</option>
+                                                            <option value="Best Rating">Sort by: Best Rating</option>
+                                                            <option value="Worst Rating">Sort by: Worst Rating</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <!-- Review-Options /- -->
                                             <!-- All-Reviews -->
-                                            <div class="reviewers">
-                                                <?php
-                                                //  $select_reviews = mysqli_query($connect, "SELECT * FROM `reviews` WHERE `product_id` = '$product_id'");
-                                                $select_reviews = mysqli_query(
-                                                    $connect,
-                                                    "SELECT customers.customer_name,reviews.*
-                                                    FROM `customers` 
-                                                    INNER JOIN `reviews`
-                                                    ON customers.customer_id = reviews.customer_id AND reviews.product_id = {$product["product_id"]};"
-                                                );
-
-                                                if (mysqli_num_rows($select_reviews) > 0) {
-                                                    while (($review = mysqli_fetch_assoc($select_reviews))) { ?>
-                                                        <div class="review-data">
-                                                            <div class="reviewer-name-and-date">
-                                                                <h6 class="reviewer-name"><?php echo $review["customer_name"] ?></h6>
-                                                                <h6 class="review-posted-date"><?php echo date_format(date_create($review["review_date"]), "dS F Y") ?></h6>
-                                                            </div>
-                                                            <div class="reviewer-stars-title-body">
-                                                                <div class="reviewer-stars">
-                                                                    <div class="star">
-                                                                        <span style="width: calc(15px * <?php echo $review["rating"] ?>)"></span>
-                                                                    </div>
-                                                                    <span class="review-title"><?php echo $review["review_title"] ?></span>
-                                                                </div>
-                                                                <p class="review-body"><?php echo $review["review"] ?></p>
-                                                            </div>
-                                                        </div>
-                                                    <?php
-                                                    }
-                                                } else { ?>
-                                                    <!-- Review Not Found -->
-                                                    <div class='product-not-found'>
-                                                        <div class='not-found'>
-                                                            <h2>SORRY!</h2>
-                                                            <h6>There is not any review of specific product.</h6>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Review Not Found /- -->
-                                                <?php
-                                                } ?>
+                                            <div class="reviewers" id="reviewContainer">
+                                            </div>
+                                            <div class="pagination-review-area" id="loadMoreBtn">
+                                                <div class="pagination-review-number">
+                                                    <ul>
+                                                        <li><a style="scale: 1.5;" onclick="loadMoreReview()">Load More</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                             <!-- All-Reviews /- -->
                                             <!-- Pagination-Review -->
@@ -583,5 +562,77 @@ include "include/head.php";
         ?>
         <!-- Quick-view-Modal /- -->
     </div>
+    <script>
+        let page = 1;
+        let pageCount = Math.ceil(<?php echo $reviews_count ?> / 16);
+
+        function reviewGet() {
+            page = 1;
+            pageCount = Math.ceil(<?php echo $reviews_count ?> / 16);
+
+            let productId = <?php echo $product_id ?>;
+            let sortOrder = document.getElementById('sort-order').value;
+            let sortRating = document.getElementById('sort-rating').value;
+
+            document.getElementById("reviewContainer").innerHTML = "<div><img id='loadingGIF' src='include/images/loading.gif' alt='loading.gif'></div>";
+            let RAJAX = new XMLHttpRequest();
+            RAJAX.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("reviewContainer").innerHTML = this.responseText;
+                }
+            }
+            if (pageCount > 16) {
+                document.getElementById("loadMoreBtn").style.display = "block";
+            } else {
+                document.getElementById("loadMoreBtn").style.display = "none";
+            }
+            RAJAX.open("GET", "productReview.php?productId=" + productId + "&sortOrder=" + sortOrder + "&sortRating=" + sortRating + "&page=" + 1, true);
+            RAJAX.send();
+        }
+
+        function loadMoreReview() {
+            let productId = <?php echo $product_id ?>;
+            let sortOrder = document.getElementById('sort-order').value;
+            let sortRating = document.getElementById('sort-rating').value;
+
+            page++;
+            pageCount--;
+            let LAJAX = new XMLHttpRequest();
+            LAJAX.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("reviewContainer").innerHTML += this.responseText;
+                    if (pageCount === 1) {
+                        document.getElementById("loadMoreBtn").style.display = "none";
+                    }
+                }
+            }
+            LAJAX.open("GET", "productReview.php?productId=" + productId + "&sortOrder=" + sortOrder + "&sortRating=" + sortRating + "&page=" + page, true);
+            LAJAX.send();
+        }
+        reviewGet();
+    </script>
     <?php include "include/scripts.php" ?>
 </body>
+<style>
+    #loadingGIF {
+        width: 50px;
+        aspect-ratio: 1;
+        margin: auto;
+    }
+
+    div:has(>#loadingGIF) {
+        display: grid;
+        align-items: center;
+    }
+
+    .pagination-review-area>.pagination-review-number>ul>li>a {
+        border-color: #eceff8;
+        transition: border-color 150ms, color 150ms;
+    }
+
+    .pagination-review-area>.pagination-review-number>ul>li>a:hover {
+        border-color: #d90429;
+    }
+</style>
+
+</html>
