@@ -25,6 +25,13 @@ $page_title = $product["product_name"] . " | OSC - OnlineShoppingCart";
 include "include/head.php";
 ?>
 
+<style>
+    .review-body {
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+</style>
+
 <body>
     <div id="app">
         <!-- Header -->

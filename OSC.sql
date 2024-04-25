@@ -355,7 +355,7 @@ CREATE TABLE `reviews` (
   `rating` int(1) NOT NULL,
   `review_title` varchar(25) NOT NULL,
   `review` varchar(255) NOT NULL,
-  `review_date` date NOT NULL DEFAULT current_timestamp()
+  `review_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

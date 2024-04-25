@@ -1,2 +1,2 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "online shopping cart");
+$connect = mysqli_connect("localhost", "root", "", "osc");
