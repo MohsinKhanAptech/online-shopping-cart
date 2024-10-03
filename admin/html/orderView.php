@@ -62,7 +62,7 @@ include "include/head.php";
                                 INNER JOIN `customers`
                                 ON orders.customer_id = customers.customer_id)
                                 INNER JOIN `products`
-                                ON Orders.product_id = products.product_id)
+                                ON orders.product_id = products.product_id)
                                 INNER JOIN `customer_details`
                                 ON orders.customer_id = customer_details.customer_id)
                                 WHERE order_id = $order_id;
