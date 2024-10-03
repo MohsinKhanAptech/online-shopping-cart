@@ -21,9 +21,7 @@ Credentials: [Credentials](#credentials)
 
 ## Prerequisites
 
-### Note
-
-For when you want to run this project locally
+Note: For when you want to run this project locally
 
 - php
 - mysql
@@ -47,8 +45,7 @@ password : asad
 username : admin
 password : admin
 
-#### Note
-
+Note: \
 Enter the above details in the user login fields \
 It will rediret you to the admin login page \
 Enter the given details there
