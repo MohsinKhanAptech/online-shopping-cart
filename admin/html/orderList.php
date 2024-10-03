@@ -35,7 +35,7 @@ switch ($orderby) {
             INNER JOIN `customers`
             ON orders.customer_id = customers.customer_id)
             INNER JOIN `products`
-            ON Orders.product_id = products.product_id)
+            ON orders.product_id = products.product_id)
             WHERE $where
             ORDER BY `order_timestamp` DESC LIMIT $limit OFFSET $offset;
         ";
